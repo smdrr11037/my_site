@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://example.com/ads/ads_part_1/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Part 1 - smdrr's note</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">smdrr's note</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Ads <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Part 1</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../memoire/" class="nav-link">备忘</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../.." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../memoire/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/smdrr11037/my_site/edit/master/docs/ads/ads_part_1.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#preparation-before-class" class="nav-link">Preparation Before Class</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#avl-trees" class="nav-link">AVL Trees</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#avl" class="nav-link">AVL树定义</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#avl_1" class="nav-link">如何得到AVL树</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">复杂度分析</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#splay-trees" class="nav-link">Splay Trees</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#amortized-analysisthree-normal-methods" class="nav-link">Amortized Analysis(Three normal methods)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#red-black-tree" class="nav-link">Red-black Tree</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#1" class="nav-link">1. 红黑树定义</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#b-tree" class="nav-link">B+ Tree</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#1_1" class="nav-link">1. 定义</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#2_1" class="nav-link">2. 插入过程</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#3" class="nav-link">3. 删除过程</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#inverted-file-index" class="nav-link">Inverted File Index</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="preparation-before-class">Preparation Before Class</h1>
+<hr />
+<ul>
+<li>
+<p>教材</p>
+<p>数据结构教材</p>
+<p><strong>introduction to algorithms</strong></p>
+<p>algorithm design</p>
+<p>数据结构学习与实验指导</p>
+</li>
+<li>
+<p>评分</p>
+<p>作业：10%</p>
+<p>Discussion：10%</p>
+<p>Research Topic：10%</p>
+<p>期中：10%（可被期末覆盖）</p>
+<p>期末：40%</p>
+</li>
+</ul>
+<h1 id="avl-trees">AVL Trees</h1>
+<hr />
+<ul>
+<li>
+<p>目标：加速查找</p>
+</li>
+<li>
+<p>方法：查找树</p>
+<ul>
+<li>
+<p>O(height)</p>
+</li>
+<li>
+<p>递增/递减序列退化成链</p>
+</li>
+<li>
+<p>最好情况（树最矮）：所有子树高度相等——太苛刻</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="avl">AVL树定义</h2>
+<ul>
+<li>
+<p>空树平衡</p>
+</li>
+<li>
+<p>非空树平衡当且仅当</p>
+<ul>
+<li>
+<p>左子树与右子树都平衡</p>
+</li>
+<li>
+<p>左右子树高度差小于等于1</p>
+</li>
+</ul>
+</li>
+<li>
+<p>平衡因子BF（node）=左子树高度-右子树高度</p>
+<ul>
+<li>AVL只能取-1，0，1</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>本课中定义空树高度为-1</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>几个例子：
+<img alt="alt text" src="../image-14.png" />
+</p>
+</blockquote>
+<p>这样就得到了性质较好的树</p>
+<hr />
+<h2 id="avl_1">如何得到AVL树</h2>
+<ul>
+<li><strong>树的旋转</strong>
+<img alt="alt text" src="../image-15.png" />
+B高度增加1，A高度减少1。复杂度为<span class="arithmatex">\(O(1)\)</span>，代码如下</li>
+</ul>
+<pre><code class="language-c">typedef struct Node *Tree;
+struct Node
+{
+    ElementType Element;
+    Tree Left;
+    Tree Right;
+}
+
+A-&gt;Left=B-&gt;Right;
+B-&gt;Right=A;
+return B;//新根
+</code></pre>
+<p><strong>AVL树的插入</strong>：</p>
+<p>每插入一个新结点，记录（以其为根节点的）高度，从下到上更新父节点高度，计算平衡因子，一但不符合条件</p>
+<ul>
+<li>
+<p>因子在同一个方向变化</p>
+<p>-2：左旋（RR Rotation——指从失衡节点开始向右插两次的情况）</p>
+<p>2： 右旋（LL Rotation，与RR对称）
+<img alt="alt text" src="../image-16.png" /></p>
+</li>
+<li>
+<p>不同方向：把树高高方向的孙子转上来，转两次（两种对称情况，LR和RL）
+<img alt="alt text" src="../image-6.png" /></p>
+</li>
+</ul>
+<p>实际上，根据AVL树的良好定义，在每次插入后只需要一次操作（RR/LR...）就能使其再次平衡。</p>
+<p><strong>AVL树的删除</strong>：</p>
+<p>用删除节点左子树的最大节点/右子树的最小节点替换他（与BST相同），再删除。</p>
+<p>从删除节点的父节点开始（替换后），记录（以其为根节点的）高度，从下到上更新父节点高度，计算平衡因子，一但不符合条件，就用insert中的方法调整。在删除操作中，可能会需要多次调整。</p>
+<hr />
+<h2 id="_1">复杂度分析</h2>
+<p>树高的渐进上界</p>
+<p><span class="arithmatex">\(n_h\)</span>——h高度的树需要的最小结点数</p>
+<p>高度为h的树（所需节点最少）如下
+<img alt="alt text" src="../image-7.png" /></p>
+<blockquote>
+<p>与斐波那契数列类似：</p>
+<p><span class="arithmatex">\(F_0=0,F_1=1,F_n=F_{n-1}+F_{n-2}\)</span></p>
+<p>而<span class="arithmatex">\(F_n\approx\frac{1}{\sqrt{5}}(\frac{1+\sqrt{5}}{2})^i\)</span></p>
+</blockquote>
+<p>所以  <span class="arithmatex">\(n_h =F_{n+3}-1\)</span></p>
+<ul>
+<li><span class="arithmatex">\(h=O(lnn)\)</span></li>
+</ul>
+<h1 id="splay-trees">Splay Trees</h1>
+<hr />
+<ul>
+<li>
+<p>目标：M次操作，总的时间复杂度<span class="arithmatex">\(O(MlogN)\)</span>，即每个操作平均复杂度为<span class="arithmatex">\(O(logN)\)</span></p>
+</li>
+<li>
+<p>基本思想：每次查询/插入，将该元素提到根节点</p>
+</li>
+</ul>
+<h3 id="_2">构造过程</h3>
+<ul>
+<li>
+<p>如果查询节点的父亲是根——旋转查询节点</p>
+</li>
+<li>
+<p>如果不是，则有父亲节点（P）和祖父节点（G）</p>
+<ul>
+<li>zig-zag（z字形）：转两次当前节点</li>
+<li>zig-zig（一个方向）：先转父节点，再转当前节点
+<img alt="alt text" src="../image-8.png" /></li>
+</ul>
+</li>
+</ul>
+<h3 id="_3">删除操作</h3>
+<ol>
+<li>
+<p>找到要删除的元素X（这样让其在根节点）</p>
+</li>
+<li>
+<p>删掉X，得到左子树和右子树</p>
+</li>
+<li>
+<p>找到左子树最大的节点，将其推到根节点</p>
+</li>
+<li>
+<p>这样就能直接将右子树接到左子树的右边</p>
+</li>
+</ol>
+<h1 id="amortized-analysisthree-normal-methods">Amortized Analysis(Three normal methods)</h1>
+<hr />
+<blockquote>
+<p>An amortized analysis guarantees the average performance of
+each operation in the worst case.</p>
+</blockquote>
+<ul>
+<li>
+<p>Splay树的目标：M次操作，总的时间复杂度<span class="arithmatex">\(O(MlogN)\)</span>——均摊时间上界(<strong>Amortized time bound</strong>)</p>
+</li>
+<li>
+<p>worst-case bound &gt;= amortized time bound &gt;= average-case bound</p>
+</li>
+<li>
+<p>前两种与数据分布无关</p>
+</li>
+</ul>
+<h3 id="_4">聚合分析</h3>
+<p>对于所有 n，n 个运算序列总共需要最坏情况时间（determine an upper bound） T（n）。因此，在最坏的情况下，每次操作的平均成本或摊销成本为 T（n）/n。</p>
+<blockquote>
+<p>以栈为例：</p>
+</blockquote>
+<ul>
+<li>
+<p>push：<span class="arithmatex">\(O(1)\)</span>， pop：<span class="arithmatex">\(O(1)\)</span>， </p>
+</li>
+<li>
+<p>multipop（一次pop出n个）：<span class="arithmatex">\(min\{k，n\}=O(n)\)</span>，其中k是当前栈中元素数</p>
+</li>
+<li>
+<p>所以n次操作上界：<span class="arithmatex">\(O(n^2)\)</span></p>
+</li>
+<li>
+<p>更精确：栈中元素数肯定小于n，push进的元素只能pop一次，所以总的时间复杂度<span class="arithmatex">\(O(n)\)</span>
+  $$T_{amortized}= O( n )/n = O(1)
+  $$</p>
+</li>
+</ul>
+<hr />
+<h3 id="_5">核算法</h3>
+<blockquote>
+<p>以卖汽水为例：</p>
+</blockquote>
+<ul>
+<li>
+<p>a卖一瓶汽水<strong>3元</strong></p>
+</li>
+<li>
+<p>b用<strong>5元</strong>买汽水，存两元（credits）到a那，下次买汽水可以用。此时actual cost：3元</p>
+</li>
+<li>
+<p><span class="arithmatex">\(amortized\ cost = actual\ cost + credits\)</span></p>
+</li>
+<li>
+<p>买n瓶汽水，bound：
+$$
+amortized\ cost \geq  actual\ cost(即3n元，因为不赊账)
+$$</p>
+</li>
+</ul>
+<p><strong>注意保证最终信用不小于0</strong></p>
+<p>回到栈操作：</p>
+<ul>
+<li>
+<p>实际代价：push=1, pop=1, multipop=min(sizeof(s),k)</p>
+</li>
+<li>
+<p>均摊代价：push = 2(提前把pop的代价付掉，即使不pop该元素), pop = multipop = 0，这样所有代价都是常数</p>
+</li>
+<li>
+<p>Credits：push = +1, pop = -1, multipop = -min(sizeof(s),k)</p>
+</li>
+<li>
+<p>multipop时的信用为sizeof(s)，因此不会出现信用为负的情况</p>
+</li>
+<li>
+<p>n次操作最大的amortized cost为2n，<span class="arithmatex">\(T_{amortized}= O( n )/n = O(1)\)</span></p>
+</li>
+</ul>
+<hr />
+<h3 id="_6">势能法</h3>
+<ul>
+<li>
+<p><span class="arithmatex">\(\Phi(D_i)\)</span>：势能函数，表示<span class="arithmatex">\(D_i\)</span>状态的势能</p>
+</li>
+<li>
+<p><span class="arithmatex">\(Credits =\Phi(D_i)-\Phi(D_{i-1})\)</span>; </p>
+</li>
+<li>
+<p>合法的势能函数：保证<span class="arithmatex">\(\Phi(D_{0})\)</span>是最小的，这样总的Credits<span class="arithmatex">\(=\Phi(D_n)-\Phi(D_{0})\)</span>&gt;0，均摊代价是实际代价的上界。下面公式中 <span class="arithmatex">\(\hat{c_i}\)</span> 是均摊代价， <span class="arithmatex">\(c_i\)</span> 是实际代价
+$$
+\sum_{i=1}^n\hat{c_i}=\sum_{i=1}^n(c_i+\Phi(D_i)-\Phi(D_{i-1}))=\sum_{i=1}^nc_i+\Phi(D_n)-\Phi(D_{0})
+$$</p>
+</li>
+</ul>
+<p>再次回到栈</p>
+<ul>
+<li>
+<p>势能函数<span class="arithmatex">\(\Phi(D_i)=D_i\)</span>时刻栈中的元素数</p>
+</li>
+<li>
+<p>计算均摊代价：</p>
+</li>
+<li>
+<p>push：<span class="arithmatex">\(\hat{c_i}=c_i+\Phi(D_i)-\Phi(D_{i-1})=1+1=2\)</span></p>
+</li>
+<li>
+<p>multipop：<span class="arithmatex">\(\hat{c_i}=c_i+\Phi(D_i)-\Phi(D_{i-1})=k'-k'=0\)</span></p>
+</li>
+<li>
+<p>每个操作的代价都是O(1)——均摊代价是O(1)</p>
+</li>
+</ul>
+<hr />
+<p>应用：分析splay tree的均摊代价——Amortized Analysis Using Potential Methods:</p>
+<blockquote>
+<p>树的常见势能函数：节点个数、树高···</p>
+</blockquote>
+<p>(因为报告用英文写的所以下面是英文)</p>
+<p>In tree's amortized analysis, we often use the height of tree or the amount of nodes as the potential function, which satisfy <span class="arithmatex">\(\Phi(0)\)</span> is the minimum. To make the potential function increasing slowly, we choose <span class="arithmatex">\(\Phi(T)=\sum_{i\in T}S(i)\)</span>, where S(i) is the number of descendants of i (i included). <span class="arithmatex">\(\Phi(T)\)</span> is also called rank of T, notion <span class="arithmatex">\(R(T)\)</span></p>
+<blockquote>
+<p>Lemma: If <span class="arithmatex">\(a+b\leq c\)</span> </p>
+<p>then  <span class="arithmatex">\(loga+logb\leq 2logc-2\)</span></p>
+</blockquote>
+<p>Same as the part of algorithm analysis, there are three situations to discuss according to the picture.</p>
+<ul>
+<li>
+<p>If the "X" to be pushed is one of the childs of root, we only need one rotation. Except X and P, the "S(i)"  didn't change, and the rotation cost <span class="arithmatex">\(c_i\)</span> is 1. So the amortized cost 
+  $$
+  \hat{c_i}=1+R_2(X)-R_1(X)+R_2(P)-R_1(P)
+  $$
+  $$
+  \leq 1+R_2(X)-R_1(X)
+  $$
+    (shown below that <span class="arithmatex">\(R_2(P)&lt;R_1(P)\)</span>)
+   <img alt="alt teXt" src="../image-11.png" /></p>
+</li>
+<li>
+<p>In the zig-zag case, we need two rotation, costing 2. We note that <span class="arithmatex">\(R_2(X) = R_1(G) = log(the\ number\ of\ nodes\ in\ T)\)</span>. So the amortized cost 
+  $$
+  \hat{c_i}=2+R_2(X)-R_1(X)+R_2(P)-R_1(P)+R_2(G)-R_1(G)
+  $$</p>
+</li>
+</ul>
+<p>$$
+  =2-R_1(X)+R_2(P)-R_1(P)+R_2(G)
+  $$</p>
+<p>$$
+  \leq 2(R_2(X)-R_1(X))
+  $$
+    (shown below that nodes: <span class="arithmatex">\(P_2+G_2&lt;X_2,\ so\ according\ to\ lemma,\ R_2(P)+R_2(G)\leq 2R_2(X)+2\)</span>)
+    <img alt="alt teXt" src="../image-9.png" />
+* In the zig-zig case, we need two rotation, too, costing 2. We also note that <span class="arithmatex">\(R_2(X) = R_1(G)\)</span>. So the amortized cost 
+  $$
+  \hat{c_i}=2+R_2(X)-R_1(X)+R_2(P)-R_1(P)+R_2(G)-R_1(G)
+  $$</p>
+<p>$$
+  =2-R_1(X)+R_2(P)-R_1(P)+R_2(G)
+  $$
+   $$
+   =2-2R_1(X)+R_2(P)-R_1(P)+R_2(G)+R_1(X)
+   $$
+  $$
+  \leq 3(R_2(X)-R_1(X))
+  $$
+    (shown below that nodes: <span class="arithmatex">\(X_1+G_2&lt;X_2,\ so\ according\ to\ lemma,\ R_1(X)+R_2(G)\leq 2R_2(X)+2\)</span>)
+  <img alt="alt teXt" src="../image-10.png" /></p>
+<p>When splay, the former <span class="arithmatex">\(3R_2(X)\)</span> could be eliminated by the latter item's <span class="arithmatex">\(-3R_1(X)\)</span>. After sum of all the items, we get:
+$$
+\hat{c_i} \leq 1+3(R_2(X)-R_1(X))=O(logN)
+$$</p>
+<blockquote>
+<p>算法导论的摊还分析例子</p>
+</blockquote>
+<p>Incrementing a binary counter(k bit in total)</p>
+<ul>
+<li>
+<p>每次从低位往高位翻转bit，遇到1继续翻转，遇到0翻转完后停下来</p>
+</li>
+<li>
+<p>worst case: 每次最多转k个bits——011...1=&gt;100...0</p>
+</li>
+</ul>
+<p>聚合分析：</p>
+<ul>
+<li>
+<p>A[0]每次都改变</p>
+</li>
+<li>
+<p>A[1]每两次改变一次</p>
+</li>
+<li>
+<p>假设计数n次，则A[0]改变<span class="arithmatex">\(n\)</span>次，A[1]改变<span class="arithmatex">\(\lfloor\frac{n}{2}\rfloor\)</span>次...A[i]改变<span class="arithmatex">\(\lfloor\frac{n}{2^i}\rfloor\)</span>次</p>
+</li>
+<li>
+<p>因此总共的操作（翻转bit）的次数为</p>
+</li>
+</ul>
+<div class="arithmatex">\[
+\sum^{k-1}_{i=0}\lfloor\frac{n}{2^i}\rfloor&lt;n\sum^{\infty}_{i=0}\frac{1}{2^i}=2n
+\]</div>
+<p>因此总的时间复杂度上界为O(n)，均摊时间复杂度为O(n)/n=O(1).</p>
+<p>核算法：</p>
+<ul>
+<li>
+<p>实际代价：1变为0 = 1, 0变为1 = 1</p>
+</li>
+<li>
+<p>均摊代价：0变为1 = 2(提前把1变为0的代价付掉), 1变为0 = 0</p>
+</li>
+<li>
+<p>从0开始计数，肯定先将0变为1才能变回去，因此不会出现信用为负的情况</p>
+</li>
+<li>
+<p>我们知道每次最多只有一个0变成1</p>
+</li>
+<li>
+<p>因此均摊代价为O(1)</p>
+</li>
+</ul>
+<p>势能法：</p>
+<ul>
+<li>选取势能函数：当前1的数目，记为<span class="arithmatex">\(b_i\)</span>
+<!--  怎么看到这就停了--></li>
+</ul>
+<hr />
+<h1 id="red-black-tree">Red-black Tree</h1>
+<hr />
+<blockquote>
+<p>tips: 访问空指针会 Sigementation fault，，可以指向一个虚拟节点（哨兵）</p>
+</blockquote>
+<ul>
+<li>目标：每次搜索都<span class="arithmatex">\((logn)\)</span></li>
+</ul>
+<h2 id="1">1. 红黑树定义</h2>
+<ol>
+<li>
+<p>红黑树的每个节点要么是红色的，要么是黑色的</p>
+</li>
+<li>
+<p>根节点是黑色的</p>
+</li>
+<li>
+<p>每个叶子都是哨兵（NIL），哨兵是黑色的</p>
+</li>
+<li>
+<p>如果节点是红色的，那么他的孩子都是黑色的</p>
+</li>
+<li>
+<p>每个节点到（能到达的）所有叶子的简单路径，经过的黑色节点数相同</p>
+</li>
+</ol>
+<hr />
+<ul>
+<li>black height: 不算自己、不算哨兵，经过的黑色节点数</li>
+</ul>
+<blockquote>
+<p>引理：</p>
+</blockquote>
+<!-- 什么引理 -->
+<p>证明：</p>
+<hr />
+<h3 id="2">2. 红黑树构造</h3>
+<p>构造想法：插入新节点且染成红色——保持性质5，通过迭代变换保持其他性质</p>
+<p><strong>Insert</strong>(不满足性质有三种情况)：</p>
+<ul>
+<li>
+<p>case 1：红叔叔（所以爷爷肯定黑色）——将爸爸和叔叔染黑，爷爷染红<img alt="alt text" src="../image-12.png" /></p>
+</li>
+<li>
+<p>case 2：近叔叔黑——旋转到case3</p>
+</li>
+<li>
+<p>case 3：远叔叔黑——父亲染黑，旋转爷爷<img alt="alt text" src="../image-13.png" /></p>
+</li>
+</ul>
+<p>这样保持了每次只有一条规则被破坏</p>
+<ul>
+<li>复杂度：最坏情况——一直case 1
+$$
+T = O(h) = O(logn)
+$$</li>
+</ul>
+<hr />
+<p><strong>Delete</strong></p>
+<ul>
+<li>
+<p>被删节点是leaf node: 父亲指向NIL</p>
+</li>
+<li>
+<p>只有一个儿子：用儿子替代他</p>
+</li>
+<li>
+<p>有两个儿子：用左子树最大的/右子树最小的替代他。</p>
+</li>
+</ul>
+<p>此时</p>
+<!--删除怎么删  -->
+
+<h1 id="b-tree">B+ Tree</h1>
+<hr />
+<h2 id="1_1">1. 定义</h2>
+<h4 id="a-b-tree-of-order-m">A B+ tree of order <strong>M</strong>:</h4>
+<ul>
+<li>
+<p>根节点要么没有孩子，要么有<span class="arithmatex">\([2,M]\)</span>个孩子</p>
+</li>
+<li>
+<p>除根之外的非叶子节点，有<span class="arithmatex">\([\lceil M/2\rceil,M]\)</span>个孩子</p>
+</li>
+</ul>
+<!-- 好像还有一点，yy怎么不发ppt😭 -->
+
+<!-- 为什么根节点不同？ -->
+
+<hr />
+<h2 id="2_1">2. 插入过程</h2>
+<ul>
+<li>
+<p>插入=&gt;若超限=&gt;分裂</p>
+</li>
+<li>
+<p>保证有序/找到位置：遍历（O(n)）</p>
+</li>
+<li>
+<p>如果推到前面——可能O(n)，因此实际操作不这么做</p>
+</li>
+</ul>
+<!-- 伪代码  -->
+
+<pre><code class="language-c">Btree Insert(ElementType X,Btree T)
+{
+  Seach from root to leaf
+}
+</code></pre>
+<!-- 时间复杂度 -->
+<blockquote>
+<p>choose M: best 3 or 4</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>B+树的好处：相近的元素离得近，磁盘友好</p>
+</blockquote>
+<hr />
+<h2 id="3">3. 删除过程</h2>
+<!-- 删除？ -->
+
+<h1 id="inverted-file-index">Inverted File Index</h1>
+<!-- 胡言乱语 -->
+<blockquote>
+<p>应用：信息检索，搜索引擎</p>
+</blockquote>
+<p>Solution 2: 矩阵存储</p>
+<p>磁带假设：词和词没有顺序</p>
+<p>Solution 3: Inverted File Index（参考图论，将矩阵用邻接表表示）</p>
+<table>
+<thead>
+<tr>
+<th>Doc</th>
+<th>Text</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Gold silver truck</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">优化</h3>
+<ol>
+<li>对term进行处理</li>
+<li>只留下词根</li>
+<li>
+<p>停用词（stop words）过滤：the、a、what...——成本大，收获低</p>
+</li>
+<li>
+<p>获得term后</p>
+</li>
+<li>哈希</li>
+<li>
+<p>搜索树</p>
+</li>
+<li>
+<p>内存优化</p>
+</li>
+<li>内存不够时，把写好的词典放入disk</li>
+<li>释放内存，创建一个新的词典</li>
+<li>
+<p>归并排序</p>
+</li>
+<li>
+<p>disk不够时</p>
+<ul>
+<li>Solution 1：将磁盘按字母序放在不同电脑里</li>
+<li>Solution 2：Document-Partitioned index</li>
+</ul>
+</li>
+<li>
+<p>Dynamic indexing</p>
+</li>
+<li>物理删除代价昂贵——做新旧标记</li>
+<li>Main list和new list</li>
+</ol>
+<!-- ？ -->
+
+<h3 id="_8">评估</h3>
+<p>precision&amp;recall</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

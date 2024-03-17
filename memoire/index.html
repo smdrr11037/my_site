@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://example.com/about/">
+        <link rel="canonical" href="https://example.com/memoire/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>About - smdrr's note</title>
+        <title>备忘 - smdrr's note</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -42,8 +42,8 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="navitem">
-                                <a href="../memoire/" class="nav-link">备忘</a>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">备忘</a>
                             </li>
                         </ul>
 
@@ -54,7 +54,17 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a href="https://github.com/smdrr11037/my_site/edit/master/docs/about.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                                <a rel="prev" href="../ads/ads_part_1/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/smdrr11037/my_site/edit/master/docs/memoire.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
                             </li>
                     </ul>
                 </div>
@@ -73,12 +83,23 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#mkdocs" class="nav-link">MkDocs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-</div>
+<h1 id="mkdocs">MkDocs</h1>
+<ul>
+<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
+<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
+<li><code>mkdocs build</code> - Build the documentation site.</li>
+<li><code>mkdocs -h</code> - Print help message and exit.</li>
+</ul></div>
             </div>
         </div>
 
