@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://example.com/DataBase/DataBase/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Use sql - smdrr's note</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">smdrr's note</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Ads <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../ads/ads_part_1/" class="dropdown-item">Part 1</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">CO <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../CO/CO/" class="dropdown-item">Part 1</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">oop <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../oop/oop/" class="dropdown-item">Basis</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">DataBase <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Use sql</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../memoire/" class="nav-link">备忘</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../oop/oop/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../memoire/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/smdrr11037/my_site/edit/master/docs/DataBase/DataBase.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">数据库系统</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#lecture-1-introduction" class="nav-link">Lecture 1: Introduction</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#lecture-2-relational-model" class="nav-link">Lecture 2: Relational Model</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#lecture-3-sql" class="nav-link">Lecture 3: SQL</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="_1">数据库系统</h1>
+<ul>
+<li>Database Management System（DBMS）</li>
+<li>成绩构成：
+ <img alt="alt text" src="../image.png" />
+ 考试可带A4纸</li>
+<li>教材：Database System Concepts (7th Edition)</li>
+<li>1, 2, 3, 4, 5, 6, 7, 
+    12, 13, 14, 15, 16, 17, 18, 19</li>
+</ul>
+<h2 id="lecture-1-introduction">Lecture 1: Introduction</h2>
+<h3 id="purpose">Purpose</h3>
+<ul>
+<li>数据库：长期存储在计算机内、有组织的、可共享的数据集合</li>
+<li>数据库系统（DBMS）：数据库 + 可对其进行操作的程序</li>
+<li>DBMS的特征</li>
+<li><strong>数据访问</strong>高效、稳定、可扩展</li>
+<li>缩短应用的开发时间</li>
+<li>数据独立性（physical和logical）</li>
+<li>数据完整性和安全性</li>
+<li>
+<p>并发访问和鲁棒性（易恢复</p>
+</li>
+<li>
+<p>DBMS VS File-Processing System </p>
+</li>
+<li>文件处理系统由传统的操作系统 （OS） 支持。</li>
+</ul>
+<h3 id="view">View</h3>
+<ul>
+<li>如果想要隐藏</li>
+<li>新建一个表：空间、<strong>同步问题</strong></li>
+<li>同一张表上用不同的视图</li>
+</ul>
+<h4 id="database-langueage">Database Langueage</h4>
+<ul>
+<li>Data Definition Language (DDL) </li>
+<li>Data Manipulation Language (DML) </li>
+<li>Data Control Language (DCL) </li>
+<li>SQL = DDL+ DML+DCL </li>
+</ul>
+<h4 id="transaction-management">Transaction Management</h4>
+<ul>
+<li>并发访问带来问题</li>
+<li>数据库保证原子性、一致性、隔离性、持久性</li>
+</ul>
+<h4 id="database-architecture">Database Architecture</h4>
+<ul>
+<li>Storage Manager </li>
+<li>Query Processor：描述性语句转化成操作 </li>
+<li>Overall System Structure </li>
+<li>Application Architecture </li>
+</ul>
+<h2 id="lecture-2-relational-model">Lecture 2: Relational Model</h2>
+<h4 id="structure-of-relational-databases">Structure of Relational Databases</h4>
+<p>基本结构：笛卡尔积
+    <img alt="alt text" src="../image-1.png" />{width=400px}
+  * 可用二维表表示
+  * 反映特定意义的子集就是<strong>关系</strong>，例如：
+  <img alt="alt text" src="../image-3.png" />{width=300px}
+* 导师——属性（attribute）
+  * 属性值——原子性（不可分割）
+  * 所有可取的值——域</p>
+<!-- Relation schema 待补充 -->
+
+<p>Key
+* 可以唯一确定关系中另一个属性的值的<strong>属性</strong>
+  * 例如知道学号可以确定学生，学号是key</p>
+<!-- 类型 -->
+<ul>
+<li>Foreign Key（外键）</li>
+<li>在当前表不能唯一确定，但在另一张表可以<ul>
+<li>专业号不能确定学生，但在另一张{专业号，专业}的表里可以确定专业</li>
+</ul>
+</li>
+</ul>
+<h4 id="fundamental-relational-algebra-operations">Fundamental Relational-Algebra Operations</h4>
+<p>6个基本操作：收到1-2个表，返回一个<strong>表</strong>
+* Select      选择 （横向切割）
+  * 符号：$\sigma_{branch-name=‘Perryridge’ }(account) $
+  * ?: Note that, the selection conditions need to aim at the attribute values of the same tuple, when we conduct section operation. </p>
+<ul>
+<li>Project     投影 （纵向切割——注意相同的集合元素要合并）</li>
+<li>Union       并 </li>
+<li>set difference      差（集合差）</li>
+<li>Cartesian product      笛卡儿积 </li>
+<li>Rename      改名（重命名） </li>
+</ul>
+<blockquote>
+<p>Example Queries 5: Find the names of all customers who have a loan at the Perryridge branch. </p>
+</blockquote>
+<p>方法1：customer-name(branch-name=‘Perryridge’ 
+(borrower.loan-number = loan.loan-number(borrower x loan))) 
+方法2：customer-name(borrower.loan-number = loan.loan-number 
+(borrower x (branch-name=‘Perryridge’ (loan)))) 
+* 需要乘的东西更少，节省开销</p>
+<blockquote>
+<p>Example Queries 7: Find the largest account balance (i.e., <strong>self-comparison</strong>). </p>
+</blockquote>
+<ul>
+<li>改名的用处</li>
+</ul>
+<h4 id="additional-relational-algebra-operations">Additional Relational-Algebra Operations</h4>
+<p>Four basic operators</p>
+<ul>
+<li>Set intersection      交 
+  可以用差来表示：A ∩ B = A - (A - B)</li>
+<li>Natural join            自然连接 
+  多个表的操作经常用到</li>
+</ul>
+<p>由笛卡尔积和选择组成
+  * Notion: <span class="arithmatex">\(\gamma \bowtie s\)</span>  </p>
+<ul>
+<li>Division                  除<br />
+  笛卡尔积的逆运算
+  <img alt="alt text" src="../image-4.png" />{width=450px}</li>
+</ul>
+<!-- 详细解释？ -->
+<ul>
+<li>Notion: $ r \div s$<blockquote>
+<p>用基本操作推导</p>
+</blockquote>
+</li>
+<li>Assignment            赋值 
+  <span class="arithmatex">\(&lt;-\)</span></li>
+</ul>
+<p>Summary:
+* Union, set difference, Set intersection 为双目、<strong>等元</strong>运算 
+* Cartesian product, Natural join, Division 为双目运算 
+* Project, select 为单目运算</p>
+<ul>
+<li>优先级：单目&gt;多目，乘除&gt;加减</li>
+</ul>
+<h4 id="extended-relational-algebra-operations">Extended Relational-Algebra Operations</h4>
+<p>Generalized Projection: 广义投影
+* 可以用代数运算产生一个新属性</p>
+<p>Aggregate Functions: 聚合函数
+* Aggregation function takes a collection of values and returns a single value as a result. 
+avg: average value 
+min: minimum value 
+max: maximum value 
+sum: sum of values 
+count: number of values </p>
+<p>式子前面加属性A：根据属性A分组，返回一个关系</p>
+<blockquote>
+<p>E.g., 求平均存款余额 
+               $g_{avg(balance)}(account) $</p>
+</blockquote>
+<h4 id="modification-of-the-database">Modification of the Database</h4>
+<p>数据库更改操作: Deletion,  Insertion,  Updating 
+All these operations are expressed using the <strong>assignment</strong> operator. </p>
+<!-- Deletion? -->
+
+<hr />
+<h2 id="lecture-3-sql">Lecture 3: SQL</h2>
+<p>Structured Query Language——结构化查询语言
+与国际标准不同——没人要
+与国际标准相同——易替代</p>
+<h4 id="data-definition-language">Data Definition Language</h4>
+<pre><code class="language-sql">CREATE TABLE branch
+              (branch_name    char(15) not null, 
+                branch_city   varchar(30), 
+                assets        numeric(8,2),
+                primary key (branch_name)) 
+
+</code></pre>
+<p>Domain Types:
+* char(n): Fixed length character string, with user-specified length. 
+* varchar(n): Variable length character strings, with user-specified maximum length n. 
+* int: Integer (a finite subset of the integers that is machine-dependent). 
+* smallint: Small integer (a machine-dependent subset of the integer domain type). 
+* numeric(p, d): Fixed point number, with user-specified precision of p digits, with d digits to the right of decimal point. 
+* real, double precision: Floating point and double-precision floating point numbers, with machine-dependent precision. </p>
+<p>DROP TABLE r：将数据和表都删掉</p>
+<p>Basic Structure 
+Set Operations 
+Aggregate Functions 
+Null Values 
+Nested Subqueries 
+Views 
+Derived Relations 
+Modification of the Database 
+Joined Relations </p>
+<p>file:///E:/book/DB/Database_System_Concepts.pdf</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

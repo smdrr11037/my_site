@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://example.com/oop/oop/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Basis - smdrr's note</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">smdrr's note</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Ads <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../ads/ads_part_1/" class="dropdown-item">Part 1</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">CO <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../CO/CO/" class="dropdown-item">Part 1</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">oop <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Basis</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">DataBase <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../DataBase/DataBase/" class="dropdown-item">Use sql</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../memoire/" class="nav-link">备忘</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../CO/CO/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../DataBase/DataBase/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/smdrr11037/my_site/edit/master/docs/oop/oop.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#object-oriented-programming" class="nav-link">Object-Oriented Programming</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#introduction" class="nav-link">Introduction</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#using-objects" class="nav-link">Using Objects</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#class" class="nav-link">Class</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="object-oriented-programming">Object-Oriented Programming</h1>
+<ul>
+<li>关键字/三大特性：Inheritance（集成）  Encapsulation（封装） Polymorphism(多态)</li>
+<li>教材：Thinking in C++</li>
+<li>参考：C++ Primer, Ver 5</li>
+<li>成绩构成：Lab 50%, Exam 50%</li>
+</ul>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<ul>
+<li>第一个C++程序</li>
+</ul>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+    cout &lt;&lt; &quot;Hello, World! I am &quot; &lt;&lt; 18 &lt;&lt; &quot;Today!&quot; &lt;&lt; endl;
+    //endl: 换行
+    return 0; 
+}
+</code></pre>
+<ul>
+<li>输入输出流</li>
+</ul>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+    int number;
+
+    cout &lt;&lt; &quot;Enter a decimal number:&quot;; 
+    cin &gt;&gt; number;
+    cout &lt;&lt; &quot;The number you entered is &quot; &lt;&lt; number &lt;&lt;&quot;.&quot; &lt;&lt;endl;
+
+    system(&quot;pause&quot;);//冻结屏幕，便于观察结果
+    //not matter?
+    return 0;
+}
+</code></pre>
+<h2 id="using-objects">Using Objects</h2>
+<blockquote>
+<p>以字符串为例
+* 加头文件
+  * <code>include &lt;string&gt;</code>
+* 定义变量
+  * <code>string str;</code>
+* 初始化
+  * <code>string str = "hello";</code></p>
+</blockquote>
+<ul>
+<li>读写该变量</li>
+<li><code>cin &gt;&gt; str</code></li>
+<li><code>cout &lt;&lt; str</code></li>
+</ul>
+<hr />
+<ul>
+<li>与C不同的部分：
+  <code>c
+  //C:
+  char charr1[20];//需要指定大小
+  char charr2[20]=“jaguar”;
+  charr1 =charr2;//illegal,
+  //因为名称指向固定的地址，不能相互赋值</code>
+  ```c++
+  //C++:
+  string str1;//不用考虑内存
+  string str2=“panther”;</li>
+</ul>
+<p>str1 =str2;//legal
+  <code>* 字符串连接：</code>c++
+  string str3;
+  str3 = str1 + str2;
+  str1 +=str2;
+  strl +="lalala";
+  <code>``
+  * C如果未初始化——随机值，而C++强制初始化
+    *</code>string str1,str2("hello");`
+    * str1: 空，str2: hello
+    * 与类名一样的函数：构造函数</p>
+<ul>
+<li>用 "." 进行对象行为</li>
+</ul>
+<pre><code class="language-c++">str.empty();//字符串为空时返回1
+</code></pre>
+<hr />
+<h3 id="file-io">File I/O</h3>
+<pre><code class="language-c++">#include &lt;fstream&gt;//read from and write to file
+ofstream File1(&quot;C:\\test.txt&quot;);
+File1&lt;&lt;&quot;Hello world&quot;&lt;&lt;std::endl;//if without using namespace std;
+ifstream File2(&quot;C:\\test.txt&quot;);
+std::string str1;
+std::string str2;
+File1&gt;&gt;str1;
+File2&gt;&gt;str2
+</code></pre>
+<h3 id="memory-model">Memory Model</h3>
+<pre><code class="language-c++">//global vars
+int i;//outside all the function
+string str;
+static int j;//static global vars: 仅当前文件可见
+f(){
+  int k;//local vars.
+  static int l;// static local vars：仅函数内可见，再次访问保留原值
+  int* p = malloc(sizeof(int));//allocated vars.
+  }
+</code></pre>
+<p>Where:
+  * 位于Global data：
+    * Global vars：可被其他文件共享
+    * Static global vars.
+    * Static local vars.
+  * 位于Stack:
+    * local vars
+  * 位于Heap:
+    * dynamically allocated vars.</p>
+<p>如何访问外部变量：</p>
+<pre><code class="language-c++">//text.cpp
+string gStrl;//outside main &amp; other function
+</code></pre>
+<pre><code class="language-c++">//main.cpp
+extern string gStrl;//无extern：重定义报错
+main()
+{
+  //可以访问gStrl
+}
+</code></pre>
+<h3 id="pointer-to-objects">Pointer to Objects</h3>
+<pre><code class="language-c++">//object create
+string s = &quot;hello&quot;;//定义，构造，
+string* ps = &amp;s;
+(*ps).length()//get the object
+ps-&gt;length()//call the function
+</code></pre>
+<p>动态内存分配：</p>
+<pre><code class="language-c++">//返回指针
+int* p = new int;
+int* pStudent = new Student[10];
+delete p;
+delete [] pStudent;
+//还给系统
+</code></pre>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><code>type&amp; refname = name;</code></li>
+</ul>
+<pre><code class="language-c++">char c;
+char&amp; r = c;//a reference to c, 此时必须引用，can't be null
+int&amp; r = 10;//illegal, 只能引用变量
+r = 'x';//c也被赋值'x'
+</code></pre>
+<p>常用于传参（实参）</p>
+<pre><code class="language-c++">void f(int&amp; x);
+f(y);//x引用y，函数中x改变，外面y也改变
+f(y*3);//illegal
+int&amp;* p;//illegal，指向引用变量的指针不合法
+void f(int*&amp; p);//引用指针
+</code></pre>
+<h3 id="const">Const 常量</h3>
+<p>用来代替宏</p>
+<pre><code class="language-c++">const int x = 123;//必须初始化，x保持常数值
+x = 27;//illegal
+x++;//illegal
+const int y = x;//可以任意赋给别人
+</code></pre>
+<p>编译器会避免给它分配内存：直接写在表达式中
+没法在编译时刻确定\外部要使用时，分配内存</p>
+<pre><code class="language-c++">const string* p1 = &quot;ABC&quot;;//指针指向的内容不能更改
+//相当于string const* p1
+*p1 = &quot;c&quot;;//illegal
+string *const p2 = &quot;ABC&quot;;//指针本身不能更改
+p2 = &quot;hello&quot;;//OK
+</code></pre>
+<p>const数组——会分配一片内存，此时编译器不知道数组里的值</p>
+<pre><code class="language-c++">const int i[] = { 1, 2, 3, 4 };
+float f[i[3]]; // Illegal  
+
+struct S { int i, j; };
+const S s[] = { { 1, 2 }, { 3, 4 } };
+double d[s[1].j]; // Illegal
+</code></pre>
+<p>当需要传递大规模数据（如数组）时，常用指针，容易把原本的数据改掉</p>
+<pre><code class="language-cpp">//尽量用指针/引用+const
+void f(const int*x);//传递的参数不可修改
+//函数f中
+  x++;//illegal
+</code></pre>
+<h2 id="class">Class</h2>
+<p>自己设计对象</p>
+<h3 id="point">Point</h3>
+<pre><code class="language-c">//C的写法
+typedef struct point{
+  float x;
+  float y;
+} Point;
+Point a;
+a.x = 1;a.y = 2;
+void print(const Point* p){
+  printf(&quot;%d %d\n&quot;,p-&gt;x,p-&gt;y);
+}
+void move(Point* p,int dx, int dy){
+  p-&gt;x+=dx;
+  p-&gt;y+=dy;
+}
+</code></pre>
+<ul>
+<li>Objects = Attributes + Service</li>
+</ul>
+<pre><code class="language-cpp">//C++写法
+class Point{
+public:
+  void init(int x,int y);
+  void move(int dx,int dy);
+  void print() const;
+  //行为和对象封装在一起
+private://不写public就是private
+  int x;//不允许外界改
+  int y;
+};
+//implementations
+void Point::init(int x,int y)
+
+</code></pre>
+<p><code>::</code>——resolver，表面函数属于谁
+<code>&lt;Class Name&gt;::&lt;function name&gt;</code>
+<code>::&lt;function name&gt;</code>——全局函数</p>
+<pre><code class="language-cpp">//递归
+</code></pre>
+<hr />
+<h3 id="container">Container</h3>
+<ul>
+<li>Container是可以装对象的对象</li>
+<li>基本操作：get()和</li>
+</ul>
+<!-- 和什么 -->
+<ul>
+<li>Stash是可扩展的Container</li>
+</ul>
+<p>Stash
+* 可以装各种类型的对象
+* add()和fetch()</p>
+<!-- pragram once? -->
+
+<pre><code class="language-cpp">//Stash代码
+
+</code></pre>
+<h3 id="this-the-pointer-to-the-variable">this: the pointer to the variable</h3>
+<ul>
+<li>自动存在，不需声明</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

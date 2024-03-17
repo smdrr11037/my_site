@@ -16,6 +16,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://example.com/CO/CO/</loc>
+         <lastmod>2024-03-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/DataBase/DataBase/</loc>
+         <lastmod>2024-03-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://example.com/ads/ads_part_1/</loc>
          <lastmod>2024-03-17</lastmod>
          <changefreq>daily</changefreq>
@@ -27,6 +37,11 @@
     </url>
     <url>
          <loc>https://example.com/ads/splay_tree/</loc>
+         <lastmod>2024-03-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/oop/oop/</loc>
          <lastmod>2024-03-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
