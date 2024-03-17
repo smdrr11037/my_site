@@ -5,6 +5,13 @@ nav:
   - Home: index.md
   - Ads: 
       - Part 1: ./ads/ads_part_1.md
+  - CO:
+      - Part 1: ./CO/CO.md
+  - oop:
+      - Basis: ./oop/oop.md
+  - DataBase:
+      - Use sql: ./DataBase/DataBase.md
+  
   - 备忘: memoire.md
 # theme:
 #   name: material
