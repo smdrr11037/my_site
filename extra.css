@@ -1,0 +1,24 @@
+h1 {
+    color: rgb(58, 56, 99);
+  }
+
+
+
+
+a {
+    color: #69828e; ; /* 蓝色 */
+    text-decoration: none; /* 去除下划线 */
+}
+
+a:hover {
+    text-decoration: underline; /* 鼠标悬停时显示下划线 */
+}
+
+
+pre code {
+    background-color: #f6f6f6 !important; /* 代码块背景色 */
+    border: 2px solid #c6c6c6; /* 边框 */
+    border-radius: 10px; /* 圆角 */
+    padding: 10px; /* 内边距 */
+    font-family: "Courier New", monospace; /* 使用等宽字体 */
+}

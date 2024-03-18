@@ -8,11 +8,12 @@
         
         <link rel="canonical" href="https://example.com/ads/ads_part_2/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Ads part 2 - smdrr's note</title>
+        <title>Part 2 - smdrr's note</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="../../extra.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script>hljs.highlightAll();</script> 
     </head>
@@ -33,12 +34,16 @@
                             <li class="navitem">
                                 <a href="../.." class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Ads <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
     <a href="../ads_part_1/" class="dropdown-item">Part 1</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Part 2</a>
 </li>
                                 </ul>
                             </li>
@@ -72,6 +77,9 @@
                             <li class="navitem">
                                 <a href="../../memoire/" class="nav-link">备忘</a>
                             </li>
+                            <li class="navitem">
+                                <a href="../../DailyLife/DailyLife/" class="nav-link">DailyLife</a>
+                            </li>
                         </ul>
 
                     <ul class="nav navbar-nav ml-auto">
@@ -80,6 +88,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../ads_part_1/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../CO/CO/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a href="https://github.com/smdrr11037/my_site/edit/master/docs/ads/ads_part_2.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
                             </li>
@@ -100,12 +118,119 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#leftist-heaps" class="nav-link">Leftist Heaps</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#skew-heaps" class="nav-link">Skew Heaps</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-</div>
+<h1 id="leftist-heaps">Leftist Heaps</h1>
+<hr />
+<p>review: 堆的操作</p>
+<ul>
+<li>
+<p>插入</p>
+</li>
+<li>
+<p>删除</p>
+</li>
+<li>
+<p>合并——复杂度相当于重新建堆</p>
+</li>
+</ul>
+<!-- 具体的说明 -->
+<hr />
+<p>左偏堆——利用结构的不平衡，加速堆的合并</p>
+<h3 id="definition">Definition</h3>
+<ul>
+<li>
+<p>有两个儿子的节点是内部节点，其余为外部节点</p>
+</li>
+<li>
+<p><strong>null path length, Npl(x)</strong>: 到外部节点的最短路径</p>
+</li>
+<li>
+<p>定义Npl(null) = -1</p>
+</li>
+<li>
+<p><strong>左偏树</strong>即所有的节点，左儿子的Npl大于等于右儿子的Npl</p>
+</li>
+</ul>
+<!-- 图片例子 -->
+<blockquote>
+<p>Theorem: 右路径为r的左偏树，至少有<span class="arithmatex">\(2^r-1\)</span>个节点</p>
+</blockquote>
+<!-- ? -->
+<!-- 数学归纳法 -->
+<blockquote>
+<p>r = 1时</p>
+<p>r = k时，假设成立</p>
+<p>r =  k+1时，右子树的Npl为k+1</p>
+<p>tips:</p>
+<p>左子树的右路径为k，因此左子树至少有<span class="arithmatex">\(2^r-1\)</span>个节点</p>
+</blockquote>
+<h3 id="_1">实现：</h3>
+<pre><code class="language-c">struct TreeNode
+{
+    ElementType     Element;
+    PriorityQueue   Left;
+    PriorityQueue   Right;
+    int             Npl;
+};
+</code></pre>
+<p>方法一：递归</p>
+<ol>
+<li>
+<p>Merge(R)</p>
+</li>
+<li>
+<p>Attach()</p>
+</li>
+<li>
+<p>Swap</p>
+</li>
+</ol>
+<!-- 图片 -->
+
+<!-- 代码 -->
+
+<p>方法二：迭代                              </p>
+<p>delete min</p>
+<h1 id="skew-heaps">Skew Heaps</h1>
+<hr />
+<p>左偏树合并时不判断npl，直接交换左右子树，就是斜堆</p>
+<!-- 怎么插入 -->
+
+<!-- 例子 -->
+
+<hr />
+<p>均摊分析（势能法）</p>
+<!-- ? -->
+
+<ul>
+<li>
+<p>势能函数<span class="arithmatex">\(\Phi(D_i)\)</span>=重节点的个数</p>
+</li>
+<li>
+<p>重节点：右子树节点个数严格大于左子树</p>
+</li>
+<li>
+<p>只有右路径节点的轻重会改变</p>
+</li>
+<li>
+<p>操作后，重节点一定变轻，轻节点不一定变重，为求上界，假设轻节点都变重</p>
+</li>
+</ul>
+<!-- 推导和计算 --></div>
             </div>
         </div>
 
@@ -120,7 +245,6 @@
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../js/base.js"></script>
-        <script src="../../javascripts/mathjax.js"></script>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script src="../../search/main.js"></script>
