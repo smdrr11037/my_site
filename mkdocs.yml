@@ -53,6 +53,6 @@ extra_javascript:
 
 extra_css: [extra.css]
 
-markdown_extensions:
-  - toc:
-      toc_depth: 2
+# markdown_extensions:
+#   - toc:
+#       toc_depth: 2
