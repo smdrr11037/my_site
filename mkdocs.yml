@@ -1,6 +1,6 @@
 site_name: smdrr's note
 site_url: https://example.com/
-repo_url:  https://github.com/smdrr11037/my_site.git/
+repo_url: https://github.com/smdrr11037/my_site
 nav:
   - Home: index.md
   - Ads: 
