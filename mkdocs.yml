@@ -1,27 +1,58 @@
 site_name: smdrr's note
 site_url: https://example.com/
-repo_url: https://github.com/smdrr11037/my_site
+repo_url:  https://github.com/smdrr11037/my_site.git/
 nav:
   - Home: index.md
   - Ads: 
       - Part 1: ./ads/ads_part_1.md
+      - Part 2: ./ads/ads_part_2.md  
   - CO:
       - Part 1: ./CO/CO.md
   - oop:
       - Basis: ./oop/oop.md
   - DataBase:
       - Use sql: ./DataBase/DataBase.md
-  
   - 备忘: memoire.md
-# theme:
-#   name: material
-#   palette:
-#     primary: blue gray
-markdown_extensions:
-  - pymdownx.arithmatex:
-      generic: true
+
+  - DailyLife: ./DailyLife/DailyLife.md
+  
+  - OC: OC/oc.md
+
+theme:
+  custom_dir: overrides
+  logo: img/IMG_2840.PNG
+  favicon: img/favicon.ico
+  name: 'material'
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - header.autohide
+  palette:
+
+    # Toggle light mode
+    - scheme: default
+      primary: cyan
+      accent: cyan
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+    # Toggle dark mode
+    - scheme: slate
+      primary: black
+      accent: black
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+
 
 extra_javascript:
-  - javascripts/mathjax.js
+  #- javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css: [extra.css]
+
+markdown_extensions:
+  - toc:
+      toc_depth: 2
