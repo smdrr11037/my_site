@@ -1,15 +1,12 @@
-##
-# 计算机组成与设计
-------
+# Chapter 1、3
 
 * 助教：秦嘉俊、郭家豪
 
 * 成绩构成
   ![alt text](image-1.png)
 
-
-# Chapter 1: Introduction
 ------
+## Chapter 1: Introduction
 
 ### 0. 历史
 
@@ -140,8 +137,8 @@ $$
 > **assignment**:1-1, 1-2, 1-4, 1-6, 1-7, 1-14
 
 
-# Chapter 3: Arithmetic for Computer
-------
+## Chapter 3: Arithmetic for Computer
+
 ### 3.1 Introduction
 
 * 读、写内存：
@@ -183,7 +180,7 @@ $$
 
     * 符号位是否进位、最高数值位是否进位
 
-## 3.4 Multiplication
+### 3.4 Multiplication
 
 由移位和加法组成
 
@@ -233,7 +230,7 @@ $$
 
 
 ------
-## 3.5 Divide
+### 3.5 Divide
 
 除法实现基本思想：
 
@@ -262,7 +259,7 @@ $$
 * 软件检查除数是否为0（处理器不管）
 
 ------
-## 3.6 Float
+### 3.6 Float
 ![alt text](image-15.png)
 
 * Bias: single——127, double——1023

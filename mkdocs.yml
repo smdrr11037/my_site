@@ -7,7 +7,8 @@ nav:
       - Part 1: ./ads/ads_part_1.md
       - Part 2: ./ads/ads_part_2.md  
   - CO:
-      - Part 1: ./CO/CO.md
+      - Chapter 1、3: ./CO/CO.md
+      - Chapter 2: CO/CO_2.md
   - oop:
       - Basis: ./oop/oop.md
   - DataBase:
@@ -20,7 +21,24 @@ nav:
 
 theme:
   custom_dir: overrides
-  logo: img/IMG_2840.PNG
+  logo: img/IMG_2839.PNG
+  repo: img/IMG_2840.PNG
+  
+  icon:
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/squirrel-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+
   favicon: img/favicon.ico
   name: 'material'
   features:
@@ -47,17 +65,20 @@ theme:
 
 
 extra_javascript:
-  #- javascripts/mathjax.js
+  # - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  
 
 extra_css: [extra.css]
 
 markdown_extensions:
   - toc:
-      toc_depth: 2
+      toc_depth: 3
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
