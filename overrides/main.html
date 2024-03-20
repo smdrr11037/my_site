@@ -3,3 +3,12 @@
 {% block announce %}
   最新更新：改变页面布局、增加announce、完善倒排文件索引
 {% endblock %}
+
+
+
+{% block footer %}
+  {{ super() }} 
+  <div style="position: fixed; bottom: 0; right: 0;">
+    <img src="/docs/img/IMG_2840.PNG" alt="Description of your image" style="width: 100px; height: auto;">
+  </div>
+{% endblock %}
