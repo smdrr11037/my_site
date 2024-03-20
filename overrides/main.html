@@ -9,6 +9,6 @@
 {% block footer %}
   {{ super() }} 
   <div style="position: fixed; bottom: 0; left: 0;">
-    <img src="docs/img/IMG_2840.PNG" alt="Description of your image" style="width: 100px; height: auto;">
+    <img src="{{ config['extra']['img_path'] }}/IMG_2840.PNG" alt="Description of your image" style="width: 100px; height: auto;">
   </div>
 {% endblock %}
