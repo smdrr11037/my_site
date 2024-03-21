@@ -1,5 +1,5 @@
-## 
-# Preparation Before Class
+# 高级数据与算法分析——Part 1
+## Preparation Before Class
 ------
 * 教材
   
@@ -23,7 +23,7 @@
 
     期末：40%
 
-# AVL Trees
+## AVL Trees
 ------
 * 目标：加速查找
 
@@ -36,7 +36,7 @@
     * 最好情况（树最矮）：所有子树高度相等——太苛刻
 
 ----
-## AVL树定义
+### AVL树定义
   * 空树平衡
   
 
@@ -62,7 +62,7 @@
 这样就得到了性质较好的树
 
 ----
-## 如何得到AVL树
+### 如何得到AVL树
 * **树的旋转**
 ![alt text](image-15.png)
 B高度增加1，A高度减少1。复杂度为$O(1)$，代码如下
@@ -104,7 +104,7 @@ return B;//新根
 
 
 ----
-## 复杂度分析
+### 复杂度分析
   树高的渐进上界
 
   $n_h$——h高度的树需要的最小结点数
@@ -121,7 +121,7 @@ return B;//新根
   所以  $n_h =F_{n+3}-1$
   
   * $h=O(lnn)$
-# Splay Trees
+## Splay Trees
 ------
 * 目标：M次操作，总的时间复杂度$O(MlogN)$，即每个操作平均复杂度为$O(logN)$
 
@@ -145,7 +145,7 @@ return B;//新根
   
   4. 这样就能直接将右子树接到左子树的右边
 
-# Amortized Analysis(Three normal methods)
+## Amortized Analysis(Three normal methods)
 ------
 > An amortized analysis guarantees the average performance of
 each operation in the worst case.
@@ -156,9 +156,9 @@ each operation in the worst case.
 
 * 前两种与数据分布无关
 
-## 栈的例子
+### 栈的例子
 
-### 聚合分析
+#### 聚合分析
   对于所有 n，n 个运算序列总共需要最坏情况时间（determine an upper bound） T（n）。因此，在最坏的情况下，每次操作的平均成本或摊销成本为 T（n）/n。
   
 > 以栈为例：
@@ -175,7 +175,7 @@ each operation in the worst case.
   $$
 
 ------
-### 核算法
+#### 核算法
 > 以卖汽水为例：
 
 * a卖一瓶汽水**3元**
@@ -204,7 +204,7 @@ $$
 * n次操作最大的amortized cost为2n，$T_{amortized}= O( n )/n = O(1)$
 
 ------
-### 势能法
+#### 势能法
 
 * $\Phi(D_i)$：势能函数，表示$D_i$状态的势能
 
@@ -229,7 +229,7 @@ $$
 * 每个操作的代价都是O(1)——均摊代价是O(1)
 
 -----
-## Spaly树均摊分析
+### Spaly树均摊分析
 
 应用：分析splay tree的均摊代价——Amortized Analysis Using Potential Methods:
 
@@ -291,7 +291,7 @@ $$
 \hat{c_i} \leq 1+3(R_2(X)-R_1(X))=O(logN)
 $$
 
-## Incrementing a binary counter
+### Incrementing a binary counter
 > 算法导论的摊还分析例子
 
 Incrementing a binary counter(k bit in total)
@@ -334,7 +334,7 @@ $$
 <!--  怎么看到这就停了-->
 
 
-# Red-black Tree
+## Red-black Tree
 ------
 > tips: 访问空指针会 Sigementation fault，，可以指向一个虚拟节点（哨兵）
 
@@ -393,7 +393,7 @@ $$
 
 <!--删除怎么删  -->
 
-# B+ Tree
+## B+ Tree
 ------
 ### 1. 定义
 
@@ -434,105 +434,3 @@ Btree Insert(ElementType X,Btree T)
 ### 3. 删除过程
 <!-- 删除？ -->
 
-# Inverted File Index
-------
-> 应用：信息检索，搜索引擎
-
-搜索引擎的搜索方式？
-
-* Solution 1: 遍历寻找搜索的关键字（太耗时）
-
-* Solution 2: 矩阵存储（太耗空间）
-![alt text](image-17.png)
-
-> 磁带假设：词和词没有顺序
-
-* Solution 3: Inverted File Index（参考图论，将矩阵用邻接表表示）
-![alt text](image.png)
-以a为例：出现次数3次，分别出现在第二个网站的第六个，第三个网站的第六个，第四个网站的第六个。
-
-    因此链表里存储的是<3,(2;6),(3;6),(4,6)>
-
-```c
-while ( read a document D ) {
-    while ( read a term T in D ) {
-        if ( Find( Dictionary, T ) == false )
-            Insert( Dictionary, T );
-        Get T’s posting list;
-        Insert a node to T’s posting list;
-    }
-}
-Write the inverted index to disk;
-```
-
-### 优化
-1. 对term进行处理
-   
-      * 只留下词根
-      
-      * 停用词（stop words）过滤：the、a、what...——成本大，收获低
-
-2. 加速搜索
-   
-      * 哈希
-      
-      * 搜索树
-
-    > Discussion: 哈希和搜索树各自的优缺点？
-    >
-    <!-- > 是什么啊啊啊 -->
-
-3. 内存优化
-      * 内存不够时，把写好的词典放入disk
-      
-      * 释放内存，创建一个新的词典
-      
-      * 最后归并排序
-
-4. 存储优化
-      * disk都不够时（web-scale的数据）
-
-      * Solution 1：将磁盘按字母序放在不同电脑里
-
-      * Solution 2：Document-Partitioned index
-        
-          每个分区代表一个单独的文档集合，其中包含了该文档集合中的所有关键词以及它们对应的频率信息。这种分区的目的是为了提高查询效率，因为对于给定的查询，系统只需要访问与其相关的文档分区即可。
-
-        * 好处：易于扩展、便于并行、即使一个集合不可用都能返回结果（虽然可能不是最佳的
-
-
-5. Dynamic indexing
-     * 物理删除代价昂贵——做新旧标记
-     
-     * 分为一个Main list和new list，已存在的词放在Main list里，新词放在new list里
-
-
-6. Compression(压缩)
-    
-    将空格和停用词去除，将词汇表线性存储，记录每个单词首字母位置差序列
-![alt text](image-18.png)
-
-### 评估
-几个评价指标：
-
-* 索引的快慢
-
-* 搜索的快慢
-
-* 对复杂语言的处理能力 
-
-|文档|相关|不相关|
-|--|--|--|
-|检索到|$R_R$|$I_R$|
-|未检索|$R_N$|$I_N$|
-
-精确率：检索到的正确样本在检索到的样本上的比例
-$$
-Precision\ P = R_R / (R_R + I_R)
-$$
-召回率：检索到的正确样本在所有正确样本上的比例
-$$
-Recall    \  R = R_R / (R_R + R_N)
-$$
-
-> [题集](https://blog.csdn.net/HGGshiwo/article/details/116351170)

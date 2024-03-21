@@ -1,4 +1,3 @@
-##
 # Object-Oriented Programming
 ------
 * 关键字/三大特性：Inheritance（集成）  Encapsulation（封装） Polymorphism(多态)
@@ -10,7 +9,7 @@
 * 成绩构成：Lab 50%, Exam 50%
 
 
-# Introduction
+## Introduction
 ------
 * 第一个C++程序
 
@@ -43,7 +42,7 @@ int main()
 }
 ```
 
-# Using Objects
+## Using Objects
 ------
 > 以字符串为例
 
@@ -110,7 +109,7 @@ str.empty();//字符串为空时返回1
 ```
 
 
-# File I/O
+## File I/O
 ---
 ```c++
 #include <fstream>//read from and write to file
@@ -123,7 +122,7 @@ File1>>str1;
 File2>>str2
 ```
 
-# Memory Model
+## Memory Model
 ------
 
 ```c++
@@ -173,7 +172,7 @@ main()
 }
 ```
 
-# Pointer to Objects
+## Pointer to Objects
 -----
 
 ```c++
@@ -194,7 +193,7 @@ delete [] pStudent;
 //还给系统
 ```
 
-# Reference
+## Reference
 ------
 * `type& refname = name;`
 
@@ -215,7 +214,7 @@ int&* p;//illegal，指向引用变量的指针不合法
 void f(int*& p);//引用指针
 ```
 
-# Const 常量
+## Const 常量
 ------
 用来代替宏
 
@@ -260,10 +259,10 @@ void f(const int*x);//传递的参数不可修改
   x++;//illegal
 ```
 
-# Class
+## Class
 -----
 自己设计对象
-### Point
+#### Point
 ```c
 //结构体的写法
 typedef struct point{
@@ -328,7 +327,7 @@ void S:f(){
 ```
 
 
-# Stash
+## Stash
 ------
 * Container是可以装对象的对象
 
@@ -364,5 +363,5 @@ struct Stash {
 ```
 
 
-### this: the pointer to the variable
+## this: the pointer to the variable
 * 自动存在，不需声明

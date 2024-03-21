@@ -1,14 +1,25 @@
 {% extends "base.html" %}
 
 {% block announce %}
-  最新更新：改变页面布局、增加announce、完善倒排文件索引
+  最新更新：改变页面布局、更新CO笔记，左下角增加一个小闪
 {% endblock %}
 
 
 
-{% block footer %}
+{% block content %}
   {{ super() }} 
-  <div style="position: fixed; bottom: 0; left: 0;">
-    <img src="{{ config['extra']['img_path'] }}/IMG_2840.PNG" alt="Description of your image" style="width: 100px; height: auto;">
+  <style>
+    /* 可选的 CSS 样式 */
+    #imageContainer {
+        display: inline-block;
+        cursor: pointer;
+    } 
+  </style>
+  <div id="imageContainer", style="position: fixed; bottom: 20px; left: 40px;">
+    <img id="myImage" src="{{ config['extra']['img_path'] }}/IMG_2840.PNG" alt="图片1" width="200" height="200">
+    
+    
   </div>
+  <script src="{{ config['extra']['js_path'] }}/custom.js"></script>
 {% endblock %}
+
