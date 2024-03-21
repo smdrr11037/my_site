@@ -126,7 +126,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-  最新更新：数据库笔记更新，修复图片路径
+  最新更新：增加评论系统，去除手机端遮挡图片
 
           </div>
           
@@ -711,6 +711,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="oop/oop2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Implementatin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -910,7 +931,7 @@
 <p>本网站比较简陋（但看笔记的目的其实完全能够满足了😄</p>
 <p>先用一个默认的主题</p>
 <p>学好前端后一定要建一个漂亮的个人主页😤</p>
-<p>QQ：1498646901</p>
+<hr />
 
 
 
@@ -922,7 +943,79 @@
 
 
 
+<div id="__comments">
 
+  
+  <!-- <div class="tx-switch">
+  <button data-md-color-scheme="default"><code>default</code></button>
+  <button data-md-color-scheme="slate"><code>slate</code></button>
+  </div>
+  
+  <script>
+  var buttons = document.querySelectorAll("button[data-md-color-scheme]")
+  buttons.forEach(function(button) {
+          button.addEventListener("click", function() {
+          var attr = this.getAttribute("data-md-color-scheme")
+          document.body.setAttribute("data-md-color-scheme", attr)
+          localStorage.setItem("data-md-color-scheme",attr);
+          updateScheme();
+          })
+  })
+  </script> -->
+  
+
+  
+    </div>
+  
+    <script src="https://giscus.app/client.js"
+    data-repo="smdrr11037/my_site"
+    data-repo-id="R_kgDOLhLJRg"
+    data-category-id="[在此输入分类 ID]"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+  
+  updateScheme();
+  
+
+  
+  </script>
+  
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+  var giscus = document.querySelector("script[src*=giscus]")
+  
+  /* Set palette on initial load */
+  var palette = __md_get("__palette")
+  if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme) 
+  }
+  
+  /* Register event handlers after documented loaded */
+  document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+      var palette = __md_get("__palette")
+      if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+          localStorage.setItem("data-md-color-scheme", palette.color.scheme === "slate" ? "slate" : "default");
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+          )
+      }
+      })
+  })
+  </script>
                  
   <style>
     /* 可选的 CSS 样式 */
@@ -930,6 +1023,17 @@
         display: inline-block;
         cursor: pointer;
     } 
+    /* 默认情况下图片显示 */
+    img {
+            display: block;
+        }
+        
+        /* 在小屏幕上隐藏图片 */
+        @media only screen and (max-width: 600px) {
+            img {
+                display: none;
+            }
+        }
   </style>
   <div id="imageContainer", style="position: fixed; bottom: 20px; left: 40px;">
     <img id="myImage" src="https://smdrr11037.github.io/my_site/javascripts/IMG_2840.PNG" alt="图片1" width="200" height="200">
