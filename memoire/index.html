@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://example.com/memoire/">
       
       
-        <link rel="prev" href="../DataBase/DataBase/">
+        <link rel="prev" href="../DataBase/DataBase2/">
       
       
         <link rel="next" href="../DailyLife/DailyLife/">
@@ -128,7 +128,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-  最新更新：改变页面布局、更新CO笔记，左下角增加一个小闪
+  最新更新：数据库笔记更新，修复图片路径
 
           </div>
           
@@ -759,6 +759,27 @@
         
   
   <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DataBase/DataBase2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
     Use sql
   </span>
   
@@ -832,6 +853,15 @@
   <a href="#mkdocs" class="md-nav__link">
     <span class="md-ellipsis">
       MkDocs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ufw" class="md-nav__link">
+    <span class="md-ellipsis">
+      ufw
     </span>
   </a>
   
@@ -920,6 +950,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ufw" class="md-nav__link">
+    <span class="md-ellipsis">
+      ufw
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -952,6 +991,13 @@
 <li><code>mkdocs -h</code> - Print help message and exit.</li>
 <li><code>mkdocs gh-deploy</code> - Refreash the project online.</li>
 </ul>
+<h2 id="ufw">ufw</h2>
+<ul>
+<li><code>sudo ufw status</code> - 查看防火墙状态</li>
+<li><code>sudo ufw enable</code> - 开启防火墙 （拒绝传入，允许传出）</li>
+<li><code>sudo ufw disable</code> - 关闭防火墙</li>
+<li><code>sudo systemctl stop ufw</code> <code>sudo systemctl disable ufw</code> - 永久关闭防火墙</li>
+</ul>
 
 
 
@@ -973,9 +1019,7 @@
     } 
   </style>
   <div id="imageContainer", style="position: fixed; bottom: 20px; left: 40px;">
-    <img id="myImage" src="/img/IMG_2840.PNG" alt="图片1" width="200" height="200">
-    
-    
+    <img id="myImage" src="https://smdrr11037.github.io/my_site/javascripts/IMG_2840.PNG" alt="图片1" width="200" height="200">
   </div>
   <script src="/javascripts/custom.js"></script>
 

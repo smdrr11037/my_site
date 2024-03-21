@@ -14,7 +14,7 @@
         <link rel="prev" href="../../oop/oop/">
       
       
-        <link rel="next" href="../../memoire/">
+        <link rel="next" href="../DataBase2/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Use sql - smdrr's note</title>
+        <title>Introduction - smdrr's note</title>
       
     
     
@@ -117,7 +117,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#-" class="md-skip">
           Skip to content
         </a>
       
@@ -128,7 +128,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-  最新更新：改变页面布局、更新CO笔记，左下角增加一个小闪
+  最新更新：数据库笔记更新，修复图片路径
 
           </div>
           
@@ -162,7 +162,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Use sql
+              Introduction
             
           </span>
         </div>
@@ -773,7 +773,7 @@
           
   
   <span class="md-ellipsis">
-    Use sql
+    Introduction
   </span>
   
 
@@ -784,7 +784,7 @@
         
   
   <span class="md-ellipsis">
-    Use sql
+    Introduction
   </span>
   
 
@@ -847,19 +847,31 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#lecture-3-sql" class="md-nav__link">
-    <span class="md-ellipsis">
-      Lecture 3: SQL
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DataBase2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use sql
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1000,15 +1012,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#lecture-3-sql" class="md-nav__link">
-    <span class="md-ellipsis">
-      Lecture 3: SQL
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1028,7 +1031,7 @@
   
 
 
-<h1 id="_1">数据库系统</h1>
+<h1 id="-">数据库系统 - 介绍和关系模型</h1>
 <ul>
 <li>Database Management System（DBMS）</li>
 <li>成绩构成：
@@ -1181,37 +1184,6 @@ count: number of values </p>
 All these operations are expressed using the <strong>assignment</strong> operator. </p>
 <!-- Deletion? -->
 
-<hr />
-<h2 id="lecture-3-sql">Lecture 3: SQL</h2>
-<p>Structured Query Language——结构化查询语言
-与国际标准不同——没人要
-与国际标准相同——易替代</p>
-<h4 id="data-definition-language">Data Definition Language</h4>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">branch</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">              </span><span class="p">(</span><span class="n">branch_name</span><span class="w">    </span><span class="nb">char</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">                </span><span class="n">branch_city</span><span class="w">   </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span><span class="w"> </span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">                </span><span class="n">assets</span><span class="w">        </span><span class="nb">numeric</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">                </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">branch_name</span><span class="p">))</span><span class="w"> </span>
-</code></pre></div>
-Domain Types:
-* char(n): Fixed length character string, with user-specified length. 
-* varchar(n): Variable length character strings, with user-specified maximum length n. 
-* int: Integer (a finite subset of the integers that is machine-dependent). 
-* smallint: Small integer (a machine-dependent subset of the integer domain type). 
-* numeric(p, d): Fixed point number, with user-specified precision of p digits, with d digits to the right of decimal point. 
-* real, double precision: Floating point and double-precision floating point numbers, with machine-dependent precision. </p>
-<p>DROP TABLE r：将数据和表都删掉</p>
-<p>Basic Structure 
-Set Operations 
-Aggregate Functions 
-Null Values 
-Nested Subqueries 
-Views 
-Derived Relations 
-Modification of the Database 
-Joined Relations </p>
-<p>file:///E:/book/DB/Database_System_Concepts.pdf</p>
-
 
 
 
@@ -1232,9 +1204,7 @@ Joined Relations </p>
     } 
   </style>
   <div id="imageContainer", style="position: fixed; bottom: 20px; left: 40px;">
-    <img id="myImage" src="/img/IMG_2840.PNG" alt="图片1" width="200" height="200">
-    
-    
+    <img id="myImage" src="https://smdrr11037.github.io/my_site/javascripts/IMG_2840.PNG" alt="图片1" width="200" height="200">
   </div>
   <script src="/javascripts/custom.js"></script>
 
