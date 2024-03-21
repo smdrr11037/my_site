@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block announce %}
-  最新更新：数据库笔记更新，修复图片路径
+  最新更新：增加评论系统，去除手机端遮挡图片
 {% endblock %}
 
 
@@ -14,6 +14,17 @@
         display: inline-block;
         cursor: pointer;
     } 
+    /* 默认情况下图片显示 */
+    img {
+            display: block;
+        }
+        
+        /* 在小屏幕上隐藏图片 */
+        @media only screen and (max-width: 600px) {
+            img {
+                display: none;
+            }
+        }
   </style>
   <div id="imageContainer", style="position: fixed; bottom: 20px; left: 40px;">
     <img id="myImage" src="https://smdrr11037.github.io/my_site/javascripts/IMG_2840.PNG" alt="图片1" width="200" height="200">

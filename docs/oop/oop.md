@@ -365,3 +365,4 @@ struct Stash {
 
 ## this: the pointer to the variable
 * 自动存在，不需声明
+

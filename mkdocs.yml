@@ -11,6 +11,7 @@ nav:
       - Chapter 2: CO/CO_2.md
   - oop:
       - Basis: ./oop/oop.md
+      - Implementatin: ./oop/oop2.md
   - DataBase:
       - Introduction: ./DataBase/DataBase.md
       - Use sql: ./DataBase/DataBase2.md
