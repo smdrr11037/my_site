@@ -117,7 +117,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#leftist-heaps" class="md-skip">
+        <a href="#part-2" class="md-skip">
           Skip to content
         </a>
       
@@ -128,7 +128,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-  最新更新：改变页面布局、增加announce、完善倒排文件索引
+  最新更新：改变页面布局、更新CO笔记，左下角增加一个小闪
 
           </div>
           
@@ -587,6 +587,49 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#inverted-file-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inverted File Index
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Inverted File Index">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      优化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      评估
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leftist-heaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leftist Heaps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leftist Heaps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#definition" class="md-nav__link">
     <span class="md-ellipsis">
       Definition
@@ -594,13 +637,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       实现：
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -926,6 +974,49 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#inverted-file-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inverted File Index
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Inverted File Index">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      优化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      评估
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leftist-heaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leftist Heaps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leftist Heaps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#definition" class="md-nav__link">
     <span class="md-ellipsis">
       Definition
@@ -933,13 +1024,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       实现：
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -955,15 +1051,177 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
+  
                   
 
   
   
 
 
-<h1 id="leftist-heaps">Leftist Heaps</h1>
+<h1 id="part-2">高级数据与算法分析——Part 2</h1>
+<h2 id="inverted-file-index">Inverted File Index</h2>
 <hr />
+<blockquote>
+<p>应用：信息检索，搜索引擎</p>
+</blockquote>
+<p>搜索引擎的搜索方式？</p>
+<ul>
+<li>
+<p>Solution 1: 遍历寻找搜索的关键字（太耗时）</p>
+</li>
+<li>
+<p>Solution 2: 矩阵存储（太耗空间）
+<img alt="alt text" src="../image-17.png" /></p>
+</li>
+</ul>
+<blockquote>
+<p>磁带假设：词和词没有顺序</p>
+</blockquote>
+<ul>
+<li>
+<p>Solution 3: Inverted File Index（参考图论，将矩阵用邻接表表示）
+<img alt="alt text" src="../image.png" />
+以a为例：出现次数3次，分别出现在第二个网站的第六个，第三个网站的第六个，第四个网站的第六个。</p>
+<p>因此链表里存储的是&lt;3,(2;6),(3;6),(4,6)&gt;</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">document</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">Find</span><span class="p">(</span><span class="w"> </span><span class="n">Dictionary</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="p">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">            </span><span class="n">Insert</span><span class="p">(</span><span class="w"> </span><span class="n">Dictionary</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="p">);</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="n">Get</span><span class="w"> </span><span class="n">T</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="n">posting</span><span class="w"> </span><span class="n">list</span><span class="p">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="n">Insert</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">T</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="n">posting</span><span class="w"> </span><span class="n">list</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">Write</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">inverted</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">disk</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="_1">优化</h3>
+<ol>
+<li>
+<p>对term进行处理</p>
+<ul>
+<li>
+<p>只留下词根</p>
+</li>
+<li>
+<p>停用词（stop words）过滤：the、a、what...——成本大，收获低</p>
+</li>
+</ul>
+</li>
+<li>
+<p>加速搜索</p>
+<ul>
+<li>
+<p>哈希</p>
+</li>
+<li>
+<p>搜索树</p>
+</li>
+</ul>
+<blockquote>
+<p>Discussion: 哈希和搜索树各自的优缺点？</p>
+<!-- > 是什么啊啊啊 -->
+</blockquote>
+</li>
+<li>
+<p>内存优化</p>
+<ul>
+<li>
+<p>内存不够时，把写好的词典放入disk</p>
+</li>
+<li>
+<p>释放内存，创建一个新的词典</p>
+</li>
+<li>
+<p>最后归并排序</p>
+</li>
+</ul>
+</li>
+<li>
+<p>存储优化</p>
+<ul>
+<li>
+<p>disk都不够时（web-scale的数据）</p>
+</li>
+<li>
+<p>Solution 1：将磁盘按字母序放在不同电脑里</p>
+</li>
+<li>
+<p>Solution 2：Document-Partitioned index</p>
+<p>每个分区代表一个单独的文档集合，其中包含了该文档集合中的所有关键词以及它们对应的频率信息。这种分区的目的是为了提高查询效率，因为对于给定的查询，系统只需要访问与其相关的文档分区即可。</p>
+<ul>
+<li>好处：易于扩展、便于并行、即使一个集合不可用都能返回结果（虽然可能不是最佳的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Dynamic indexing</p>
+<ul>
+<li>
+<p>物理删除代价昂贵——做新旧标记</p>
+</li>
+<li>
+<p>分为一个Main list和new list，已存在的词放在Main list里，新词放在new list里</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Compression(压缩)</p>
+<p>将空格和停用词去除，将词汇表线性存储，记录每个单词首字母位置差序列
+<img alt="alt text" src="../image-18.png" /></p>
+</li>
+</ol>
+<h3 id="_2">评估</h3>
+<p>几个评价指标：</p>
+<ul>
+<li>
+<p>索引的快慢</p>
+</li>
+<li>
+<p>搜索的快慢</p>
+</li>
+<li>
+<p>对复杂语言的处理能力 </p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>文档</th>
+<th>相关</th>
+<th>不相关</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>检索到</td>
+<td><span class="arithmatex">\(R_R\)</span></td>
+<td><span class="arithmatex">\(I_R\)</span></td>
+</tr>
+<tr>
+<td>未检索</td>
+<td><span class="arithmatex">\(R_N\)</span></td>
+<td><span class="arithmatex">\(I_N\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>精确率：检索到的正确样本在检索到的样本上的比例
+$$
+Precision\ P = R_R / (R_R + I_R)
+$$
+召回率：检索到的正确样本在所有正确样本上的比例
+$$
+Recall    \  R = R_R / (R_R + R_N)
+$$</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/HGGshiwo/article/details/116351170">倒排文件索引的一个题集</a></p>
+</blockquote>
+<h2 id="leftist-heaps">Leftist Heaps</h2>
+<hr />
+<blockquote>
 <p>review: 堆的操作</p>
+</blockquote>
 <ul>
 <li>
 <p>插入</p>
@@ -1006,14 +1264,14 @@
 <p>tips:</p>
 <p>左子树的右路径为k，因此左子树至少有<span class="arithmatex">\(2^r-1\)</span>个节点</p>
 </blockquote>
-<h3 id="_1">实现：</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">TreeNode</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">ElementType</span><span class="w">     </span><span class="n">Element</span><span class="p">;</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">PriorityQueue</span><span class="w">   </span><span class="n">Left</span><span class="p">;</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">PriorityQueue</span><span class="w">   </span><span class="n">Right</span><span class="p">;</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="kt">int</span><span class="w">             </span><span class="n">Npl</span><span class="p">;</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">};</span>
+<h3 id="_3">实现：</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">TreeNode</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">ElementType</span><span class="w">     </span><span class="n">Element</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">PriorityQueue</span><span class="w">   </span><span class="n">Left</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="n">PriorityQueue</span><span class="w">   </span><span class="n">Right</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="kt">int</span><span class="w">             </span><span class="n">Npl</span><span class="p">;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">};</span>
 </code></pre></div>
 <p>方法一：递归</p>
 <ol>
@@ -1071,7 +1329,21 @@
 
 
 
-                
+                 
+  <style>
+    /* 可选的 CSS 样式 */
+    #imageContainer {
+        display: inline-block;
+        cursor: pointer;
+    } 
+  </style>
+  <div id="imageContainer", style="position: fixed; bottom: 20px; left: 40px;">
+    <img id="myImage" src="/img/IMG_2840.PNG" alt="图片1" width="200" height="200">
+    
+    
+  </div>
+  <script src="/javascripts/custom.js"></script>
+
               </article>
             </div>
           
@@ -1113,6 +1385,10 @@
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      
+        <script src="../../javascripts/custom.js"></script>
       
     
   </body>
