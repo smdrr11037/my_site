@@ -12,7 +12,7 @@ var newImageName = 'IMG_9194.GIF';
 // 监听图片点击事件
 image.addEventListener('click', function() {
     // 判断当前显示的是哪张图片
-    if(image.src != initialImageName){
+    if(image.src != imagePath+newImageName){
         image.src = imagePath+newImageName;
         setTimeout(function() {
             image.src = imagePath+initialImageName;

@@ -12,7 +12,8 @@ nav:
   - oop:
       - Basis: ./oop/oop.md
   - DataBase:
-      - Use sql: ./DataBase/DataBase.md
+      - Introduction: ./DataBase/DataBase.md
+      - Use sql: ./DataBase/DataBase2.md
   - 备忘: memoire.md
 
   - DailyLife: ./DailyLife/DailyLife.md

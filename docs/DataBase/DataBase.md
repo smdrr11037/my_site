@@ -1,4 +1,4 @@
-# 数据库系统
+# 数据库系统 - 介绍和关系模型
 * Database Management System（DBMS）
 * 成绩构成：
  ![alt text](image.png)
@@ -134,40 +134,5 @@ All these operations are expressed using the **assignment** operator.
 
 <!-- Deletion? -->
 
-------
-## Lecture 3: SQL
-Structured Query Language——结构化查询语言
-与国际标准不同——没人要
-与国际标准相同——易替代
-
-#### Data Definition Language 
-```sql
-CREATE TABLE branch
-              (branch_name    char(15) not null, 
-                branch_city   varchar(30), 
-                assets        numeric(8,2),
-                primary key (branch_name)) 
-
-```
-Domain Types:
-* char(n): Fixed length character string, with user-specified length. 
-* varchar(n): Variable length character strings, with user-specified maximum length n. 
-* int: Integer (a finite subset of the integers that is machine-dependent). 
-* smallint: Small integer (a machine-dependent subset of the integer domain type). 
-* numeric(p, d): Fixed point number, with user-specified precision of p digits, with d digits to the right of decimal point. 
-* real, double precision: Floating point and double-precision floating point numbers, with machine-dependent precision. 
-
-DROP TABLE r：将数据和表都删掉
-
-Basic Structure 
-Set Operations 
-Aggregate Functions 
-Null Values 
-Nested Subqueries 
-Views 
-Derived Relations 
-Modification of the Database 
-Joined Relations 
 
 
-file:///E:/book/DB/Database_System_Concepts.pdf

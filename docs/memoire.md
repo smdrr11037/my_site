@@ -9,3 +9,8 @@
 * `mkdocs -h` - Print help message and exit.
 * `mkdocs gh-deploy` - Refreash the project online.
 
+## ufw
+* `sudo ufw status` - 查看防火墙状态
+* `sudo ufw enable` - 开启防火墙 （拒绝传入，允许传出）
+* `sudo ufw disable` - 关闭防火墙
+* `sudo systemctl stop ufw` `sudo systemctl disable ufw` - 永久关闭防火墙
