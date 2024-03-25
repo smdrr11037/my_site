@@ -112,7 +112,23 @@ Duplicates
 
 ## Set Operations
 ------
-UNION, INTERSECT, and EXCEPT 
+UNION, INTERSECT, and EXCEPT 分别是并、交、差集
+
+* 使用集合运算符时，自动去重
+
+* 如果不想去重 - UNION ALL, INTERSECT ALL, and EXCEPT ALL.
+
+```sql title='set op example'
+-- Find all customers who have a loan or an account or both. 
+(SELECT customer_name FROM depositor) 
+UNION 
+(SELECT customer_name FROM borrower) 
+
+-- Find all customers who have both a loan and an account. 
+(SELECT customer_name FROM depositor) 
+INTERSECT 
+(SELECT customer_name FROM borrower) 
+```
 
 ## Aggregate Functions
 ------

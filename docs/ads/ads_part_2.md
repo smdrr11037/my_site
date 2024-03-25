@@ -124,17 +124,20 @@ $$
 * 定义Npl(null) = -1
 
 * **左偏树**即所有的节点，左儿子的Npl大于等于右儿子的Npl
-<!-- 图片例子 -->
+![alt text](image-19.png)
+
 > Theorem: 右路径为r的左偏树，至少有$2^r-1$个节点
 <!-- ? -->
 <!-- 数学归纳法 -->
-> r = 1时
+> r = 1时，显然成立
 
-> r = k时，假设成立
+> r = k时，假设结论成立
 
 > r =  k+1时，右子树的Npl为k+1
 >
-> tips:
+> 由左偏树定义，左子树的Npl至少为k+1
+>
+> 来看右子树
 >
 > 左子树的右路径为k，因此左子树至少有$2^r-1$个节点
 
@@ -167,7 +170,7 @@ struct TreeNode
 
 delete min
 
-# Skew Heaps
+## Skew Heaps
 ------
 左偏树合并时不判断npl，直接交换左右子树，就是斜堆
 
@@ -189,3 +192,86 @@ delete min
 * 操作后，重节点一定变轻，轻节点不一定变重，为求上界，假设轻节点都变重
 
 <!-- 推导和计算 -->
+
+
+## Binomial Queue
+------
+> 二项优先队列
+
+* 建堆的时间复杂度：$O(n)$，均摊$O(1)$
+* 插入的时间复杂度：$O(logn)$
+* 因此我们想优化插入
+
+### 定义
+
+A binomial queue is not a heap-ordered tree, but rather a collection of heap-ordered trees, known as a forest.  Each heap-ordered tree is a binomial tree.
+
+* A binomial tree of height 0 is a one-node tree.
+* A binomial tree, $B_k$, of height k is formed by attaching a binomial tree, $B_{k – 1}$, to the root of another binomial tree, $B_{k – 1}$.
+
+![alt text](image-20.png)
+
+观察得：$B_k$ consists of a root with k children, which are                        .  $B_k$ has exactly       $2^k$     nodes.  The number of nodes at depth d is    $C_k^d$        .
+
+任何大小（节点数）的二项队列可以被二项树唯一表示
+
+> Example
+
+------
+### 操作
+
+* FindMin: 比较每个根节点大小，找到最小的。节点数为N，则最多有$\lceil logN\rceil$个树，时间复杂度为$O(logN)$.
+    * 可以记录最小的根，并在变更时更新。这时的时间复杂度为$O(1)$。
+* Merge: 类似于二进制
+
+
+![alt text](image-21.png)
+
+* Insert: Merge的特殊情况——Merge($H, B_0$)
+* DeleteMin: 
+    * step 1: FindMin—— ($O(logN)$)
+    * step 2: 在二项队列中删除$B_k$，得到H' ——($O(1)$)
+    * step 3: 在$B_k$中删除根，将其所有子树作为新的队列H''—— ($O(logN)$)
+    * step 4: Merge(H', H'') ——($O(logN)$)
+
+------
+### 实现
+
+左儿子右兄弟——节省空间，不用考虑随机访问孩子
+```c
+typedef struct BinNode *Position;
+typedef struct Collection *BinQueue;
+typedef struct BinNode *BinTree;  /* missing from p.176 */
+
+struct BinNode 
+{ 
+    ElementType	    Element;
+    Position	    LeftChild;
+    Position 	    NextSibling;
+} ;
+
+struct Collection 
+{ 
+    int	    	CurrentSize;  /* total number of nodes */
+    BinTree	TheTrees[ MaxTrees ];
+} ;
+```
+
+DeleteMin
+```c
+DeleteMin(BinQueue H)
+{
+    int min = FindMin(H);//min的元素在数组中的位置
+    BinTree OldRoot = H->TheTrees[min]; 
+    H->TheTrees[min] = H->TheTrees[0];//指向哨兵
+    BinQueue new_H = Malloc...
+    while(NextSibling){
+        //创建新队列
+    }
+    free(OldRoot);
+    Merge(H, new_H);
+}
+```
+
+-----
+### 分析

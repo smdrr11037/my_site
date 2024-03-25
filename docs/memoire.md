@@ -14,3 +14,6 @@
 * `sudo ufw enable` - 开启防火墙 （拒绝传入，允许传出）
 * `sudo ufw disable` - 关闭防火墙
 * `sudo systemctl stop ufw` `sudo systemctl disable ufw` - 永久关闭防火墙
+
+## 重定向
+* `./your_program < input.txt` - 用input.txt重定向为程序的输入

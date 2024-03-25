@@ -56,10 +56,18 @@ class X{
 public:
     X()
 };
-//掉用
+//调用
 ···
 
 ```
+
+```cpp
+Course(string id, float score) : course_id(id), score(score) {}
+```
+`course_id(id), score(score)`：这是构造函数初始化列表。它在构造函数的主体之前，使用逗号分隔的方式对类的成员变量进行初始化。在这里，course_id(id) 表示将 course_id 成员变量初始化为传入构造函数的 id 参数的值；score(score) 表示将 score 成员变量初始化为传入构造函数的 score 参数的值。
+
+通过使用构造函数初始化列表，可以直接初始化成员变量，而不需要在构造函数的主体中进行赋值操作。这样做的优点是可以提高代码的效率和可读性。
+
 构造函数可带参数
 ```
 Tree
