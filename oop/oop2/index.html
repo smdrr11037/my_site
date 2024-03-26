@@ -128,7 +128,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-  最新更新：增加评论系统，去除手机端遮挡图片
+  最新更新：增加了测试接口的说明文档
 
           </div>
           
@@ -541,6 +541,27 @@
   
   <span class="md-ellipsis">
     Part 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ads/project2_test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Test Interface
   </span>
   
 
@@ -1088,17 +1109,21 @@
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">public</span><span class="o">:</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">X</span><span class="p">()</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">};</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1">//掉用</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1">//调用</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="err">···</span>
+</code></pre></div></p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">Course</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">course_id</span><span class="p">(</span><span class="n">id</span><span class="p">),</span><span class="w"> </span><span class="n">score</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
-构造函数可带参数
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Tree
+<code>course_id(id), score(score)</code>：这是构造函数初始化列表。它在构造函数的主体之前，使用逗号分隔的方式对类的成员变量进行初始化。在这里，course_id(id) 表示将 course_id 成员变量初始化为传入构造函数的 id 参数的值；score(score) 表示将 score 成员变量初始化为传入构造函数的 score 参数的值。</p>
+<p>通过使用构造函数初始化列表，可以直接初始化成员变量，而不需要在构造函数的主体中进行赋值操作。这样做的优点是可以提高代码的效率和可读性。</p>
+<p>构造函数可带参数
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Tree
 </code></pre></div></p>
 <hr />
 <p>如果定义的构造函数有参数，调用时没给参数，会调用缺省构造函数</p>
 <p>但是，一旦你定义了一个构造函数函数，系统就不会自动生成缺省构造函数</p>
 <p>数组的初始化调用
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>
 </code></pre></div>
 * jump可以跳过
 * 但编译不允许跳过初始化</p>

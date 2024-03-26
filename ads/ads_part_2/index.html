@@ -14,7 +14,7 @@
         <link rel="prev" href="../ads_part_1/">
       
       
-        <link rel="next" href="../../CO/CO/">
+        <link rel="next" href="../project2_test/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -128,7 +128,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-  最新更新：增加评论系统，去除手机端遮挡图片
+  最新更新：增加了测试接口的说明文档
 
           </div>
           
@@ -652,10 +652,91 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#skew-heaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skew Heaps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binomial-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binomial Queue
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Binomial Queue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project2_test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Test Interface
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1081,6 +1162,66 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#skew-heaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skew Heaps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binomial-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binomial Queue
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Binomial Queue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1290,20 +1431,21 @@ $$</p>
 <p>定义Npl(null) = -1</p>
 </li>
 <li>
-<p><strong>左偏树</strong>即所有的节点，左儿子的Npl大于等于右儿子的Npl</p>
+<p><strong>左偏树</strong>即所有的节点，左儿子的Npl大于等于右儿子的Npl
+<img alt="alt text" src="../image-19.png" /></p>
 </li>
 </ul>
-<!-- 图片例子 -->
 <blockquote>
 <p>Theorem: 右路径为r的左偏树，至少有<span class="arithmatex">\(2^r-1\)</span>个节点</p>
 </blockquote>
 <!-- ? -->
 <!-- 数学归纳法 -->
 <blockquote>
-<p>r = 1时</p>
-<p>r = k时，假设成立</p>
+<p>r = 1时，显然成立</p>
+<p>r = k时，假设结论成立</p>
 <p>r =  k+1时，右子树的Npl为k+1</p>
-<p>tips:</p>
+<p>由左偏树定义，左子树的Npl至少为k+1</p>
+<p>来看右子树</p>
 <p>左子树的右路径为k，因此左子树至少有<span class="arithmatex">\(2^r-1\)</span>个节点</p>
 </blockquote>
 <h3 id="_3">实现：</h3>
@@ -1333,7 +1475,7 @@ $$</p>
 
 <p>方法二：迭代                              </p>
 <p>delete min</p>
-<h1 id="skew-heaps">Skew Heaps</h1>
+<h2 id="skew-heaps">Skew Heaps</h2>
 <hr />
 <p>左偏树合并时不判断npl，直接交换左右子树，就是斜堆</p>
 <!-- 怎么插入 -->
@@ -1359,6 +1501,94 @@ $$</p>
 </li>
 </ul>
 <!-- 推导和计算 -->
+
+<h2 id="binomial-queue">Binomial Queue</h2>
+<hr />
+<blockquote>
+<p>二项优先队列</p>
+</blockquote>
+<ul>
+<li>建堆的时间复杂度：<span class="arithmatex">\(O(n)\)</span>，均摊<span class="arithmatex">\(O(1)\)</span></li>
+<li>插入的时间复杂度：<span class="arithmatex">\(O(logn)\)</span></li>
+<li>因此我们想优化插入</li>
+</ul>
+<h3 id="_4">定义</h3>
+<p>A binomial queue is not a heap-ordered tree, but rather a collection of heap-ordered trees, known as a forest.  Each heap-ordered tree is a binomial tree.</p>
+<ul>
+<li>A binomial tree of height 0 is a one-node tree.</li>
+<li>A binomial tree, <span class="arithmatex">\(B_k\)</span>, of height k is formed by attaching a binomial tree, <span class="arithmatex">\(B_{k – 1}\)</span>, to the root of another binomial tree, <span class="arithmatex">\(B_{k – 1}\)</span>.</li>
+</ul>
+<p><img alt="alt text" src="../image-20.png" /></p>
+<p>观察得：<span class="arithmatex">\(B_k\)</span> consists of a root with k children, which are                        .  <span class="arithmatex">\(B_k\)</span> has exactly       <span class="arithmatex">\(2^k\)</span>     nodes.  The number of nodes at depth d is    <span class="arithmatex">\(C_k^d\)</span>        .</p>
+<p>任何大小（节点数）的二项队列可以被二项树唯一表示</p>
+<blockquote>
+<p>Example</p>
+</blockquote>
+<hr />
+<h3 id="_5">操作</h3>
+<ul>
+<li>FindMin: 比较每个根节点大小，找到最小的。节点数为N，则最多有<span class="arithmatex">\(\lceil logN\rceil\)</span>个树，时间复杂度为<span class="arithmatex">\(O(logN)\)</span>.<ul>
+<li>可以记录最小的根，并在变更时更新。这时的时间复杂度为<span class="arithmatex">\(O(1)\)</span>。</li>
+</ul>
+</li>
+<li>Merge: 类似于二进制</li>
+</ul>
+<p><img alt="alt text" src="../image-21.png" /></p>
+<ul>
+<li>Insert: Merge的特殊情况——Merge(<span class="arithmatex">\(H, B_0\)</span>)</li>
+<li>DeleteMin: <ul>
+<li>step 1: FindMin—— (<span class="arithmatex">\(O(logN)\)</span>)</li>
+<li>step 2: 在二项队列中删除<span class="arithmatex">\(B_k\)</span>，得到H' ——(<span class="arithmatex">\(O(1)\)</span>)</li>
+<li>step 3: 在<span class="arithmatex">\(B_k\)</span>中删除根，将其所有子树作为新的队列H''—— (<span class="arithmatex">\(O(logN)\)</span>)</li>
+<li>step 4: Merge(H', H'') ——(<span class="arithmatex">\(O(logN)\)</span>)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="_6">实现</h3>
+<p>左儿子右兄弟——节省空间，不用考虑随机访问孩子
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">BinNode</span><span class="w"> </span><span class="o">*</span><span class="n">Position</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Collection</span><span class="w"> </span><span class="o">*</span><span class="n">BinQueue</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">BinNode</span><span class="w"> </span><span class="o">*</span><span class="n">BinTree</span><span class="p">;</span><span class="w">  </span><span class="cm">/* missing from p.176 */</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">struct</span><span class="w"> </span><span class="nc">BinNode</span><span class="w"> </span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="n">ElementType</span><span class="w">     </span><span class="n">Element</span><span class="p">;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">Position</span><span class="w">        </span><span class="n">LeftChild</span><span class="p">;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="n">Position</span><span class="w">        </span><span class="n">NextSibling</span><span class="p">;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span><span class="w"> </span><span class="p">;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">struct</span><span class="w"> </span><span class="nc">Collection</span><span class="w"> </span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="kt">int</span><span class="w">         </span><span class="n">CurrentSize</span><span class="p">;</span><span class="w">  </span><span class="cm">/* total number of nodes */</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="n">BinTree</span><span class="w"> </span><span class="n">TheTrees</span><span class="p">[</span><span class="w"> </span><span class="n">MaxTrees</span><span class="w"> </span><span class="p">];</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="p">}</span><span class="w"> </span><span class="p">;</span>
+</code></pre></div></p>
+<p>DeleteMin
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">DeleteMin</span><span class="p">(</span><span class="n">BinQueue</span><span class="w"> </span><span class="n">H</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindMin</span><span class="p">(</span><span class="n">H</span><span class="p">);</span><span class="c1">//min的元素在数组中的位置</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">BinTree</span><span class="w"> </span><span class="n">OldRoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">H</span><span class="o">-&gt;</span><span class="n">TheTrees</span><span class="p">[</span><span class="n">min</span><span class="p">];</span><span class="w"> </span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="n">H</span><span class="o">-&gt;</span><span class="n">TheTrees</span><span class="p">[</span><span class="n">min</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">H</span><span class="o">-&gt;</span><span class="n">TheTrees</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="c1">//指向哨兵</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="n">BinQueue</span><span class="w"> </span><span class="n">new_H</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Malloc</span><span class="p">...</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">NextSibling</span><span class="p">){</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="c1">//创建新队列</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">OldRoot</span><span class="p">);</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="n">Merge</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="w"> </span><span class="n">new_H</span><span class="p">);</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">}</span>
+</code></pre></div></p>
+<hr />
+<h3 id="_7">分析</h3>
+<ul>
+<li>1/2：不合并</li>
+<li>1/4：合并一次</li>
+<li>1/8：合并两次</li>
+</ul>
+<p>势能法：</p>
+<ul>
+<li><span class="arithmatex">\(\Phi(i)\)</span> = i次插入后的树的数量</li>
+</ul>
 
 
 
