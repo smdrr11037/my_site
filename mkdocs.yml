@@ -5,7 +5,8 @@ nav:
   - Home: index.md
   - Ads: 
       - Part 1: ./ads/ads_part_1.md
-      - Part 2: ./ads/ads_part_2.md  
+      - Part 2: ./ads/ads_part_2.md 
+      - Test Interface: ./ads/project2_test.md
   - CO:
       - Chapter 1、3: ./CO/CO.md
       - Chapter 2: CO/CO_2.md

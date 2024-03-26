@@ -17,3 +17,7 @@
 
 ## 重定向
 * `./your_program < input.txt` - 用input.txt重定向为程序的输入
+
+## 下载、解压文件
+* `wget http://www.diag.uniroma1.it/challenge9/code/ch9-1.1.tar.gz` - 下载文件
+* `tar -zxvf ch9-1.1.tar.gz` - 解压文件 
