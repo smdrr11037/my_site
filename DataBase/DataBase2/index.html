@@ -128,7 +128,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-  最新更新：增加了测试接口的说明文档
+  最新更新：DB笔记（好杂啊😅）
 
           </div>
           
@@ -940,6 +940,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#modification-of-the-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modification of the Database
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joined-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Joined Relations
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1109,6 +1127,24 @@
   <a href="#derived-relations" class="md-nav__link">
     <span class="md-ellipsis">
       Derived Relations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modification-of-the-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modification of the Database
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joined-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Joined Relations
     </span>
   </a>
   
@@ -1384,8 +1420,125 @@ With Clause</p>
 </code></pre></div>
 离开这条语句，local view不存在</li>
 </ul>
-<p>Modification of the Database </p>
-<p>Joined Relations </p>
+<h2 id="modification-of-the-database">Modification of the Database</h2>
+<hr />
+<blockquote>
+<p>数据库的修改</p>
+</blockquote>
+<p><strong>Delete</strong>: <code>DELETE FROM &lt;table | view&gt; [WHERE &lt;condition&gt;]</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1">-- Delete all account records at the Perryridge branch. </span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">account</span><span class="w"> </span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">branch_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">‘</span><span class="n">Perryridge</span><span class="err">’</span><span class="w"> </span>
+</code></pre></div>
+<blockquote>
+<p>branch(<strong>branch-name</strong>, branch-city, assets) </p>
+<p>account(<strong>account-number</strong>, branch-name, balance) </p>
+<p>depositor(<strong>customer-name</strong>, <strong>account-number</strong>) </p>
+</blockquote>
+<p><div class="highlight"><span class="filename">Example query 1</span><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">-- Delete all accounts and relevant information at depositor</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="c1">-- for every branch located in Needham city. </span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">account</span><span class="w"> </span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">branch_name</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">branch_name</span><span class="w"> </span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">                     </span><span class="k">FROM</span><span class="w"> </span><span class="n">branch</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">                     </span><span class="k">WHERE</span><span class="w"> </span><span class="n">branch_city</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">‘</span><span class="n">Needham</span><span class="err">’</span><span class="p">)</span><span class="w"> </span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">depositor</span><span class="w"> </span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">account_number</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">account_number</span><span class="w"> </span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">                        </span><span class="k">FROM</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="n">A</span><span class="w"> </span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">                        </span><span class="k">WHERE</span><span class="w"> </span><span class="n">branch_city</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">‘</span><span class="n">Needham</span><span class="err">’</span><span class="w"> </span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">                        </span><span class="k">and</span><span class="w"> </span><span class="n">B</span><span class="p">.</span><span class="n">branch_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">branch_name</span><span class="p">)</span><span class="w">  </span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="c1">-- 错误示范</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">account</span><span class="p">,</span><span class="w"> </span><span class="n">depositor</span><span class="p">,</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="c1">-- 不允许同时从多个表中删除数据</span>
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">account</span><span class="p">.</span><span class="n">accont_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">depositor</span><span class="p">.</span><span class="n">account_number</span><span class="w"> </span>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="w">         </span><span class="k">and</span><span class="w"> </span><span class="n">branch</span><span class="p">.</span><span class="n">branch_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">account</span><span class="p">.</span><span class="n">branch_name</span><span class="w"> </span>
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="w">         </span><span class="k">and</span><span class="w"> </span><span class="n">branch_city</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">‘</span><span class="n">Needham</span><span class="err">’</span><span class="w"> </span>
+</code></pre></div>
+疑问：如果第一个DELETE语句成功删除了符合条件的账户信息，为什么第二条语句还能找到被删除的信息呢？</p>
+<blockquote>
+<p>Chatgpt：如果您使用了子查询，并且子查询依赖于外部查询的数据，那么在执行子查询时会使用外部查询开始时的数据状态（也称为“consistent read”）。</p>
+<p>在这种情况下，即使外部查询在执行过程中删除了某些数据，子查询也会使用外部查询开始时的数据状态，这可能导致子查询找到已被删除的数据。这被称为“一致性读取”或“一致性快照”。</p>
+</blockquote>
+<div class="highlight"><span class="filename">Example query 2</span><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1">-- Delete the record of all accounts with balances</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="c1">-- below the average at the bank. </span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">account</span><span class="w"> </span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">balance</span><span class="p">)</span><span class="w"> </span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">               </span><span class="k">FROM</span><span class="w"> </span><span class="n">account</span><span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<ul>
+<li>
+<p>问题：删除元组时，avg(balance)会改变</p>
+</li>
+<li>
+<p>sql的解决方案：在同一SQL语句内，除非外层查询的元组变量引入内层查询，否则层查询只进行一次。</p>
+</li>
+</ul>
+<hr />
+<p><strong>Insertion</strong>: <code>INSERT INTO &lt;table|view&gt; [(c1, c2,…)] VALUES (e1, e2, …)</code></p>
+<p>也可以是 <code>INSERT INTO &lt;table|view&gt; [(c1, c2,…)] SELECT e1, e2, … FROM …</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1">-- Add a new tuple to account: </span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">account</span><span class="w"> </span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="err">‘</span><span class="n">A_9732</span><span class="err">’</span><span class="p">,</span><span class="w"> </span><span class="err">‘</span><span class="n">Perryridge</span><span class="err">’</span><span class="p">,</span><span class="w"> </span><span class="mi">1200</span><span class="p">)</span><span class="w"> </span><span class="c1">--需要按顺序</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="c1">-- or equivalently </span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="p">(</span><span class="n">branch_name</span><span class="p">,</span><span class="w"> </span><span class="n">balance</span><span class="p">,</span><span class="w"> </span><span class="n">account_number</span><span class="p">)</span><span class="w"> </span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="err">‘</span><span class="n">Perryridge</span><span class="err">’</span><span class="p">,</span><span class="w"> </span><span class="mi">1200</span><span class="p">,</span><span class="w"> </span><span class="err">‘</span><span class="n">A_9732</span><span class="err">’</span><span class="p">)</span><span class="w">  </span><span class="c1">-- 确定栏目后，不需要按顺序</span>
+</code></pre></div>
+<ul>
+<li>VALUES 可以是 null ，如果未指定 VALUES ，默认为空</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1">-- Provide as a gift for all loan customers of the Perryridge branch,</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="c1">-- a $200 savings account.  Let the loan number serve as</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="c1">-- the account number for the new savings account. </span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="c1">-- Step 1: </span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">         </span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">account</span><span class="w"> </span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">         </span><span class="k">SELECT</span><span class="w"> </span><span class="n">loan_number</span><span class="p">,</span><span class="w"> </span><span class="n">branch_name</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">         </span><span class="k">FROM</span><span class="w"> </span><span class="n">loan</span><span class="w"> </span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="w">         </span><span class="k">WHERE</span><span class="w"> </span><span class="n">branch_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">‘</span><span class="n">Perryridge</span><span class="err">’</span><span class="w"> </span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="c1">-- Step 2: </span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="w">         </span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">depositor</span><span class="w"> </span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="w">         </span><span class="k">SELECT</span><span class="w"> </span><span class="n">customer_name</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">loan_number</span><span class="w"> </span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="w">         </span><span class="k">FROM</span><span class="w"> </span><span class="n">loan</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">borrower</span><span class="w"> </span><span class="n">B</span><span class="w"> </span>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="w">         </span><span class="k">WHERE</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">branch_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">‘</span><span class="n">Perryridge</span><span class="err">’</span><span class="w"> </span><span class="k">and</span><span class="w"> </span>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="w">               </span><span class="n">A</span><span class="p">.</span><span class="n">loan_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">.</span><span class="n">loan_number</span><span class="w"> </span>
+</code></pre></div>
+<ul>
+<li>将 SELECT 语句 insert into 前，会先将 SELECT 语句执行完</li>
+</ul>
+<p>因此，下面的语句可行</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span>
+</code></pre></div>
+<hr />
+<p><strong>Updates</strong>: <code>UPDATE &lt;table | view&gt; SET [&lt;c1 = e1 , c2 = e2, …&gt;] [WHERE &lt;condition&gt;]</code></p>
+<div class="highlight"><span class="filename">Example</span><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1">-- Increase all accounts with balances over $10,000 by 6%,</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="c1">-- all other accounts receive 5%. </span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">account</span><span class="w"> </span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">06</span><span class="w"> </span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10000</span><span class="w"> </span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">account</span><span class="w"> </span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">05</span><span class="w"> </span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10000</span><span class="w"> </span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="c1">-- again, order important</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="c1">-- Can be done better using the case statement(regardless of order)</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">account</span><span class="w"> </span>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">case</span><span class="w"> </span>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="w">               </span><span class="k">when</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10000</span><span class="w"> </span>
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a><span class="w">               </span><span class="k">then</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">05</span><span class="w"> </span>
+<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a><span class="w">               </span><span class="k">else</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">06</span><span class="w"> </span>
+<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a><span class="w">              </span><span class="k">end</span><span class="w"> </span>
+</code></pre></div>
+<p>更新视图：</p>
+<h2 id="joined-relations">Joined Relations</h2>
+<hr />
 
 
 

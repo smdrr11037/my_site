@@ -128,7 +128,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-  最新更新：增加了测试接口的说明文档
+  最新更新：DB笔记（好杂啊😅）
 
           </div>
           
@@ -730,6 +730,51 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#29-communication-with-people" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9 communication with people
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#210-addressing-for-wide-immediate-and-addresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.10 Addressing for Wide Immediate and Addresses
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#211-parallelism-and-instructions-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.11 Parallelism and Instructions: Synchronization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#212-translating-and-starting-a-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.12 Translating and Starting a Program
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#213-c-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.13 C Example
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1042,6 +1087,51 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#29-communication-with-people" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9 communication with people
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#210-addressing-for-wide-immediate-and-addresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.10 Addressing for Wide Immediate and Addresses
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#211-parallelism-and-instructions-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.11 Parallelism and Instructions: Synchronization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#212-translating-and-starting-a-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.12 Translating and Starting a Program
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#213-c-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.13 C Example
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1144,6 +1234,149 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nl">fact:</span><span class="w"> </span><span class="nf">addi</span><span class="w">  </span><span class="no">sp</span><span class="p">,</span><span class="no">sp</span><span class="p">,</span><span class="mi">16</span>
 </code></pre></div>
+<hr />
+<h2 id="29-communication-with-people">2.9 communication with people</h2>
+<p>字符的表示方法:</p>
+<ul>
+<li>ascii码（128个字符）</li>
+<li>unicode（16-bit/32-bit）</li>
+</ul>
+<p>load和store指令</p>
+<ul>
+<li>Load byte/halfword/word: Sign extend to 64 bits in rd<ul>
+<li>lb rd, offset(rs1)</li>
+<li>lh rd, offset(rs1)</li>
+<li>lw rd, offset(rs1)</li>
+</ul>
+</li>
+<li>Load byte/halfword/word unsigned: Zero extend to 64 bits in rd<ul>
+<li>lbu rd, offset(rs1)...</li>
+</ul>
+</li>
+<li>Store byte/halfword/word: Store rightmost 8/16/32 bit<ul>
+<li>sb rs2, offset(rs1)</li>
+<li>sh rs2, offset(rs1)</li>
+<li>sw rs2, offset(rs1)</li>
+</ul>
+</li>
+</ul>
+<p>字符串的表示方法</p>
+<ul>
+<li>Place the length of the string in the first position(JAVA)</li>
+<li>An accompanying variable has the length</li>
+<li>A character in the last position to mark the end of a string(C)</li>
+</ul>
+<blockquote>
+<p>拷贝字符串的例子</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nl">strcpy:</span><span class="w"> </span><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">-8</span><span class="w"> </span><span class="c1">// adjust stack for 1 doubleword</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">        </span><span class="nf">sd</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w"> </span><span class="c1">// save x19</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="nf">add</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="w"> </span><span class="c1">// i = 0</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nl">L1:</span><span class="w">     </span><span class="nf">dd</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="no">x11</span><span class="w"> </span><span class="c1">// address of y[ i ] in x5</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="nf">lbu</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x5</span><span class="p">)</span><span class="w"> </span><span class="c1">// x6 = y [ i ]</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="nf">add</span><span class="w"> </span><span class="no">x7</span><span class="p">,</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="no">x10</span><span class="w"> </span><span class="c1">// address of x[ i ] in x7</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="nf">sb</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x7</span><span class="p">)</span><span class="w"> </span><span class="c1">// x[ i ] = y[ i ]</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="nf">beq</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">L2</span><span class="w"> </span><span class="c1">// if y[ i ] == 0, go to L2 </span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="nf">addi</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">// i = i + 1</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="nf">jal</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">L1</span><span class="w"> </span><span class="c1">// go to L1 </span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="nl">L2:</span><span class="w">     </span><span class="nf">ld</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w"> </span><span class="c1">// restore x19</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="c1">// pop 1 doubleword off stack</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="nf">jalr</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x1</span><span class="p">)</span><span class="w"> </span><span class="c1">// return</span>
+</code></pre></div>
+<hr />
+<h2 id="210-addressing-for-wide-immediate-and-addresses">2.10 Addressing for Wide Immediate and Addresses</h2>
+<p><code>lui rd, constant</code> - U型指令（前20位是立即数，接下来5位是目的寄存器，最后是操作符）</p>
+<p>将立即数存在目的寄存器中，后面补零</p>
+<div>  <center>  `lui x19, 976 ` 
+</div>
+
+<p><img alt="alt text" src="../image-24.png" /></p>
+<p>寄存器的高32位会进行符号扩充</p>
+<hr />
+<p><strong>Branch Addressing</strong></p>
+<p><code>bne x10, x11, 2000</code> - SB型指令（2000 - 跳转偏移量）</p>
+<p><img alt="alt text" src="../image-25.png" /></p>
+<ul>
+<li>立即数末尾补零（相当于乘二）</li>
+</ul>
+<p>跳转范围：<span class="arithmatex">\(\pm 2^{12}\)</span>个byte，即<span class="arithmatex">\(\pm 4\)</span>k个字节</p>
+<hr />
+<p><strong>Jump Addressing</strong></p>
+<p>无条件跳转</p>
+<p><code>jal x0, 2000</code> - i型指令（怎么又说j型只有这一条）</p>
+<p><img alt="alt text" src="../image-26.png" /></p>
+<p>跳转范围<span class="arithmatex">\(\pm 1\)</span>G字节</p>
+<ul>
+<li>For long jumps, eg, to 32-bit absolute address<ul>
+<li>lui: load address[31:12] to temp register</li>
+<li>jalr: add address[11:0] and jump to target</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>这里有个例子</p>
+</blockquote>
+<hr />
+<p><strong>寻址Summary</strong></p>
+<blockquote>
+<p>这里有个大表可以查</p>
+</blockquote>
+<h2 id="211-parallelism-and-instructions-synchronization">2.11 Parallelism and Instructions: Synchronization</h2>
+<p>在load和save时，可能有并行的程序导致地址不可用，操作失败，因此加入判断</p>
+<ul>
+<li>Load reserved: lr.d rd,(rs1)</li>
+<li>Store conditional: sc.d rd,(rs1),rs2<ul>
+<li>成功时返回0</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Example 1: atomic swap(to test/set lock variable)</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>
+</code></pre></div>
+<blockquote>
+<p>Example 2: lock</p>
+</blockquote>
+<h2 id="212-translating-and-starting-a-program">2.12 Translating and Starting a Program</h2>
+<p><img alt="alt text" src="../image-27.png" /></p>
+<p>object file 和 executable file</p>
+<ul>
+<li>
+<p>静态链接：将库文件整个copy，不实时更新</p>
+</li>
+<li>
+<p>动态链接（Dynamic Linking）</p>
+</li>
+<li>
+<p>Lazy Linkage: </p>
+</li>
+<li>
+<p>Java application</p>
+</li>
+</ul>
+<hr />
+<h2 id="213-c-example">2.13 C Example</h2>
+<p>调用子函数：将需要保持的寄存器存起来</p>
+<ul>
+<li>存到栈中</li>
+<li>存到另一寄存器——效率更高</li>
+</ul>
+<p>约定：</p>
+<ul>
+<li>父函数保证：子函数能随便使用temporary registers (x5-x7, x28-x31)，返回给父函数的时候，x5-x7, x28-x31的值可以被改变。</li>
+<li>子函数保证：返回给父函数的时候，saved registers(x18-x27) 保持父函数调用子函数前的值。</li>
+</ul>
+<hr />
+<p>编译器的优化效果</p>
+<p><img alt="alt text" src="../image-28.png" /></p>
+<blockquote>
+<p>效果与算法有关</p>
+<p>算法很重要</p>
+</blockquote>
+<h1 id="_1">不想听课了😭</h1>
 
 
 
