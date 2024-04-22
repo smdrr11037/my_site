@@ -14,7 +14,7 @@
         <link rel="prev" href="../CO/">
       
       
-        <link rel="next" href="../../oop/oop/">
+        <link rel="next" href="../CO_3/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -557,6 +557,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../../ads/ads_part_3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 3(开始算法分析)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../ads/project2_test/" class="md-nav__link">
         
   
@@ -695,6 +716,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#21-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-operations-of-the-computer-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Operations of the Computer Hardware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-operands-of-the-computer-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Operands of the Computer Hardware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-signed-and-unsigned-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 signed and unsigned numbers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#25-representing-instruncrions-in-the-computer" class="md-nav__link">
     <span class="md-ellipsis">
       2.5 Representing Instruncrions in the computer
@@ -775,10 +832,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#214-real-stuff-mips-x86" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.14 Real Stuff: MIPS &amp; x86
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CO_3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -948,7 +1035,28 @@
         
   
   <span class="md-ellipsis">
-    Use sql
+    Use SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DataBase/DataBase3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced SQL
   </span>
   
 
@@ -1052,6 +1160,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#21-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-operations-of-the-computer-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Operations of the Computer Hardware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-operands-of-the-computer-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Operands of the Computer Hardware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-signed-and-unsigned-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 signed and unsigned numbers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#25-representing-instruncrions-in-the-computer" class="md-nav__link">
     <span class="md-ellipsis">
       2.5 Representing Instruncrions in the computer
@@ -1132,6 +1276,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#214-real-stuff-mips-x86" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.14 Real Stuff: MIPS &amp; x86
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1153,19 +1306,120 @@
 
 <h1 id="chapter-2">Chapter 2</h1>
 <hr />
-<h2 id="25-representing-instruncrions-in-the-computer">2.5 Representing Instruncrions in the computer</h2>
+<h2 id="21-introduction">2.1 Introduction</h2>
+<p>计算机的语言：指令和指令集</p>
+<p>设计目标：最大化表现、最小化消耗、减少设计时间</p>
+<p>我们选择的指令集：RISC-V</p>
+<p>指令集决定：</p>
 <ul>
-<li>高级指令-&gt;汇编指令-&gt;机器码</li>
+<li>指令怎样在内部存储</li>
+<li>有多少 operand</li>
+<li>指令集中的指令怎样执行</li>
+<li>操作数的类型和大小</li>
 </ul>
+<hr />
+<h2 id="22-operations-of-the-computer-hardware">2.2 Operations of the Computer Hardware</h2>
+<p>每条指令一个运算，三个变量（a = b + c）</p>
+<p>设计原理：简单源自规整，让所有运算都保持三个变量</p>
+<p>将复杂的高级指令转换为只有三个操作数的汇编指令：</p>
+<div class="highlight"><span class="filename">c</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">);</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">RISC-V</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">add</span><span class="w"> </span><span class="no">t0</span><span class="p">,</span><span class="w"> </span><span class="no">g</span><span class="p">,</span><span class="w"> </span><span class="no">h</span><span class="w"> </span><span class="c1">// temporary variable t0 contains g + h</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nf">add</span><span class="w"> </span><span class="no">t1</span><span class="p">,</span><span class="w"> </span><span class="no">i</span><span class="p">,</span><span class="w"> </span><span class="no">j</span><span class="w"> </span><span class="c1">// temporary variable t1 contains i + j</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nf">sub</span><span class="w"> </span><span class="no">f</span><span class="p">,</span><span class="w"> </span><span class="no">t0</span><span class="p">,</span><span class="w"> </span><span class="no">t1</span><span class="w"> </span><span class="c1">// f gets t0 – t1</span>
+</code></pre></div>
+<hr />
+<h2 id="23-operands-of-the-computer-hardware">2.3 Operands of the Computer Hardware</h2>
+<p>Register Operands（比 Memory 访问快）</p>
+<ul>
+<li>RISC-V 中 32 个 64 位（doubleword）寄存器</li>
+<li>设计原理2：越少越快，不超过 32 个寄存器</li>
+</ul>
+<p><img alt="alt text" src="../image-53.png" />
+<img alt="alt text" src="../image-54.png" /></p>
+<p>Memory Operands</p>
+<ul>
+<li>可以存储更多的数据以及成片的数据（数组等）</li>
+<li>用 ld(load doubleword) 读取到寄存器、sd(save doubleword) 存储来自寄存器</li>
+<li>Memory is byte addressed：Each address identifies an 8-bit byte</li>
+<li>RISC-V 是小端，且不需要字对齐</li>
+</ul>
+<p><img alt="alt text" src="../image-55.png" /></p>
+<p><img alt="alt text" src="../image-56.png" /></p>
+<ul>
+<li>Memory 需要更多条指令</li>
+</ul>
+<div class="highlight"><span class="filename">c</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">// A is an array of 100 doublewords</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">(</span><span class="w"> </span><span class="n">Assume</span><span class="o">:</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">----</span><span class="w"> </span><span class="n">x20</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">----</span><span class="w"> </span><span class="n">x21</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">----</span><span class="w"> </span><span class="n">x22</span><span class="w"> </span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">RISC-V</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">ld</span><span class="w"> </span><span class="no">x9</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">(</span><span class="no">x22</span><span class="p">)</span><span class="w"> </span><span class="c1">// temporary reg x9 gets A[8]</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nf">add</span><span class="w"> </span><span class="no">x20</span><span class="p">,</span><span class="w"> </span><span class="no">x21</span><span class="p">,</span><span class="w"> </span><span class="no">x9</span><span class="w"> </span><span class="c1">// g = h + A[8]</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">c</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">// A is an array of 100 doublewords</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">(</span><span class="w"> </span><span class="n">Assume</span><span class="o">:</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">x4</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="n">x3</span><span class="w"> </span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">RISC-V</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nf">add</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x4</span><span class="p">,</span><span class="w"> </span><span class="no">x4</span><span class="w"> </span><span class="c1"># temp reg x5 = 2 * i</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nf">add</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x5</span><span class="w"> </span><span class="c1"># temp reg x5 = 4 * i</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nf">add</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x5</span><span class="w"> </span><span class="c1"># temp reg x5 = 8 * i</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nf">add</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x3</span><span class="w"> </span><span class="c1"># x5 = address of A[i] (8 * i + x3)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nf">ld</span><span class="w"> </span><span class="no">$x6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x5</span><span class="p">)</span><span class="w"> </span><span class="c1"># temp reg x6 = A[i]</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nf">add</span><span class="w"> </span><span class="no">x1</span><span class="p">,</span><span class="w"> </span><span class="no">x2</span><span class="p">,</span><span class="w"> </span><span class="no">x6</span><span class="w"> </span><span class="c1"># g = h + A[i]</span>
+</code></pre></div>
+<p>Constant</p>
+<p>获取方法:</p>
+<ol>
+<li>提前存储在内存中，用 load 指令获得</li>
+<li>放在指令中（小的数用的多，避免 load，make common case fast）</li>
+</ol>
+<hr />
+<h2 id="24-signed-and-unsigned-numbers">2.4 signed and unsigned numbers</h2>
+<p>2's 补码那些东西</p>
+<h2 id="25-representing-instruncrions-in-the-computer">2.5 Representing Instruncrions in the computer</h2>
+<p>设计原则 4：好的设计需要好的折衷，尽管有的指令不需要 32 bits，我们还是令其全为 32 bits</p>
+<p>指令格式：
+<img alt="alt text" src="../image-57.png" /></p>
+<ul>
+<li>
+<p>I 型指令：注意 imm 是 2's 表示，需要符号扩展到相应位数</p>
+</li>
+<li>
+<p>高级指令-&gt;汇编指令-&gt;机器码</p>
+</li>
+</ul>
+<p>入侵更改程序</p>
 <hr />
 <h2 id="26-logical-operations">2.6 Logical Operations</h2>
 <p>移位、与、或、异或、非</p>
+<p><img alt="alt text" src="../image-58.png" /></p>
+<ul>
+<li>useful and：保留某些位，将其他位设为 0</li>
+<li>or：保留某些位，将其他位设为 1</li>
+</ul>
 <hr />
 <h2 id="27-instruction-for-making-decision">2.7 Instruction for making decision</h2>
 <p>分支跳转</p>
-<p>循环
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nl">LOOP:</span><span class="w">   </span><span class="nf">slli</span><span class="w">    </span><span class="no">x10</span><span class="p">,</span><span class="no">x22</span><span class="p">,</span>
+<p><div class="highlight"><span class="filename">c</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="n">h</span><span class="p">;</span><span class="w"> </span>
+</code></pre></div>
+( Assume: f ~ j ---- x19 ~ x23 )
+<div class="highlight"><span class="filename">RISC-V</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">bne</span><span class="w"> </span><span class="no">x22</span><span class="p">,</span><span class="w"> </span><span class="no">x23</span><span class="p">,</span><span class="w"> </span><span class="no">ELSE</span><span class="w"> </span><span class="c1">// go to ELSE if i != j</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nf">add</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="no">x20</span><span class="p">,</span><span class="w"> </span><span class="no">x21</span><span class="w"> </span><span class="c1">// f = g + h ( skipped if i not equals j )</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nf">beq</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">EXIT</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nl">ELSE:</span><span class="w"> </span><span class="nf">sub</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="no">x20</span><span class="p">,</span><span class="w"> </span><span class="no">x21</span><span class="w"> </span><span class="c1">// f = g - h ( skipped if i equals j )</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nl">EXIT:</span>
 </code></pre></div></p>
+<p>循环</p>
+<div class="highlight"><span class="filename">c</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">save</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span>
+</code></pre></div>
+<p>( Assume: i and k---- x22 and x24 base of save ---- x25 )</p>
+<div class="highlight"><span class="filename">RISC-V</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nl">Loop:</span><span class="w">   </span><span class="nf">slli</span><span class="w"> </span><span class="no">x10</span><span class="p">,</span><span class="w"> </span><span class="no">x22</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="c1">// Temp reg x10 = i * 8</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">        </span><span class="nf">add</span><span class="w"> </span><span class="no">x10</span><span class="p">,</span><span class="w"> </span><span class="no">x10</span><span class="p">,</span><span class="w"> </span><span class="no">x25</span><span class="w"> </span><span class="c1">// x10 = address of save[i]</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">        </span><span class="nf">ld</span><span class="w"> </span><span class="no">x9</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x10</span><span class="p">)</span><span class="w"> </span><span class="c1">// x9 gets save[i]</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="nf">bne</span><span class="w"> </span><span class="no">x9</span><span class="p">,</span><span class="w"> </span><span class="no">x24</span><span class="p">,</span><span class="w"> </span><span class="no">Exit</span><span class="w"> </span><span class="c1">// go to Exit if save[i] != k</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">        </span><span class="nf">addi</span><span class="w"> </span><span class="no">x22</span><span class="p">,</span><span class="w"> </span><span class="no">x22</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">// i += 1</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="nf">beq</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">Loop</span><span class="w"> </span><span class="c1">// go to Loop</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nl">Exit:</span>
+</code></pre></div>
 <p>其他的条件跳转（有符号数的比较）：</p>
 <ul>
 <li>
@@ -1176,26 +1430,69 @@
 <p><code>bge rs1, rs2, L1</code></p>
 <p>如果rs1&gt;=rs2，跳转到Lable L1处</p>
 </li>
+</ul>
+<p>也可以用 slt 指令进行跳转</p>
+<ul>
 <li>
 <p><code>slt x2, x3, x4</code></p>
-<p>set on less than——如果x3&lt;x4，将x2设为1</p>
+<p>set on less than——如果x3&lt;x4，将x2设为1（2's 有符号数的比较）</p>
 </li>
 </ul>
-<p>无符号数比较的指令：bltu, bgeu
-<!-- 好像简便一点 --></p>
+<div class="highlight"><span class="filename">C</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">b</span><span class="p">),</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">Less</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">use blt</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nf">blt</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="w"> </span><span class="no">x7</span><span class="p">,</span><span class="w"> </span><span class="no">Less</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">use slt</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="w">        </span><span class="nf">slt</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="w"> </span><span class="no">x7</span><span class="w"> </span><span class="c1"># x5 = 1 if x6 &lt; x7 ( a &lt; b) </span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">        </span><span class="nf">bne</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">Less</span><span class="w"> </span><span class="c1"># go to Less if x5 != 0 (that is, if a &lt; b)</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">        </span><span class="err">……</span><span class="w"> </span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nl">Less:</span>
+</code></pre></div>
+<blockquote>
+<p>slt 也被用来产生 '1'</p>
+</blockquote>
+<p>无符号数比较的指令：bltu, bgeu</p>
 <ul>
 <li><code>bgeu x20, x11, Outbound</code></li>
 </ul>
-<hr />
-<p>Case/Switch</p>
+<p>Case/Switch 语句</p>
 <ul>
-<li>分支语句在memory中像数组一样连续存储</li>
-<li>根据偏移量访问</li>
+<li>转换成汇编代码后，分支语句在memory中像数组一样连续存储</li>
+<li>根据偏移量访问（jump address table）</li>
 </ul>
-<!-- 待补充 -->
+<p><img alt="alt text" src="../image-59.png" /></p>
+<div class="highlight"><span class="filename">c</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="cm">/* k = 0 */</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="cm">/* k = 1 */</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="cm">/* k = 2 */</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="cm">/* k = 3 */</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">RISC-V</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="w">        </span><span class="nf">lt</span><span class="w"> </span><span class="no">x25</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">Exit</span><span class="w"> </span><span class="c1">// test if k &lt; 0 </span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">        </span><span class="nf">bge</span><span class="w"> </span><span class="no">x25</span><span class="p">,</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">Exit</span><span class="w"> </span><span class="c1">// if k &gt;= 4, go to Exit</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">        </span><span class="nf">slli</span><span class="w"> </span><span class="no">x7</span><span class="p">,</span><span class="w"> </span><span class="no">x25</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="c1">// temp reg x7 = 8 * k</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">        </span><span class="nf">add</span><span class="w"> </span><span class="no">x7</span><span class="p">,</span><span class="w"> </span><span class="no">x7</span><span class="p">,</span><span class="w"> </span><span class="no">x6</span><span class="w"> </span><span class="c1">// x7 = address of JumpTable[k]</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">        </span><span class="nf">ld</span><span class="w"> </span><span class="no">x7</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x7</span><span class="p">)</span><span class="w"> </span><span class="c1">// x7 gets JumpTable[k]</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">        </span><span class="nf">jalr</span><span class="w"> </span><span class="no">x1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x7</span><span class="p">)</span><span class="w"> </span><span class="c1">// jump entrance</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="nl">Exit:</span>
+</code></pre></div>
+<p><img alt="alt text" src="../image-60.png" /></p>
+<blockquote>
+<p>Basic blocks: 一段没有跳转的连续指令，可以被编译器优化</p>
+</blockquote>
 <hr />
 <h2 id="28-supporting-procedures-in-conputer-hardware">2.8 Supporting Procedures in Conputer Hardware</h2>
-<p>过程调用</p>
+<p>过程调用（函数）</p>
+<p>step：</p>
+<ol>
+<li>Place Parameters in a place where the procedure can access them （in registers x10~x17）</li>
+<li>Transfer control to the procedure</li>
+<li>Acquire the storage resources needed for the procedure</li>
+<li>Perform the desired task</li>
+<li>Place the result value in a place where the calling program can access it </li>
+<li>Return control to the point of origin (address in x1)</li>
+</ol>
+<p><code>jal x1, Lable</code> - 跳转到 Lable，PC + 4 存到 x1</p>
+<p><code>jalr x0, 0(x1)</code> - jumps to 0 + address in x1</p>
 <p>需要用更多的寄存器</p>
 <ul>
 <li>
@@ -1206,19 +1503,43 @@
 </ul>
 </li>
 <li>
-<p>Stack</p>
-<ul>
-<li>push：sp=sp-8</li>
-<li>pop：sp=sp+8</li>
-</ul>
+<p>stack 是存储数据的理想地方</p>
 </li>
+<li>Stack grow from higher address to lower address</li>
+<li>Push: sp= sp-8</li>
+<li>Pop: sp = sp+8</li>
 </ul>
 <p><strong>Leaf procedure</strong>：不会调用别的过程的过程</p>
 <ul>
 <li>把要用的寄存器存到栈中，用完后再ld回来</li>
 </ul>
-<!-- 例子 -->
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">leaf_example</span>
+<div class="highlight"><span class="filename">C</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">leaf_example</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">,</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="p">);</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Arguments g, …, j in x10, …, x13, f in x20</li>
+<li>temporaries x5, x6</li>
+<li>Need to save x5, x6, x20 on stack</li>
+</ul>
+<p><div class="highlight"><span class="filename">leaf_example:</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nl">leaf_example:</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="no">sp</span><span class="p">,-</span><span class="mi">24</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="nf">sd</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="mi">16</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="nf">sd</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="mi">8</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="nf">sd</span><span class="w"> </span><span class="no">x20</span><span class="p">,</span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="c1">// Save x5, x6, x20 on stack</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="nf">add</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="no">x10</span><span class="p">,</span><span class="no">x11</span><span class="c1">// x5 = g + h</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">    </span><span class="nf">add</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="no">x12</span><span class="p">,</span><span class="no">x1</span><span class="c1">// x6 = i + j</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">    </span><span class="nf">sub</span><span class="w"> </span><span class="no">x20</span><span class="p">,</span><span class="no">x5</span><span class="p">,</span><span class="no">x6</span><span class="c1">// f = x5 – x6</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">x10</span><span class="p">,</span><span class="no">x20</span><span class="p">,</span><span class="mi">0</span><span class="c1">// copy f to return register</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">    </span><span class="nf">ld</span><span class="w"> </span><span class="no">x20</span><span class="p">,</span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">    </span><span class="nf">ld</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="mi">8</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">    </span><span class="nf">ld</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="mi">16</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="c1">// Resore x5, x6, x20 from stack</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="no">sp</span><span class="p">,</span><span class="mi">24</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">    </span><span class="nf">jalr</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="mi">0</span><span class="p">(</span><span class="no">x1</span><span class="p">)</span><span class="c1">// Return to caller</span>
 </code></pre></div>
 <strong>Register Usage</strong></p>
 <ul>
@@ -1228,12 +1549,48 @@
 <p><strong>Non-leaf procedure</strong></p>
 <ul>
 <li>return的地址会改变</li>
+<li>因此需要把返回地址 x1 压栈</li>
+<li>以及存储结果的寄存器也要压栈</li>
 </ul>
 <blockquote>
-<p>递归为例</p>
+<p>递归求阶乘为例</p>
 </blockquote>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nl">fact:</span><span class="w"> </span><span class="nf">addi</span><span class="w">  </span><span class="no">sp</span><span class="p">,</span><span class="no">sp</span><span class="p">,</span><span class="mi">16</span>
+<div class="highlight"><span class="filename">C</span><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">fact</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">)</span><span class="w"> </span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="p">{</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fact</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="p">}</span>
 </code></pre></div>
+<p>argument n is in x10, and results in x10</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nl">fact:</span><span class="w">   </span><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="c1">// adjust stack for 2 items</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">        </span><span class="nf">sd</span><span class="w"> </span><span class="no">x1</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w"> </span><span class="c1">// save the return address</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">        </span><span class="nf">sd</span><span class="w"> </span><span class="no">x10</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w"> </span><span class="c1">// save the argument n</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">        </span><span class="nf">addi</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x10</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="c1">// x5 = n - 1</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">        </span><span class="nf">bge</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">L1</span><span class="w"> </span><span class="c1">// if n &gt;= 1, go to L1(else)</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">        </span><span class="nf">addi</span><span class="w"> </span><span class="no">x10</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">// return 1 if n &lt;1</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">        </span><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="c1">// Recover sp (Why not recover x1and x10 ?)</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">        </span><span class="nf">jalr</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x1</span><span class="p">)</span><span class="w"> </span><span class="c1">// return to caller</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="nl">L1:</span><span class="w"> </span><span class="nf">addi</span><span class="w"> </span><span class="no">x10</span><span class="p">,</span><span class="w"> </span><span class="no">x10</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="c1">// n &gt;= 1: argument gets ( n - 1 )</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="w">    </span><span class="nf">jal</span><span class="w"> </span><span class="no">x1</span><span class="p">,</span><span class="w"> </span><span class="no">fact</span><span class="w"> </span><span class="c1">// call fact with ( n - 1 )</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="w">    </span><span class="nf">add</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="w"> </span><span class="no">x10</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="w">    </span><span class="nf">ld</span><span class="w"> </span><span class="no">x10</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w"> </span><span class="c1">// restore argument n</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="w">    </span><span class="nf">ld</span><span class="w"> </span><span class="no">x1</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w"> </span><span class="c1">// restore the return address</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="c1">// adjust stack pointer to pop 2 items</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="w">    </span><span class="nf">mul</span><span class="w"> </span><span class="no">x10</span><span class="p">,</span><span class="w"> </span><span class="no">x10</span><span class="p">,</span><span class="w"> </span><span class="no">x6</span><span class="w"> </span><span class="c1">// return n*fact ( n - 1 )</span>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="w">    </span><span class="nf">jalr</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x1</span><span class="p">)</span><span class="w"> </span><span class="c1">// return to the caller</span>
+</code></pre></div>
+<blockquote>
+<p>递归的坏处：消耗大量资源保护寄存器的值、需要大量内存空间（压栈），loop可以解决（特别是尾递归）</p>
+</blockquote>
+<p>总结（是否需要保留）</p>
+<p><img alt="alt text" src="../image-61.png" /></p>
+<ul>
+<li>Procedure frame and frame pointer ( x8 or fp ) - 保存 C 中的自动变量</li>
+<li>Global pointer ( x3 or gp ) - 保存 C 中的静态变量</li>
+</ul>
+<p><img alt="alt text" src="../image-62.png" /></p>
+<p><img alt="" src="../image-63.png" /></p>
 <hr />
 <h2 id="29-communication-with-people">2.9 communication with people</h2>
 <p>字符的表示方法:</p>
@@ -1269,22 +1626,30 @@
 <blockquote>
 <p>拷贝字符串的例子</p>
 </blockquote>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">strcpy</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="p">{</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">;</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">;</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="err">‘\</span><span class="w"> </span><span class="mi">0</span><span class="err">’</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="cm">/* copy and test byte */</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">        </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">    </span><span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nl">strcpy:</span><span class="w"> </span><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">-8</span><span class="w"> </span><span class="c1">// adjust stack for 1 doubleword</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">        </span><span class="nf">sd</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w"> </span><span class="c1">// save x19</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="nf">add</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="w"> </span><span class="c1">// i = 0</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nl">L1:</span><span class="w">     </span><span class="nf">dd</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="no">x11</span><span class="w"> </span><span class="c1">// address of y[ i ] in x5</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="nf">lbu</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x5</span><span class="p">)</span><span class="w"> </span><span class="c1">// x6 = y [ i ]</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="nf">add</span><span class="w"> </span><span class="no">x7</span><span class="p">,</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="no">x10</span><span class="w"> </span><span class="c1">// address of x[ i ] in x7</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="nf">sb</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x7</span><span class="p">)</span><span class="w"> </span><span class="c1">// x[ i ] = y[ i ]</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="nf">beq</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">L2</span><span class="w"> </span><span class="c1">// if y[ i ] == 0, go to L2 </span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="nf">addi</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">// i = i + 1</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="nf">jal</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">L1</span><span class="w"> </span><span class="c1">// go to L1 </span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="nl">L2:</span><span class="w">     </span><span class="nf">ld</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w"> </span><span class="c1">// restore x19</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="c1">// pop 1 doubleword off stack</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="nf">jalr</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x1</span><span class="p">)</span><span class="w"> </span><span class="c1">// return</span>
-</code></pre></div>
+<p>( Assume: i -- x19， x’s base --x10, y’s base ----x11)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nl">strcpy:</span><span class="w"> </span><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">-8</span><span class="w"> </span><span class="c1">// adjust stack for 1 doubleword</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">        </span><span class="nf">sd</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w"> </span><span class="c1">// save x19</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">        </span><span class="nf">add</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="w"> </span><span class="c1">// i = 0</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="nl">L1:</span><span class="w">     </span><span class="nf">add</span><span class="w"> </span><span class="no">x5</span><span class="p">,</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="no">x11</span><span class="w"> </span><span class="c1">// address of y[ i ] in x5</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">        </span><span class="nf">lbu</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x5</span><span class="p">)</span><span class="w"> </span><span class="c1">// x6 = y [ i ]</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">        </span><span class="nf">add</span><span class="w"> </span><span class="no">x7</span><span class="p">,</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="no">x10</span><span class="w"> </span><span class="c1">// address of x[ i ] in x7</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">        </span><span class="nf">sb</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x7</span><span class="p">)</span><span class="w"> </span><span class="c1">// x[ i ] = y[ i ]</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">        </span><span class="nf">beq</span><span class="w"> </span><span class="no">x6</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">L2</span><span class="w"> </span><span class="c1">// if y[ i ] == 0, go to L2 </span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="w">        </span><span class="nf">addi</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">// i = i + 1</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="w">        </span><span class="nf">jal</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">L1</span><span class="w"> </span><span class="c1">// go to L1 </span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="nl">L2:</span><span class="w">     </span><span class="nf">ld</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w"> </span><span class="c1">// restore x19</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="w">        </span><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="c1">// pop 1 doubleword off stack</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="w">        </span><span class="nf">jalr</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">x1</span><span class="p">)</span><span class="w"> </span><span class="c1">// return</span>
+</code></pre></div></p>
+<p>优化：叶子程序先使用不需要 save 的 temp 寄存器，再使用必须 save 的</p>
 <hr />
 <h2 id="210-addressing-for-wide-immediate-and-addresses">2.10 Addressing for Wide Immediate and Addresses</h2>
 <p><code>lui rd, constant</code> - U型指令（前20位是立即数，接下来5位是目的寄存器，最后是操作符）</p>
@@ -1293,6 +1658,8 @@
 </div>
 
 <p><img alt="alt text" src="../image-24.png" /></p>
+<p>如果我们想要 <code>li  b0000 0000 0011 1101 0000 1001 0000 0000</code></p>
+<p>必须分两步：<code>lui 0000 0000 0011 1101 0000</code> <code>addi 1001 0000 0000</code>（寄存器略）</p>
 <p>寄存器的高32位会进行符号扩充</p>
 <hr />
 <p><strong>Branch Addressing</strong></p>
@@ -1305,7 +1672,7 @@
 <hr />
 <p><strong>Jump Addressing</strong></p>
 <p>无条件跳转</p>
-<p><code>jal x0, 2000</code> - i型指令（怎么又说j型只有这一条）</p>
+<p><code>jal x0, 2000</code> - j型指令（只有这一条）</p>
 <p><img alt="alt text" src="../image-26.png" /></p>
 <p>跳转范围<span class="arithmatex">\(\pm 1\)</span>G字节</p>
 <ul>
@@ -1315,31 +1682,59 @@
 </ul>
 </li>
 </ul>
-<blockquote>
-<p>这里有个例子</p>
-</blockquote>
-<hr />
+<div class="highlight"><span class="filename">一次跳转不了</span><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nf">beq</span><span class="w"> </span><span class="no">x10</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">L1</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="c1">// 转换成</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">    </span><span class="nf">bne</span><span class="w"> </span><span class="no">x10</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">L2</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">    </span><span class="nf">jal</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">L1</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="nf">L2</span>
+</code></pre></div>
 <p><strong>寻址Summary</strong></p>
-<blockquote>
-<p>这里有个大表可以查</p>
-</blockquote>
+<p><img alt="alt text" src="../image-64.png" /></p>
 <h2 id="211-parallelism-and-instructions-synchronization">2.11 Parallelism and Instructions: Synchronization</h2>
 <p>在load和save时，可能有并行的程序导致地址不可用，操作失败，因此加入判断</p>
 <ul>
-<li>Load reserved: lr.d rd,(rs1)</li>
+<li>Load reserved: lr.d rd,(rs1)<ul>
+<li>把 rs1 地址里的值存在 rd 中</li>
+<li>保持地址存放的东西不变</li>
+</ul>
+</li>
 <li>Store conditional: sc.d rd,(rs1),rs2<ul>
-<li>成功时返回0</li>
+<li>把 rs2 的值存在 rs1 中的地址里</li>
+<li>成功时（location 没变）返回0</li>
+<li>失败时返回非零值</li>
 </ul>
 </li>
 </ul>
 <blockquote>
 <p>Example 1: atomic swap(to test/set lock variable)</p>
 </blockquote>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nl">again:</span><span class="w">  </span><span class="nf">lr.d</span><span class="w"> </span><span class="no">x10</span><span class="p">,(</span><span class="no">x20</span><span class="p">)</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">        </span><span class="nf">sc.d</span><span class="w"> </span><span class="no">x11</span><span class="p">,(</span><span class="no">x20</span><span class="p">),</span><span class="no">x23</span><span class="w"> </span><span class="c1">// X11 = status</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">        </span><span class="nf">bne</span><span class="w"> </span><span class="no">x11</span><span class="p">,</span><span class="no">x0</span><span class="p">,</span><span class="no">again</span><span class="w"> </span><span class="c1">// branch if store failed</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">        </span><span class="nf">addi</span><span class="w"> </span><span class="no">x23</span><span class="p">,</span><span class="no">x10</span><span class="p">,</span><span class="mi">0</span><span class="w"> </span><span class="c1">// X23 = loaded value</span>
 </code></pre></div>
 <blockquote>
-<p>Example 2: lock</p>
+<p>Example 2: lock
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="w">        </span><span class="nf">addi</span><span class="w"> </span><span class="no">x12</span><span class="p">,</span><span class="no">x0</span><span class="p">,</span><span class="mi">1</span><span class="w"> </span><span class="c1">// copy locked value</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="nl">again:</span><span class="w">  </span><span class="nf">lr.d</span><span class="w"> </span><span class="no">x10</span><span class="p">,(</span><span class="no">x20</span><span class="p">)</span><span class="w"> </span><span class="c1">// read lock</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">        </span><span class="nf">bne</span><span class="w"> </span><span class="no">x10</span><span class="p">,</span><span class="no">x0</span><span class="p">,</span><span class="no">again</span><span class="w"> </span><span class="c1">// check if it is 0 yet</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">        </span><span class="nf">sc.d</span><span class="w"> </span><span class="no">x11</span><span class="p">,(</span><span class="no">x20</span><span class="p">),</span><span class="no">x12</span><span class="w"> </span><span class="c1">// attempt to store</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">        </span><span class="nf">bne</span><span class="w"> </span><span class="no">x11</span><span class="p">,</span><span class="no">x0</span><span class="p">,</span><span class="no">again</span><span class="w"> </span><span class="c1">// branch if fails</span>
+</code></pre></div></p>
 </blockquote>
+<p>Unlock: <code>sd x0,0(x20) // free lock</code></p>
+<blockquote>
+<p>其他指令</p>
+</blockquote>
+<ul>
+<li><code>aulpc</code></li>
+</ul>
+<p>M: integer multiply, divide, remainder
+ A: atomic memory operations
+ F: single-precision floating point
+ D: double-precision floating point
+ C: compressed instructions</p>
 <h2 id="212-translating-and-starting-a-program">2.12 Translating and Starting a Program</h2>
 <p><img alt="alt text" src="../image-27.png" /></p>
 <p>object file 和 executable file</p>
@@ -1375,8 +1770,45 @@
 <blockquote>
 <p>效果与算法有关</p>
 <p>算法很重要</p>
+<p>上节课：b、j、u型指令</p>
+<p>Leaf - temperor register</p>
+<p>Father - saved register</p>
 </blockquote>
-<h1 id="_1">不想听课了😭</h1>
+<p>访问数组的两个方式</p>
+<ul>
+<li>索引 - <code>array[i]</code></li>
+<li>指针 - <code>*p = array[0]</code>，通过<code>*p</code>访问</li>
+</ul>
+<p><img alt="alt text" src="../image-29.png" /></p>
+<ul>
+<li>数组大时，后者好（前者需要 i 乘 size）</li>
+<li>大小为 0 时，会无限循环（需要判断）</li>
+</ul>
+<p>实际上在编译器的优化下无区别</p>
+<hr />
+<h2 id="214-real-stuff-mips-x86">2.14 Real Stuff: MIPS &amp; x86</h2>
+<p>MIPS 和 Risc-5 的相似点：</p>
+<ul>
+<li>指令 32 位</li>
+<li>32 个目的寄存器，32个浮点寄存器</li>
+<li>内存只能用 load/save 访问</li>
+</ul>
+<p>不同点：</p>
+<ul>
+<li>分支跳转不同 MIPS 只用 slt、sltu，再用 beq、bne</li>
+</ul>
+<p><img alt="alt text" src="../image-30.png" /></p>
+<p>上图 MIPS 中，Rs2 是目的寄存器（ld 存数据到 Rs2 中，st 把 Rs2 中的数据存到内存中）</p>
+<hr />
+<p>X86：多年改进得到，兼容</p>
+<blockquote>
+<p>以 386 为例</p>
+</blockquote>
+<ul>
+<li>每条指令有两个操作符,可以在一条指令读取、计算、存回</li>
+<li>多种寻址模式</li>
+<li>指令有长有短</li>
+</ul>
 
 
 

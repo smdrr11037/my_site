@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://example.com/ads/project2_test/">
       
       
-        <link rel="prev" href="../ads_part_2/">
+        <link rel="prev" href="../ads_part_3/">
       
       
         <link rel="next" href="../../CO/CO/">
@@ -559,6 +559,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../ads_part_3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 3(开始算法分析)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -620,6 +641,15 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       下面是数据集的格式（我来处理，其他人可忽略）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      测试结果
     </span>
   </a>
   
@@ -712,6 +742,27 @@
   
   <span class="md-ellipsis">
     Chapter 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/CO_3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4
   </span>
   
 
@@ -885,7 +936,28 @@
         
   
   <span class="md-ellipsis">
-    Use sql
+    Use SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DataBase/DataBase3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced SQL
   </span>
   
 
@@ -1001,6 +1073,15 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       下面是数据集的格式（我来处理，其他人可忽略）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      测试结果
     </span>
   </a>
   
@@ -1184,6 +1265,65 @@
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>q 5 1
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>q 1 2
 </code></pre></div></p>
+<h2 id="_3">测试结果</h2>
+<blockquote>
+<p>每个数据集随机跑1000对查询，数据集大小从小到大</p>
+</blockquote>
+<p>最小堆（测了两次）
+<img alt="alt text" src="../image-32.png" /></p>
+<p><img alt="alt text" src="../image-33.png" /></p>
+<p>Bheap
+<img alt="alt text" src="../image-34.png" /></p>
+<p>斐波那契堆
+<img alt="alt text" src="../image-35.png" />
+<img alt="alt text" src="../image-36.png" /></p>
+<table>
+<thead>
+<tr>
+<th>数据集</th>
+<th>NY</th>
+<th>COL</th>
+<th>FLA</th>
+<th>LKS</th>
+<th>CTR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据大小（顶点数/边数）</td>
+<td>264,346/733,846</td>
+<td>435,666/1,057,066</td>
+<td>1,070,376/2,712,798</td>
+<td>2,758,119/6,885,658</td>
+<td>14,081,816/34,292,496</td>
+</tr>
+<tr>
+<td>最小堆</td>
+<td>48.33</td>
+<td>69.92</td>
+<td>180.80</td>
+<td>487.17</td>
+<td>2916.24</td>
+</tr>
+<tr>
+<td>二项队列</td>
+<td>201.75</td>
+<td>300.53</td>
+<td>775.29</td>
+<td>2074.68</td>
+<td>12120.90</td>
+</tr>
+<tr>
+<td>斐波那契堆</td>
+<td>229.96</td>
+<td>328.11</td>
+<td>794.29</td>
+<td>2178.04</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>ps：用时都是相应数据集上 1000 对查询的结果</p>
 
 
 

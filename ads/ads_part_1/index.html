@@ -803,6 +803,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../ads_part_3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 3(开始算法分析)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../project2_test/" class="md-nav__link">
         
   
@@ -895,6 +916,27 @@
   
   <span class="md-ellipsis">
     Chapter 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/CO_3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4
   </span>
   
 
@@ -1068,7 +1110,28 @@
         
   
   <span class="md-ellipsis">
-    Use sql
+    Use SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DataBase/DataBase3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced SQL
   </span>
   
 
@@ -1689,7 +1752,7 @@ $$</p>
 <p>树的常见势能函数：节点个数、树高···</p>
 </blockquote>
 <p>(因为报告用英文写的所以下面是英文)</p>
-<p>In tree's amortized analysis, we often use the height of tree or the amount of nodes as the potential function, which satisfy <span class="arithmatex">\(\Phi(0)\)</span> is the minimum. To make the potential function increasing slowly, we choose <span class="arithmatex">\(\Phi(T)=\sum_{i\in T}S(i)\)</span>, where S(i) is the number of descendants of i (i included). <span class="arithmatex">\(\Phi(T)\)</span> is also called rank of T, notion <span class="arithmatex">\(R(T)\)</span></p>
+<p>In tree's amortized analysis, we often use the height of tree or the amount of nodes as the potential function, which satisfy <span class="arithmatex">\(\Phi(0)\)</span> is the minimum. To make the potential function increasing slowly, we choose <span class="arithmatex">\(\Phi(T)=log{\sum_{i\in T}S(i)}\)</span>, where S(i) is the number of descendants of i (i included). <span class="arithmatex">\(\Phi(T)\)</span> is also called rank of T, notion <span class="arithmatex">\(R(T)\)</span></p>
 <blockquote>
 <p>Lemma: If <span class="arithmatex">\(a+b\leq c\)</span> </p>
 <p>then  <span class="arithmatex">\(loga+logb\leq 2logc-2\)</span></p>
@@ -1861,12 +1924,11 @@ $$
 </ol>
 <hr />
 <ul>
-<li>black height: 不算自己、不算哨兵，经过的黑色节点数</li>
+<li>black height: 不算自己、不算哨兵，从自己到叶子经过的黑色节点数</li>
 </ul>
 <blockquote>
-<p>引理：</p>
+<p>引理：有 N 个内部节点的红黑树的高不超过 2ln(N+1)</p>
 </blockquote>
-<!-- 什么引理 -->
 <p>证明：</p>
 <hr />
 <h3 id="2">2. 红黑树构造</h3>
@@ -1900,12 +1962,34 @@ $$</li>
 <p>只有一个儿子：用儿子替代他</p>
 </li>
 <li>
-<p>有两个儿子：用左子树最大的/右子树最小的替代他。</p>
+<p>有两个儿子：用左子树最大的/右子树最小的替代他（保持本身的颜色不变，替换值），再递归地删除替换的节点</p>
+</li>
+<li>
+<p>如果删除的节点（x）是红色节点，那么它不会影响红黑树的性质，可以直接删除。删除黑色节点可能会破坏红黑树的性质，因此需要进行修正。删除黑色节点时会有以下几种情况需要考虑：</p>
+<ul>
+<li>
+<p>case 1：被删除节点的兄弟节点是红色的，转换成后面的几种情况——先把兄弟节点的红色给父亲，再将兄弟节点旋转上去
+    <img alt="alt text" src="../image-60.png" /></p>
+</li>
+<li>
+<p>case 2：被删除节点的兄弟节点是黑色的，且儿子都是黑色的——先令兄弟节点为红色，如果父亲是红色，则直接删除 x，并将父亲改为黑色，就完成了调整；如果父亲是黑色，则把父亲当作新的被删除节点进行调整（只是调整方法，不用删除）
+    <img alt="alt text" src="../image-62.png" /></p>
+</li>
+<li>
+<p>case 3：被删除节点的兄弟节点是黑色的，且近侄子是红色的——将红色给兄弟，再把近侄子转到兄弟的位置（变换成 case 4）
+    <img alt="alt text" src="../image-63.png" /> </p>
+</li>
+<li>
+<p>case 4：被删除节点的兄弟节点是黑色的，且远侄子是红色的——兄弟与父亲交换颜色，再把兄弟转上来，删除 x</p>
+<p><img alt="alt text" src="../image-64.png" /></p>
 </li>
 </ul>
-<p>此时</p>
-<!--删除怎么删  -->
-
+</li>
+</ul>
+<blockquote>
+<p>具体例子</p>
+<p><img alt="alt text" src="../image-65.png" /></p>
+</blockquote>
 <h2 id="b-tree">B+ Tree</h2>
 <hr />
 <h3 id="1_1">1. 定义</h3>
@@ -1932,7 +2016,7 @@ $$</li>
 <p>保证有序/找到位置：遍历（O(n)）</p>
 </li>
 <li>
-<p>如果推到前面——可能O(n)，因此实际操作不这么做</p>
+<p>如果推到前面——可能 O(n)，因此实际操作不这么做</p>
 </li>
 </ul>
 <!-- 伪代码  -->
@@ -1942,6 +2026,8 @@ $$</li>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">}</span>
 </code></pre></div>
 <!-- 时间复杂度 -->
+
+<p>Find 的时间复杂度：O(logN)，不管度数是多少</p>
 <blockquote>
 <p>choose M: best 3 or 4</p>
 </blockquote>
@@ -1951,7 +2037,15 @@ $$</li>
 </blockquote>
 <hr />
 <h3 id="3">3. 删除过程</h3>
-<!-- 删除？ -->
+<ul>
+<li>
+<p>删除节点=&gt;若低于最低数量限制则：</p>
+<ul>
+<li>若兄弟有多余节点，则借一个，更新键值</li>
+<li>若没有，则与兄弟合并，并递归地向上操作，跟新键值</li>
+</ul>
+</li>
+</ul>
 
 
 

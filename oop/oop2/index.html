@@ -557,6 +557,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../../ads/ads_part_3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 3(开始算法分析)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../ads/project2_test/" class="md-nav__link">
         
   
@@ -649,6 +670,27 @@
   
   <span class="md-ellipsis">
     Chapter 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/CO_3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4
   </span>
   
 
@@ -817,6 +859,42 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#static-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static function?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copy-constructor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copy Constructor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespace
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -903,7 +981,28 @@
         
   
   <span class="md-ellipsis">
-    Use sql
+    Use SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DataBase/DataBase3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced SQL
   </span>
   
 
@@ -1042,6 +1141,42 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#static-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static function?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copy-constructor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copy Constructor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespace
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1101,7 +1236,11 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="err">gcc</span><span class="w"> </span><span class="err">–c</span><span class="w"> </span><span class="k">$*</span><span class="err">.c</span>
 </code></pre></div></p>
 <h2 id="initialize">Initialize</h2>
-<p><code>init()</code>：缺省函数，如果未定义，系统自动生成</p>
+<blockquote>
+<p>这个部分没分太清，都不敢 release 了（反正没人看</p>
+</blockquote>
+<p><code>init()</code>：缺省函数，如果未定义任何构造函数，系统自动生成</p>
+<p>对每个成员变量进行初始化</p>
 <p>为了确保初始化，在对象定义的时刻会用<strong>构造函数</strong>强制初始化</p>
 <p>构造函数：与类名相同的函数
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">X</span><span class="p">{</span>
@@ -1132,6 +1271,54 @@
 <blockquote>
 <p>析构函数</p>
 </blockquote>
+<div class="highlight"><span class="filename">Aggregate initialization</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">};</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">};</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="o">*</span><span class="n">c</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">struct</span><span class="w"> </span><span class="nc">x</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">f</span><span class="p">;</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2.2</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;c&#39;</span><span class="p">};</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">X</span><span class="w"> </span><span class="n">x2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1.1</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">2.2</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;b&#39;</span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="k">struct</span><span class="w"> </span><span class="nc">Y</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">f</span><span class="p">;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w"> </span><span class="p">};</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="n">Y</span><span class="w"> </span><span class="n">y1</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
+</code></pre></div>
+<p>多个同名函数 —— 编译器决定调用哪个</p>
+<p>函数的缺省值</p>
+<h2 id="static-function">Static function?</h2>
+<p>不能访问成员变量</p>
+<h2 id="copy-constructor">Copy Constructor</h2>
+<ul>
+<li>拷贝构造：<code>T::T(const T&amp;)</code></li>
+<li>没有定义拷贝构造时编译器自动生成</li>
+<li>自动生成的拷贝变量：每个成员变量自动调用拷贝函数</li>
+<li>拷贝指针的两种选择：</li>
+<li>只是拷贝了指针的值，指向的内存还是相同的（原来的内存可能被 free）</li>
+<li>把指向的内存也拷贝</li>
+</ul>
+<blockquote>
+<p>Howmany2.cpp</p>
+</blockquote>
+<p>调用拷贝构造（注意分辨 constructions 和 assignment）</p>
+<ul>
+<li>拷贝构造最好自己写，不同编译器不同</li>
+</ul>
+<p>委托？</p>
+<h2 id="static">Static</h2>
+<p>两个含义</p>
+<ul>
+<li>静态存储：地址固定</li>
+<li>静态变量：全局可见（越少越好）</li>
+</ul>
+<p>最好在函数声明时使用，全局变量不推荐使用</p>
+<p><strong>Golbal Objects</strong></p>
+<ul>
+<li>在 main 函数开始前构造</li>
+<li>在 main 函数结束后调用析构</li>
+</ul>
+<p>在类中 static 变量：所有实例共有，不额外在实例化时分配内存</p>
+<p>（不能在静态成员函数访问 static 变量）</p>
+<h2 id="namespace">Namespace</h2>
+<p>方便管理，减少冲突</p>
+<p>多文件时会自动合并</p>
 
 
 
