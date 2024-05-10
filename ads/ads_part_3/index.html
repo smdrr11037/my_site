@@ -124,16 +124,6 @@
     </div>
     <div data-md-component="announce">
       
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-            
-  最新更新：DB笔记（好杂啊😅）
-
-          </div>
-          
-        </aside>
-      
     </div>
     
     
@@ -682,6 +672,66 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#greedy-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Greedy Algorithms
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#np-completeness" class="md-nav__link">
+    <span class="md-ellipsis">
+      NP-Completeness
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#approximation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Approximation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Approximation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#approximate-bin-packing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Approximate Bin Packing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-knapsack-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Knapsack Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-k-center-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      The K-center Problem
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1015,6 +1065,48 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DataBase/DataBase5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Relational Database Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DataBase/DataBase6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage and File Structure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1183,6 +1275,66 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#greedy-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Greedy Algorithms
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#np-completeness" class="md-nav__link">
+    <span class="md-ellipsis">
+      NP-Completeness
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#approximation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Approximation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Approximation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#approximate-bin-packing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Approximate Bin Packing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-knapsack-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Knapsack Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-k-center-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      The K-center Problem
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1195,7 +1347,6 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  
                   
 
   
@@ -1620,6 +1771,128 @@ $$
 <li>负边有效（没有负的环）</li>
 <li>顺序无关</li>
 </ul>
+<h2 id="greedy-algorithms">Greedy Algorithms</h2>
+<blockquote>
+<p>活动安排问题</p>
+</blockquote>
+<p>动态规划解法：</p>
+<ul>
+<li><span class="arithmatex">\(c_{ij}\)</span> - 在第 i 个活动结束后，第 j 个活动开始前，可以选择的活动数</li>
+</ul>
+<div class="arithmatex">\[
+这是一个状态转移方程
+\]</div>
+<ul>
+<li>实际实现时，将 <span class="arithmatex">\(c_{ij}\)</span> 存起来，并记录是否访问过</li>
+</ul>
+<p>贪心策略：选择不重合、结束最早的线段</p>
+<p>正确性证明：</p>
+<ul>
+<li>贪心选出来的第一个元素可以替代最优解的第一个元素</li>
+<li>最优子结构</li>
+</ul>
+<p>一维动态规划</p>
+<div class="arithmatex">\[
+c_{1,j} = 
+\begin{cases}
+0&amp; \text{x=0}\\
+1&amp; \text{x!=0}
+\end{cases}
+\]</div>
+<ul>
+<li>
+<p>最后一个选 - 转移成选前面的</p>
+</li>
+<li>
+<p>最后一个不选 - 转移成选倒数第二个</p>
+</li>
+</ul>
+<hr />
+<blockquote>
+<p>Huffman Codes - for file compression</p>
+</blockquote>
+<p>如果只有四个字符出现——编码成两个 bit</p>
+<p>霍夫曼编码——用短的 01 串表示出现频率高的字符</p>
+<p>用树表示</p>
+<!-- 这里有个树的图 -->
+
+<p>避免某个字符的编码是另一个字符的前缀，造成混淆，因此编码规则：</p>
+<h2 id="np-completeness">NP-Completeness</h2>
+<blockquote>
+<p>Recall</p>
+<p>欧拉回路 - NPC</p>
+<p>哈密尔顿回路 - NPH</p>
+<p>最短路径 - NPC</p>
+<p>最长路径 - NPH</p>
+</blockquote>
+<p>NPH - 没有多项式时间的算法</p>
+<hr />
+<p>Eazy vs. Hard</p>
+<ul>
+<li>最简单的：O(N) - 至少读一次输入</li>
+<li>最困难的： 无解</li>
+<li>介于二者之间：NPC 和 NPH</li>
+</ul>
+<p>图灵机：</p>
+<ul>
+<li>Deterministic Turing Machine: executes one instruction at each point in time.  Then depending on the instruction, it goes to the next unique instruction.</li>
+<li>Nondeterministic Turing Machine: is free to choose its next step from a finite set.  And if one of these steps leads to a solution, it will always choose the correct one.</li>
+</ul>
+<p>定义：</p>
+<ul>
+<li>P 问题：确定性图灵机可以在多项式时间内解决的问题</li>
+<li>NP 问题：非确定性图灵机可以在多项式时间内解决的问题</li>
+</ul>
+<blockquote>
+<p>例题：假设汉密尔顿是 NP 问题，求证旅行商问题也是 NP 问题</p>
+</blockquote>
+<hr />
+<p>A Formal-language Framework —— 计算机能看懂的语言</p>
+<ul>
+<li>Abstract Problem: binary relation on a set I of problem instances and a set S of problem solutions.</li>
+<li>Map I  into a binary string { 0, 1 }*   -&gt;   Q is a concrete problem.</li>
+</ul>
+<p>complexity class co-NP = the set of languages L such that <span class="arithmatex">\(\bar L \in NP\)</span></p>
+<div class="arithmatex">\[
+L \in NP \rightarrow \bar L \in NP ?
+\]</div>
+<p>四种可能性：
+<img alt="alt text" src="../image-67.png" /></p>
+<h2 id="approximation">Approximation</h2>
+<h3 id="approximate-bin-packing">Approximate Bin Packing</h3>
+<blockquote>
+<p>Next Fit</p>
+</blockquote>
+<p>当前容器有空位——放入当前物品</p>
+<p>当前</p>
+<blockquote>
+<p>First Fit</p>
+<p>Best Fit</p>
+</blockquote>
+<p>bad case: </p>
+<div class="arithmatex">\[
+S_i = 1/7+\varepsilon
+\]</div>
+<ul>
+<li>On-line Algorithms: 来一个数据决策一个（适合生产线，无法看到数据全貌）</li>
+</ul>
+<p>定理：对任何在线算法，一定可以构造数据，使得在线算法的结果和最优结果的比至少为 5/3</p>
+<ul>
+<li>
+<p>Off-line Algorithms: 读取全部数据后再进行决策</p>
+<ul>
+<li>Bin Packing: 将数据从大到小排好序，再使用 First Fit/Best Fit</li>
+</ul>
+</li>
+</ul>
+<h3 id="the-knapsack-problem">The Knapsack Problem</h3>
+<p>fractional version</p>
+<p>0 1 version</p>
+<ul>
+<li>approximate ratio 的计算</li>
+</ul>
+<h3 id="the-k-center-problem">The K-center Problem</h3>
+<p>定理</p>
 
 
 
@@ -1632,95 +1905,7 @@ $$
 
 
 
-  <h2 id="__comments">Comments</h2>
-  <!-- Insert generated snippet here -->
-  <script src="https://giscus.app/client.js"
-        data-repo="smdrr11037/my_site"
-        data-repo-id="R_kgDOLhLJRg"
-        data-category="General"
-        data-category-id="DIC_kwDOLhLJRs4CeIOJ"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-</script>
-  <!-- Synchronize Giscus theme with palette -->
-  <script>
-    var giscus = document.querySelector("script[src*=giscus]")
-
-    // Set palette on initial load
-    var palette = __md_get("__palette")
-    if (palette && typeof palette.color === "object") {
-      var theme = palette.color.scheme === "slate"
-        ? "transparent_dark"
-        : "light"
-
-      // Instruct Giscus to set theme
-      giscus.setAttribute("data-theme", theme) 
-    }
-
-    // Register event handlers after documented loaded
-    document.addEventListener("DOMContentLoaded", function() {
-      var ref = document.querySelector("[data-md-component=palette]")
-      ref.addEventListener("change", function() {
-        var palette = __md_get("__palette")
-        if (palette && typeof palette.color === "object") {
-          var theme = palette.color.scheme === "slate"
-            ? "transparent_dark"
-            : "light"
-
-          // Instruct Giscus to change theme
-          var frame = document.querySelector(".giscus-frame")
-          frame.contentWindow.postMessage(
-            { giscus: { setConfig: { theme } } },
-            "https://giscus.app"
-          )
-        }
-      })
-    })
-  </script>
-                 
-  <script src="https://cdn.jsdelivr.net/particle.js/2.0.0/particle.min.js"></script>
-    <!-- 引入配置粒子效果的 JavaScript 文件 -->
-    <script src="/javascripts/particles-config.js"></script>
-  <style>
-    /* 可选的 CSS 样式 */
-    #imageContainer {
-        display: inline-block;
-        cursor: pointer;
-    } 
-    /* 默认情况下图片显示 */
-    img {
-            display: block;
-        }
-        
-        /* 在小屏幕上隐藏图片 */
-        @media only screen and (max-width: 600px) {
-          .hide-on-mobile {
-                display: none;
-            }
-        }
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* 使得 canvas 在最底层 */
-        }
-  </style>
-  <div id="particles-js"></div>
-  <div id="imageContainer", style="position: fixed; bottom: 20px; left: 40px;">
-    <img id="myImage" src="https://smdrr11037.github.io/my_site/javascripts/IMG_2840.PNG" class="hide-on-mobile" alt="图片1" width="200" height="200">
-  </div>
-  <script src="/javascripts/custom.js"></script>
-  
-
+                
               </article>
             </div>
           
