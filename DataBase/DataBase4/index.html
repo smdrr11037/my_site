@@ -337,16 +337,17 @@
   
   
   
-    <li class="md-tabs__item">
-      <a href="../../memoire/" class="md-tabs__link">
-        
-  
     
+    
+      <li class="md-tabs__item">
+        <a href="../../memoire/" class="md-tabs__link">
+          
   
   备忘
 
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
@@ -562,6 +563,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../../ads/ads_part_4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../ads/project2_test/" class="md-nav__link">
         
   
@@ -653,7 +675,7 @@
         
   
   <span class="md-ellipsis">
-    Chapter 2
+    Chapter 2 (Instructions)
   </span>
   
 
@@ -674,7 +696,28 @@
         
   
   <span class="md-ellipsis">
-    Chapter 4
+    Chapter 4 (Processor)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/CO_4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 5 (Memory)
   </span>
   
 
@@ -762,6 +805,48 @@
   
   <span class="md-ellipsis">
     Implementatin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/oop3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/oop4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polymorphism
   </span>
   
 
@@ -911,7 +996,49 @@
         
   
   <span class="md-ellipsis">
-    Storage and File Structure
+    Storage and Indexing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DataBase7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query Processing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DataBase8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction Management
   </span>
   
 
@@ -934,16 +1061,83 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../memoire/" class="md-nav__link">
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     备忘
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            备忘
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memoire/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Matlab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matlab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1116,10 +1310,17 @@
 <!-- 一个例子 -->
 
 <p><strong>Summary of Symbols</strong></p>
+<p><img alt="alt text" src="../image-16.png" /></p>
 <h2 id="design-of-an-e-r-database-schema">Design of an E-R Database Schema</h2>
 <blockquote>
 <p>将 E-R 图转换为表</p>
 </blockquote>
+<ul>
+<li>多值属性变成两张表</li>
+<li>弱实体的联系的表是多余的</li>
+<li>多对多之间的关系 - 双方的 key + 关系属性变成一张表</li>
+<li>多对一 - 在上一条的基础上，把关系的表合并到多这一端</li>
+</ul>
 <h1 id="relational-database-design">Relational Database Design</h1>
 <h2 id="first-normal-form">First Normal Form</h2>
 <p>Domain is atomic if its elements are considered to be indivisible units. </p>

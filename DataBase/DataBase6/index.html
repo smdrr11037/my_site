@@ -14,7 +14,7 @@
         <link rel="prev" href="../DataBase5/">
       
       
-        <link rel="next" href="../../memoire/">
+        <link rel="next" href="../DataBase7/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Storage and File Structure - smdrr's note</title>
+        <title>Storage and Indexing - smdrr's note</title>
       
     
     
@@ -152,7 +152,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Storage and File Structure
+              Storage and Indexing
             
           </span>
         </div>
@@ -343,16 +343,17 @@
   
   
   
-    <li class="md-tabs__item">
-      <a href="../../memoire/" class="md-tabs__link">
-        
-  
     
+    
+      <li class="md-tabs__item">
+        <a href="../../memoire/" class="md-tabs__link">
+          
   
   备忘
 
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
@@ -568,6 +569,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../../ads/ads_part_4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../ads/project2_test/" class="md-nav__link">
         
   
@@ -659,7 +681,7 @@
         
   
   <span class="md-ellipsis">
-    Chapter 2
+    Chapter 2 (Instructions)
   </span>
   
 
@@ -680,7 +702,28 @@
         
   
   <span class="md-ellipsis">
-    Chapter 4
+    Chapter 4 (Processor)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/CO_4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 5 (Memory)
   </span>
   
 
@@ -768,6 +811,48 @@
   
   <span class="md-ellipsis">
     Implementatin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/oop3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/oop4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polymorphism
   </span>
   
 
@@ -924,14 +1009,12 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   <span class="md-ellipsis">
-    Storage and File Structure
+    Storage and Indexing
   </span>
   
 
@@ -942,7 +1025,7 @@
         
   
   <span class="md-ellipsis">
-    Storage and File Structure
+    Storage and Indexing
   </span>
   
 
@@ -954,8 +1037,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -964,6 +1045,25 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#storage-and-file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage and File Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage and File Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-physical-storage-media" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of Physical Storage Media
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#physical-storage-media" class="md-nav__link">
     <span class="md-ellipsis">
       Physical Storage Media
@@ -971,8 +1071,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#magnetic-disks" class="md-nav__link">
     <span class="md-ellipsis">
       Magnetic Disks
@@ -980,8 +1080,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#raid-levels" class="md-nav__link">
     <span class="md-ellipsis">
       RAID Levels
@@ -989,8 +1089,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#storage-access" class="md-nav__link">
     <span class="md-ellipsis">
       Storage Access
@@ -998,13 +1098,78 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#application-program-interfacesql" class="md-nav__link">
+  <a href="#indexing-and-hashing" class="md-nav__link">
     <span class="md-ellipsis">
-      Application Program Interface(SQL)
+      Indexing and Hashing
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Indexing and Hashing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Concepts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordered-indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordered Indices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-tree-index-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      B+ Tree Index Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-optimized-indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write-optimized Indices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-definition-in-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Index Definition in SQL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1012,6 +1177,48 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DataBase7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query Processing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DataBase8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction Management
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1030,16 +1237,83 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../memoire/" class="md-nav__link">
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     备忘
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            备忘
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memoire/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Matlab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matlab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1101,8 +1375,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1111,6 +1383,25 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#storage-and-file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage and File Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage and File Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-physical-storage-media" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of Physical Storage Media
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#physical-storage-media" class="md-nav__link">
     <span class="md-ellipsis">
       Physical Storage Media
@@ -1118,8 +1409,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#magnetic-disks" class="md-nav__link">
     <span class="md-ellipsis">
       Magnetic Disks
@@ -1127,8 +1418,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#raid-levels" class="md-nav__link">
     <span class="md-ellipsis">
       RAID Levels
@@ -1136,8 +1427,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#storage-access" class="md-nav__link">
     <span class="md-ellipsis">
       Storage Access
@@ -1145,13 +1436,78 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#application-program-interfacesql" class="md-nav__link">
+  <a href="#indexing-and-hashing" class="md-nav__link">
     <span class="md-ellipsis">
-      Application Program Interface(SQL)
+      Indexing and Hashing
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Indexing and Hashing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Concepts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordered-indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordered Indices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-tree-index-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      B+ Tree Index Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-optimized-indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write-optimized Indices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-definition-in-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Index Definition in SQL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1173,8 +1529,11 @@
   
 
 
-<h1 id="storage-and-file-structure">Storage and File Structure</h1>
-<h2 id="physical-storage-media">Physical Storage Media</h2>
+  <h1>Storage and Indexing</h1>
+
+<h2 id="storage-and-file-structure">Storage and File Structure</h2>
+<h3 id="overview-of-physical-storage-media">Overview of Physical Storage Media</h3>
+<h3 id="physical-storage-media">Physical Storage Media</h3>
 <p>重要属性：</p>
 <ul>
 <li>读写速度</li>
@@ -1187,7 +1546,27 @@
 <blockquote>
 <p>vollatile: 易失</p>
 </blockquote>
-<h2 id="magnetic-disks">Magnetic Disks</h2>
+<p>Storage media 分类</p>
+<ul>
+<li>Primary storage: Fastest media but volatile (cache, main memory). </li>
+<li>Secondary storage (辅助存储器，联机存储器): next level in hierarchy, non-volatile, moderately fast access time <ul>
+<li>Also called on-line storage </li>
+<li>E.g., flash memory, magnetic disks </li>
+</ul>
+</li>
+<li>Tertiary storage (三级存储器，脱机存储器): lowest level in hierarchy, non-volatile, slow access time <ul>
+<li>also called off-line storage </li>
+<li>E.g., magnetic tape, optical storage </li>
+</ul>
+</li>
+</ul>
+<p>以可靠性分类：</p>
+<ul>
+<li>断电易失存储器 - DDR2、SDR 等</li>
+<li>断电不易失存储 - Includes secondary and tertiary storage, as well as batter-backed up main-memory. </li>
+</ul>
+<p>以速度分类 - 即多层次存储的每一层</p>
+<h3 id="magnetic-disks">Magnetic Disks</h3>
 <ul>
 <li>
 <p>数据传输请求到传输开始的时间 = Seek time(寻道时间) +  Rotational latency(旋转等待时间) </p>
@@ -1202,13 +1581,13 @@
 <p>Data-transfer rate</p>
 </li>
 </ul>
-<h2 id="raid-levels">RAID Levels</h2>
+<h3 id="raid-levels">RAID Levels</h3>
 <ul>
 <li>Level 1: 将数据备份一份</li>
 <li>Level 5: 五块硬盘，轮流作为其他数据的异或结果，有效存储空间为四块。损坏一块可以用其他块恢复</li>
 </ul>
 <p>数据库一般用 RAID 1，RAID 5 用于数据量特别大的情况</p>
-<h2 id="storage-access">Storage Access</h2>
+<h3 id="storage-access">Storage Access</h3>
 <p>包（block）是读取的基本单元</p>
 <p>Buffer-Replacement(缓冲区不够，需要将原有的 block 替换)的两种策略：</p>
 <ul>
@@ -1219,7 +1598,64 @@
 <li>MRU(Most Recently Used，最近常用使用策略)</li>
 </ul>
 <p>Pinned block (被钉住的块): Memory block that is not allowed to be written back to disk. (如当前块正在被使用时) </p>
-<h2 id="application-program-interfacesql">Application Program Interface(SQL)</h2>
+<ul>
+<li>行存：需要经常改动时最好使用</li>
+<li>
+<p>列存：比较关注一个属性时好用</p>
+</li>
+<li>
+<p>OLTP</p>
+</li>
+<li>OATP</li>
+</ul>
+<h2 id="indexing-and-hashing">Indexing and Hashing</h2>
+<h3 id="basic-concepts">Basic Concepts</h3>
+<p>index（索引）</p>
+<ul>
+<li>目的：加速找到想要的数据</li>
+<li>search key：用于查找记录的属性或属性集合</li>
+<li>
+<p>索引文件的数据结构：</p>
+<p><img alt="alt text" src="../image-8.png" /></p>
+</li>
+</ul>
+<p>不同情况的访问：</p>
+<ul>
+<li>特定某一行</li>
+<li>Between</li>
+</ul>
+<blockquote>
+<p>哈希不适合 between 的情况，顺序索引适合</p>
+</blockquote>
+<ul>
+<li>额外开销：Access time、Insertion time、Deletion time、Space overhead</li>
+<li>
+<p>牺牲写性能，极大加快查找性能</p>
+</li>
+<li>
+<p>顺序索引：search key 排列好</p>
+</li>
+<li>散列索引：search key 用 hash 方法查找</li>
+</ul>
+<h3 id="ordered-indices">Ordered Indices</h3>
+<p>稠密（Dense）索引：每条记录的 key 都存在索引文件里</p>
+<p>稀疏（Sparse）索引：只存部分 key</p>
+<ul>
+<li>当索引文件很大，稠密索引需要多次读入时，稀疏索引更有优势</li>
+</ul>
+<p>二级索引</p>
+<ul>
+<li>seek 耗时大，可能用索引比不用慢</li>
+</ul>
+<h3 id="b-tree-index-files">B+ Tree Index Files</h3>
+<blockquote>
+<p>解决溢出问题</p>
+<p>B 树</p>
+</blockquote>
+<h3 id="hash">Hash</h3>
+<h3 id="write-optimized-indices">Write-optimized Indices</h3>
+<p>用树、删除标记和多层存储优化写操作</p>
+<h3 id="index-definition-in-sql">Index Definition in SQL</h3>
 
 
 

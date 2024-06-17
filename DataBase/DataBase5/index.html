@@ -343,16 +343,17 @@
   
   
   
-    <li class="md-tabs__item">
-      <a href="../../memoire/" class="md-tabs__link">
-        
-  
     
+    
+      <li class="md-tabs__item">
+        <a href="../../memoire/" class="md-tabs__link">
+          
   
   备忘
 
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
@@ -568,6 +569,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../../ads/ads_part_4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../ads/project2_test/" class="md-nav__link">
         
   
@@ -659,7 +681,7 @@
         
   
   <span class="md-ellipsis">
-    Chapter 2
+    Chapter 2 (Instructions)
   </span>
   
 
@@ -680,7 +702,28 @@
         
   
   <span class="md-ellipsis">
-    Chapter 4
+    Chapter 4 (Processor)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/CO_4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 5 (Memory)
   </span>
   
 
@@ -768,6 +811,48 @@
   
   <span class="md-ellipsis">
     Implementatin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/oop3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/oop4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polymorphism
   </span>
   
 
@@ -1034,7 +1119,49 @@
         
   
   <span class="md-ellipsis">
-    Storage and File Structure
+    Storage and Indexing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DataBase7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query Processing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DataBase8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction Management
   </span>
   
 
@@ -1057,16 +1184,83 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../memoire/" class="md-nav__link">
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     备忘
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            备忘
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memoire/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Matlab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matlab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1234,6 +1428,38 @@
 <p>一般情况下，范式数越大，设计越严格</p>
 </blockquote>
 <h2 id="first-normal-form">First Normal Form</h2>
+<ul>
+<li>原子性：属性不可分割</li>
+</ul>
+<blockquote>
+<p>Examples of non-atomic domains: </p>
+<p>Composite attributes --- set of names (first name &amp; last name)</p>
+<p>Multi-value attribute --- a person’s phones </p>
+<p>Complex data type--- object-oriented </p>
+</blockquote>
+<ul>
+<li>如果 R 的所有属性域都是原子的，则关系模式 R 采用第一范式 （1NF）。</li>
+<li>第一范式是关系数据库的必要条件</li>
+</ul>
+<p>如何处理非原子性的属性：</p>
+<ul>
+<li>复合属性 --- 用多个属性代替</li>
+<li>
+<p>多值属性</p>
+<ul>
+<li>Use multi fields, e.g., person(pname, …, phon1, phon2, phon3, …); </li>
+<li>Use a separate table, e.g., phone(pname, phone); </li>
+<li>Use a single field, e.g., person(pname, …, phones, …) (phones字段可能存储多个电话号码，用逗号或其他分隔符隔开)</li>
+<li>Drawback: 存储复杂、冗余，不易于查询</li>
+</ul>
+</li>
+</ul>
+<p>实际上，原子性是一个属性中的元素如何被使用</p>
+<blockquote>
+<p>字符串一般被认为不可分割</p>
+<p>如果学号是 CS0012 or EE1127，前面两位用以提取找到部门</p>
+<p>则这个属性不是原子性的（bad idea）</p>
+</blockquote>
 <h2 id="pitfalls-in-relational-database-design">Pitfalls in Relational Database Design</h2>
 <h2 id="functional-dependencies">Functional Dependencies</h2>
 <h2 id="decomposition">Decomposition</h2>
@@ -1253,6 +1479,26 @@
 <blockquote>
 <p>近似于第 3.5 范式</p>
 </blockquote>
+<div class="highlight"><span class="filename">构造 BC 范式的伪代码</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nl">result</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">R</span><span class="p">};</span><span class="w"> </span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nl">done</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">compute</span><span class="w"> </span><span class="n">F</span><span class="o">+</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">not</span><span class="w"> </span><span class="n">done</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">there</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">schema</span><span class="w"> </span><span class="n">Ri</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">BCNF</span><span class="p">)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="c1">// Ri has a nontrivial FD a-&gt;b, a is not a key</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="n">then</span><span class="w"> </span><span class="n">begin</span><span class="w"> </span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">            </span><span class="n">let</span><span class="w"> </span><span class="n">a</span><span class="o">-&gt;</span><span class="n">b</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">nontrivial</span><span class="w"> </span><span class="n">functional</span><span class="w"> </span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">            </span><span class="n">dependency</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">holds</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">Ri</span><span class="w"> </span><span class="n">such</span><span class="w"> </span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">            </span><span class="n">that</span><span class="w"> </span><span class="n">a</span><span class="o">-&gt;</span><span class="n">Ri</span><span class="w"> </span><span class="n">Ri</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">F</span><span class="o">+</span><span class="p">,</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="err"></span><span class="w"> </span><span class="err"></span><span class="w"> </span><span class="err"></span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err"></span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">            </span><span class="nl">result</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="n">Ri</span><span class="p">)</span><span class="w">  </span><span class="p">(</span><span class="err"></span><span class="p">,</span><span class="w"> </span><span class="err"></span><span class="p">)</span><span class="w"> </span><span class="err"></span><span class="w"> </span><span class="p">(</span><span class="n">Ri</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="err"></span><span class="p">);</span><span class="w"> </span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">                    </span><span class="n">end</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">                        </span><span class="k">else</span><span class="w"> </span><span class="n">done</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span>
+</code></pre></div>
+<blockquote>
+<p>分解的目的（不一定能同时满足）</p>
+<p>无损连接（Lossless join）</p>
+<p>BC 范式</p>
+<p>依赖保持（Dependency preservation） </p>
+</blockquote>
 <h2 id="third-normal-form">Third Normal Form</h2>
 <ul>
 <li>
@@ -1269,20 +1515,20 @@ Note: each attribute may be in a different candidate key. </li>
 <p>Example: R = (J,K,L)   F = (JK <span class="arithmatex">\(\rightarrow\)</span> L, L <span class="arithmatex">\(\rightarrow\)</span> K)</p>
 <p>J: student, K: course, L: teacher (一门有多个教师,一个教师上一门课, 一个学生选多门课, 一门课有多个学生选) </p>
 </blockquote>
-<div class="highlight"><span class="filename">构造第三范式的伪代码</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Let</span><span class="w"> </span><span class="n">Fc</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">canonical</span><span class="w"> </span><span class="n">cover</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">F</span><span class="p">;</span><span class="w"> </span><span class="c1">// 正则覆盖</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nl">i</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">functional</span><span class="w"> </span><span class="n">dependency</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">Fc</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="p">{</span><span class="k">if</span><span class="w"> </span><span class="n">none</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">schemas</span><span class="w"> </span><span class="n">Rj</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">contains</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">          </span><span class="n">then</span><span class="w"> </span><span class="n">begin</span><span class="w"> </span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">            </span><span class="nl">i</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// 将Fc中的每个 a -&gt; b 分解为子模式Ri := (a, b), </span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">            </span><span class="nl">Ri</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="c1">// 从而保证 dependency-preserving. </span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">          </span><span class="n">end</span><span class="p">}</span><span class="w"> </span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">if</span><span class="w"> </span><span class="n">none</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">schemas</span><span class="w"> </span><span class="n">Rj</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">contains</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">candidate</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">then</span><span class="w"> </span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">begin</span><span class="w"> </span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nl">i</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="nl">Ri</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">any</span><span class="w"> </span><span class="n">candidate</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">R</span><span class="p">;</span><span class="w"> </span><span class="c1">// 保证至少在一个Ri中存在R的候选码, 从而保证 lossless-join. </span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">end</span><span class="w"> </span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">R1</span><span class="p">,</span><span class="w"> </span><span class="n">R2</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="n">Ri</span><span class="p">)</span><span class="w"> </span>
+<div class="highlight"><span class="filename">构造第三范式的伪代码</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">Let</span><span class="w"> </span><span class="n">Fc</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">canonical</span><span class="w"> </span><span class="n">cover</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">F</span><span class="p">;</span><span class="w"> </span><span class="c1">// 正则覆盖（函数依赖的最简洁形式）</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nl">i</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">functional</span><span class="w"> </span><span class="n">dependency</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">Fc</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="p">{</span><span class="k">if</span><span class="w"> </span><span class="n">none</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">schemas</span><span class="w"> </span><span class="n">Rj</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">contains</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">          </span><span class="n">then</span><span class="w"> </span><span class="n">begin</span><span class="w"> </span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">            </span><span class="nl">i</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// 将Fc中的每个 a -&gt; b 分解为子模式Ri := (a, b), </span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">            </span><span class="nl">Ri</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="c1">// 从而保证 dependency-preserving. </span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">          </span><span class="n">end</span><span class="p">}</span><span class="w"> </span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="k">if</span><span class="w"> </span><span class="n">none</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">schemas</span><span class="w"> </span><span class="n">Rj</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">contains</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">candidate</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">then</span><span class="w"> </span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">begin</span><span class="w"> </span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nl">i</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="nl">Ri</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">any</span><span class="w"> </span><span class="n">candidate</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">R</span><span class="p">;</span><span class="w"> </span><span class="c1">// 保证至少在一个Ri中存在R的候选码, 从而保证 lossless-join. </span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">end</span><span class="w"> </span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">R1</span><span class="p">,</span><span class="w"> </span><span class="n">R2</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="n">Ri</span><span class="p">)</span><span class="w"> </span>
 </code></pre></div>
 <blockquote>
 <p>Example: For a relation schema R(A, B, C, D) with F = {AB -&gt; C, C -&gt; D, D -&gt; A}. </p>
