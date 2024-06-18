@@ -803,6 +803,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#performence" class="md-nav__link">
+    <span class="md-ellipsis">
+      衡量 performence
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -829,6 +838,27 @@
   
   <span class="md-ellipsis">
     Chapter 5 (Memory)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CO_5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6 (I/O)
   </span>
   
 
@@ -967,6 +997,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/oop5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Encapsulation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1066,6 +1117,27 @@
   
   <span class="md-ellipsis">
     Advanced SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DataBase/DataBase4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    E-R Model
   </span>
   
 
@@ -1374,6 +1446,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#performence" class="md-nav__link">
+    <span class="md-ellipsis">
+      衡量 performence
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1549,18 +1630,57 @@
 </li>
 </ul>
 <h2 id="_1">流水线</h2>
+<blockquote>
+<p>不是提升一条指令的速度，而是增加部件利用率，提升 Throughput</p>
+<p><img alt="alt text" src="../image-87.png" /></p>
+</blockquote>
 <p>每个阶段之间加一个缓冲器，记录所需的所有信息</p>
+<ul>
+<li><strong>Data</strong> need to be used in the next stages.</li>
+<li><strong>Control signals</strong> need to be used in the next stages</li>
+<li><strong>Debug info</strong> when used in duration of desig</li>
+</ul>
+<p>由于缓冲器 latch 有 cost、需要 area，因此不是阶段越多越好</p>
+<ul>
+<li>Machine cycle &gt; latch latency + clock skew</li>
+</ul>
+<blockquote>
+<p>时钟偏斜是指在同一时钟信号下，不同部件或电路的响应时间不同，导致它们在同一时刻接收到的时钟信号不完全同时</p>
+</blockquote>
+<hr />
+<p>影响流水线性能的因素：</p>
+<ul>
+<li>Latency - 每条指令的执行时间反而延长（latch 的准备时间</li>
+<li>Imbalance - 不同阶段时间不同，需要取最长的阶段</li>
+<li>Overhead - 寄存器延迟和时钟偏斜导致的开销增加</li>
+<li>Hazard</li>
+<li>填充流水线和清空流水线的时间</li>
+</ul>
 <h3 id="hazard">Hazard——冒险</h3>
 <ul>
 <li>Structure hazard: 竞争硬件资源<ul>
 <li>将指令和 data memory 分开</li>
 <li>备份硬件</li>
-<li>先读后写的约束</li>
+<li>前半个时钟周期写 reg，后半个读</li>
 <li>不管（概率小）</li>
 </ul>
 </li>
-<li>Data hazard: 需要等待前一条指令执行完</li>
 </ul>
+<blockquote>
+<p>浮点数乘法器需要多个周期，可能需要一直等待，可以分成多个部件分阶段执行</p>
+</blockquote>
+<ul>
+<li>Data hazard: 需要等待前一条指令执行完<ul>
+<li>前递</li>
+</ul>
+</li>
+<li>Control hazard: contrl action 依赖于前一条指令（比如跳转时</li>
+</ul>
+<blockquote>
+<p>上面的所有问题都可以用两个 stall 解决</p>
+<p>add extra hardware to detect stall situations</p>
+</blockquote>
+<p>有时候不处理冒险，因为会造成额外开销、本身出现少，可以降低 Latency</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// x19 在连续两条指令中使用</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nf">add</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">x1</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nf">sub</span><span class="w"> </span><span class="no">x2</span><span class="p">,</span><span class="w"> </span><span class="no">x19</span><span class="p">,</span><span class="w"> </span><span class="no">x3</span>
@@ -1604,6 +1724,12 @@
 <li>n 是填充流水线所需的时钟周期数，</li>
 <li>(k−1) 是所有指令进入流水线后，最后一条指令完成所需的额外时钟周期数</li>
 </ul>
+<h3 id="performence">衡量 performence</h3>
+<p><img alt="alt text" src="../image-88.png" /></p>
+<blockquote>
+<p>The ideal CPI on a pipelined processor is almost always 1</p>
+</blockquote>
+<p><img alt="alt text" src="../image-89.png" /></p>
 
 
 

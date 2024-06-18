@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://example.com/DataBase/DataBase/">
       
       
-        <link rel="prev" href="../../oop/oop4/">
+        <link rel="prev" href="../../oop/oop5/">
       
       
         <link rel="next" href="../DataBase2/">
@@ -733,6 +733,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/CO_5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6 (I/O)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -853,6 +874,27 @@
   
   <span class="md-ellipsis">
     Polymorphism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/oop5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Encapsulation
   </span>
   
 
@@ -1048,6 +1090,27 @@
   
   <span class="md-ellipsis">
     Advanced SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DataBase4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    E-R Model
   </span>
   
 
@@ -1377,7 +1440,7 @@
 <li>数据库：长期存储在计算机内、有组织的、可共享的数据集合</li>
 <li>数据库系统（DBMS）：数据库 + 可对其进行操作的程序</li>
 <li>DBMS的特征</li>
-<li><strong>数据访问</strong>高效、稳定、可扩展</li>
+<li><strong>数据访问</strong>高效、稳定、可扩展（Efficiency and scalability in data access. ）</li>
 <li>缩短应用的开发时间</li>
 <li>数据独立性（physical 和 logical）</li>
 <li>数据完整性和安全性</li>
@@ -1391,8 +1454,13 @@
 </ul>
 <p>Drawbacks of File-Processing System </p>
 <ul>
-<li>数据冗余、不一致</li>
+<li>数据冗余、不一致 - 多种文件格式，多个文件存储相同信息</li>
+<li>访问数据困难 - 需要给每个 task 写 program</li>
+<li>数据孤立（多个文件和多种格式）- 难以取回和共享</li>
+<li>完整性问题 - 完整性约束（例如，帐户余额&gt; 0）成为程序代码的一部分，难以添加新约束或更改现有约束</li>
+<li>没有更新的原子性 - 如改动两个文件，转移账户余额，如果其中一个操作失败，状态不一致</li>
 <li>并发处理困难</li>
+<li>数据安全性 - Right person uses right data</li>
 </ul>
 <h3 id="view">View</h3>
 <ul>
@@ -1422,30 +1490,58 @@
 <h2 id="lecture-2-relational-model">Lecture 2: Relational Model</h2>
 <blockquote>
 <p>relationship - entities 之间的关系</p>
-<p>relation - 描述 table</p>
+<p>relation - a table with rows and columns</p>
+<p>relational database - a collection of one or more relations (based on the relational model)</p>
 </blockquote>
+<p><img alt="alt text" src="../image-26.png" /></p>
 <h4 id="structure-of-relational-databases">Structure of Relational Databases</h4>
 <p>基本结构：笛卡尔积
-    <img alt="alt text" src="../image-1.png" />{width=400px}
-  * 可用二维表表示
-  * 反映特定意义的子集就是<strong>关系</strong>，例如：
-  <img alt="alt text" src="../image-3.png" />{width=300px}
+  <img alt="alt text" src="../image-1.png" />{width=400px}
+* 可用二维表表示
+* 反映特定意义的子集就是<strong>关系</strong>，例如：
+<img alt="alt text" src="../image-3.png" />{width=300px}
 * 导师——属性（attribute）
-  * 属性值——原子性（不可分割）
-  * 所有可取的值——域</p>
+    * 属性值——原子性（不可分割）
+    * 所有可取的值——域</p>
 <!-- Relation schema 待补充 -->
 
-<p>Key
-* 可以唯一确定关系中另一个属性的值的<strong>属性</strong>
-  * 例如知道学号可以确定学生，学号是key</p>
-<!-- 类型 -->
+<hr />
+<p>Key</p>
 <ul>
-<li>Foreign Key（外键）</li>
-<li>在当前表不能唯一确定，但在另一张表可以<ul>
-<li>专业号不能确定学生，但在另一张{专业号，专业}的表里可以确定专业</li>
+<li>
+<p>可以唯一确定关系中另一个属性的值的<strong>属性</strong></p>
+<ul>
+<li>例如知道学号可以确定学生，学号是key</li>
+</ul>
+</li>
+<li>
+<p>superkey (超码) - 可以唯一确定一组 turple 的属性</p>
+<ul>
+<li>both {ID} and {ID, name} are superkeys of the relation instructor</li>
+</ul>
+</li>
+<li>
+<p>candidate key (候选码) - 最小的 superkey</p>
+</li>
+<li>
+<p>primary key (主码) - 被用户显示确定的 candidate key，通常在下方画横线标识</p>
+</li>
+<li>
+<p>Foreign Key（外键）</p>
+<ul>
+<li>在当前表不能唯一确定，但在另一张表可以<blockquote>
+<p>专业号不能确定学生，但在另一张{专业号，专业}的表里可以确定专业</p>
+</blockquote>
+</li>
+<li>{学生，专业号} 这张表被称为 referencing relation (参照关系)，{专业号，专业} 这张表被称为 referenced relation (被参照关系)。</li>
 </ul>
 </li>
 </ul>
+<blockquote>
+<p>参照关系中外码的值必须在被参照关系中实际存在, 或为null。 </p>
+<p>Primary key and foreign key are integrated constraints</p>
+</blockquote>
+<hr />
 <h4 id="fundamental-relational-algebra-operations">Fundamental Relational-Algebra Operations</h4>
 <p>6个基本操作：收到1-2个表，返回一个<strong>表</strong>
 * Select      选择 （横向切割）
@@ -1474,6 +1570,7 @@
 <ul>
 <li>改名的用处</li>
 </ul>
+<hr />
 <h4 id="additional-relational-algebra-operations">Additional Relational-Algebra Operations</h4>
 <p>Four basic operators</p>
 <ul>
@@ -1505,6 +1602,7 @@
 <ul>
 <li>优先级：单目&gt;多目，乘除&gt;加减</li>
 </ul>
+<hr />
 <h4 id="extended-relational-algebra-operations">Extended Relational-Algebra Operations</h4>
 <p>Generalized Projection: 广义投影
 * 可以用代数运算产生一个新属性</p>

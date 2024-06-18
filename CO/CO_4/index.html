@@ -14,7 +14,7 @@
         <link rel="prev" href="../CO_3/">
       
       
-        <link rel="next" href="../../oop/oop/">
+        <link rel="next" href="../CO_5/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -852,15 +852,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fastmath" class="md-nav__link">
-    <span class="md-ellipsis">
-      FastMATH
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#memory-protection" class="md-nav__link">
     <span class="md-ellipsis">
       Memory Protection
@@ -905,6 +896,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CO_5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6 (I/O)
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1039,6 +1051,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/oop5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Encapsulation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1138,6 +1171,27 @@
   
   <span class="md-ellipsis">
     Advanced SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DataBase/DataBase4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    E-R Model
   </span>
   
 
@@ -1474,15 +1528,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fastmath" class="md-nav__link">
-    <span class="md-ellipsis">
-      FastMATH
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#memory-protection" class="md-nav__link">
     <span class="md-ellipsis">
       Memory Protection
@@ -1691,17 +1736,35 @@
 </blockquote>
 <p>We use <strong>CPU time</strong> to measure cache performance.</p>
 <ul>
-<li>CPU tim = (CPU execution clock cycles + Memory-stall clock cycles) × Clock cycle time</li>
+<li>CPU time = (CPU execution clock cycles + Memory-stall clock cycles) × Clock cycle time = I × CPI × Clock cycle time</li>
 <li>Memory-stall clock cycles = Read-stall cycles + Write-stall cycles</li>
+<li>通常情况下 Read-stall cycles 和 Write 相同，Memory-stall clock cycles = access memory 的指令比率 × Miss rate × Miss penalty</li>
 </ul>
-<!-- tobe finish -->
-
+<blockquote>
+<p>如果加快时钟频率为原来的两倍，miss penalty 的时钟数也要变为两倍</p>
+</blockquote>
+<p><strong>Average Access Time</strong> (AMAT)</p>
+<ul>
+<li>AMAT = Hit time + Miss rate × Miss penalt</li>
+<li>多级存储情况下 - AMAT = L1 访问时间 + L1 未命中率 × (L2 访问时间 + L2 未命中率 × 主存访问时间)</li>
+</ul>
+<blockquote>
+<p>总结：CPU 提升越大，miss rate 和 cache 性能影响越大</p>
+</blockquote>
+<hr />
 <p>Replacement Policy</p>
+<ul>
+<li>一路组相联 - direct-mapped</li>
+<li>一组组相联 - fully-associative</li>
+<li>组相联实现需要的额外的门 - 下面的四路需要 4 comparators and a 4-to-1 multiplexor</li>
+</ul>
+<p><img alt="alt text" src="../image-84.png" /></p>
 <ul>
 <li>LRU: 替换掉最不常用的</li>
 <li>Random</li>
 <li>性能差不多</li>
 </ul>
+<hr />
 <p>Multilevel Caches</p>
 <blockquote>
 <p>多级缓存 - 减少缺失的数据量</p>
@@ -1712,22 +1775,98 @@
 <li>缺失率在二级缓存大大降低</li>
 </ul>
 <p>性能改善：(计算 CPI 比较)</p>
-<!-- tobe finish -->
-
+<blockquote>
+<p>primary cache, 2% miss, miss penalty 5 ns</p>
+<p>secondary cache, 0.5% miss, miss penalty 100 ns</p>
+<p>clock 5GHz, CPI without stall 1.0</p>
+</blockquote>
+<ul>
+<li>每个 clock = 1/5 = 0.2 ns</li>
+<li>只有一级 cache - CPI = 1.0 + 2% * 100/0.2 = 11</li>
+<li>两级 - CPI = 1.0 + 2% * 5/0.2 + 0.5% * 100/0.2 = 4.0</li>
+<li>后者速度是前者的 2.8 倍</li>
+</ul>
+<hr />
 <p>Advanced CPU</p>
 <ul>
-<li>乱序处理器</li>
+<li>乱序处理器可以在 cache miss 时继续执行指令，与该缓存未命中相关的存储操作会留在加载/存储单元，受 miss 的 load/store 影响的指令在 reservation stations 等待，独立的指令继续执行 </li>
+<li>miss 的影响取决于具体的程序，很难分析（系统仿真工具）</li>
 </ul>
-<p>与软件交互：</p>
+<hr />
+<p>Software Optimization via Blocking</p>
+<ul>
+<li>目标：在块被替换之前最大程度利用它</li>
+</ul>
+<!-- 感觉这块不重要 -->
+
 <blockquote>
 <p>排序算法</p>
-<p>矩阵乘法（分块思想）</p>
+<p>矩阵乘法（分块思想）DGEMM</p>
 </blockquote>
+<hr />
 <h2 id="55-dependable-memory-hierarchy">5.5 Dependable Memory Hierarchy</h2>
+<ul>
+<li>Reliability: mean time to failure (MTTF)</li>
+<li>Service interruption: mean time to repair (MTTR)</li>
+<li>Mean time between failures - MTBF = MTTF + MTTR</li>
+<li>Availability = MTTF / (MTTF + MTTR)</li>
+<li>improve Availability - 减少 fault 的发生（增加 MTTF）或提升修复工具（缩短 MTTR）</li>
+</ul>
+<p>The Hamming SEC Code</p>
+<ul>
+<li>Hamming distance - 两个部分在相同位置上不同 bit 的数量</li>
+<li>最小汉明距离 = 2 - 可以检验错误<ul>
+<li>奇偶校验码就是（序列出错后一定有一位不同，加上校验位一定至少两位不同）</li>
+</ul>
+</li>
+<li>最小距离 = 3 - 提供单比特错误纠正，双比特错误检测</li>
+</ul>
+<p>编码 SEC：</p>
+<ul>
+<li>最左边的 bit 是 1，给每个 bit 编码 1、2、3 ...</li>
+<li>校验位的位置通常选为 2 的幂次位置（即 1, 2, 4, 8, ...）。其余位置用于放置数据位。</li>
+<li>对应的奇偶校验码根据下图标记的位数生成</li>
+</ul>
+<p><img alt="alt text" src="../image-85.png" /></p>
+<p>解码 SEC：</p>
+<!-- 这里感觉不重要，没仔细看 -->
+
+<ul>
+<li>重新计算校验位 H</li>
+<li><img alt="alt text" src="../image-86.png" /></li>
+</ul>
+<hr />
 <h2 id="56-virtual-machines">5.6 Virtual Machines</h2>
 <blockquote>
 <p>主机模拟不同的操作系统 &amp; machine source</p>
 </blockquote>
+<ul>
+<li>改善对多个客操作系统的隔离</li>
+<li>避免安全性和可靠性问题</li>
+<li>有助于资源共享</li>
+<li>但是对性能有影响（现代高性能计算机可行</li>
+</ul>
+<p>Virtual Machine Monitor（虚拟机管理程序）</p>
+<ul>
+<li>将虚拟资源映射到物理资源 - 内存、I/O设备、CPU</li>
+<li>客体代码在本机的用户模式下运行 - 在执行特权指令和访问受保护资源时 trap 到 VMM</li>
+<li>客体操作系统可以与主机操作系统不同</li>
+<li>VMM 处理实际的I/O设备 - 为客体仿真通用的虚拟I/O设备</li>
+</ul>
+<hr />
+<p>以 timer interrupt 为例</p>
+<ul>
+<li>主机 - 操作系统挂起当前程序，处理中断，决定下一个程序</li>
+<li>VM - VMM 挂起当前 VM，处理中断，决定下一个 VM</li>
+<li>VMM 怎么发起 timer interrupt：emulates a virtual timer, emulates interrupt for VM when physical timer interrupt occurs</li>
+</ul>
+<p>指令集支持</p>
+<ul>
+<li>权限指令只能在 system mode 执行，如果在 user mode 唤起，则 trap</li>
+<li>physical resources 只能被权限指令访问（页表、中断、I/O 寄存器等</li>
+<li>指令集为虚拟化革新过</li>
+</ul>
+<hr />
 <h2 id="57-virtual-memory">5.7 Virtual Memory</h2>
 <blockquote>
 <p>相当于把主存作为磁盘的 cache，由硬件和操作系统共同维护</p>
@@ -1745,6 +1884,7 @@
 </ul>
 </li>
 </ul>
+<hr />
 <h3 id="addrss-translation">Addrss Translation</h3>
 <p><img alt="alt text" src="../image-70.png" /></p>
 <p>page fault</p>
@@ -1753,7 +1893,7 @@
 <li>miss penalty 很大，因此每页需要很大 (4KB)</li>
 <li>降低 page fault 很重要 (LRU)</li>
 <li>可以在软件处理这个过程</li>
-<li>write through expensive, use weite back</li>
+<li>write through expensive, use write back</li>
 </ul>
 <p><strong>page table</strong></p>
 <ul>
@@ -1805,7 +1945,6 @@
 <li>miss 可以用硬件或软件处理</li>
 </ul>
 <p><img alt="alt text" src="../image-71.png" /></p>
-<h3 id="fastmath">FastMATH</h3>
 <ul>
 <li>必须保证虚拟地址没有别名</li>
 </ul>
@@ -1887,7 +2026,6 @@ Availability = \frac{MTTF}{MTTF+MTTR}
 <p>握手协议</p>
 </li>
 </ul>
-<p>AMAT=L1访问时间+L1未命中率×(L2访问时间+L2未命中率×主存访问时间)</p>
 
 
 

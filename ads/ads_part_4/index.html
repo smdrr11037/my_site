@@ -660,7 +660,7 @@
         <li class="md-nav__item">
   <a href="#external-sorting" class="md-nav__link">
     <span class="md-ellipsis">
-      External Sorting
+      External Sorting ✔️
     </span>
   </a>
   
@@ -825,6 +825,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/CO_5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6 (I/O)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -954,6 +975,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/oop5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Encapsulation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1053,6 +1095,27 @@
   
   <span class="md-ellipsis">
     Advanced SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DataBase/DataBase4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    E-R Model
   </span>
   
 
@@ -1349,7 +1412,7 @@
         <li class="md-nav__item">
   <a href="#external-sorting" class="md-nav__link">
     <span class="md-ellipsis">
-      External Sorting
+      External Sorting ✔️
     </span>
   </a>
   
@@ -1510,11 +1573,12 @@ Pr[S]=\sum_{}
 <li>同时写入一个位置会产生冲突，解决方法：<ul>
 <li>Exclusive-Read Exclusive-Write (EREW) - 不允许同时读写</li>
 <li>Concurrent-Read Exclusive-Write (CREW) - 允许同时读，不允许同时写</li>
-<li>Concurrent-Read Concurrent-Write (CRCW) - 当且仅当同时写的数据相同时，允许同时写</li>
+<li>Concurrent-Read Concurrent-Write (CRCW) - 当且仅当同时写的数据相同时，允许同时写（还有随机写和最优先写的规则）</li>
 <li>第三种方法最常见</li>
 </ul>
 </li>
 </ul>
+<hr />
 <blockquote>
 <p>Example: The summation problem.</p>
 <p>Input:  A(1), A(2), …, A(n)</p>
@@ -1524,30 +1588,35 @@ Pr[S]=\sum_{}
 <p><img alt="alt text" src="../image-69.png" /></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">for</span><span class="w"> </span><span class="n">Pi</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;=</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="w"> </span><span class="n">pardo</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">B</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">begin</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="o">^</span><span class="n">h</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">            </span><span class="n">B</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">j</span><span class="mi">-1</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="mi">-1</span><span class="p">)</span><span class="o">+</span><span class="n">B</span><span class="p">(</span><span class="n">j</span><span class="mi">-1</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="n">stay</span><span class="w"> </span><span class="n">idle</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="n">end</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">log</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">stay</span><span class="w"> </span><span class="n">idle</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="c1">// 需要告诉处理器是进行操作还是 stay idle</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">end</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">begin</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="o">^</span><span class="n">h</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">            </span><span class="n">B</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">j</span><span class="mi">-1</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="mi">-1</span><span class="p">)</span><span class="o">+</span><span class="n">B</span><span class="p">(</span><span class="n">j</span><span class="mi">-1</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="n">stay</span><span class="w"> </span><span class="n">idle</span><span class="w"> </span><span class="c1">// PRAM 模型需要告诉处理器是进行操作还是 stay idle</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="n">end</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">log</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">stay</span><span class="w"> </span><span class="n">idle</span>
 </code></pre></div>
+<p>可以看到上图中在后面的循环，后面的几个处理器都不进行操作</p>
+<p>PRAM 的不足：每说明处理器数量不同时怎么做；必须知名具体操作有时过于复杂</p>
+<hr />
 <h3 id="work-depth-wd-presentation">Work-Depth (WD) Presentation</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">for</span><span class="w"> </span><span class="n">Pi</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w">  </span><span class="n">pardo</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">   </span><span class="n">B</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">)</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">for</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="n">n</span><span class="w"> </span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">Pi</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="n">h</span><span class="w">  </span><span class="n">pardo</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">Pi</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="o">^</span><span class="n">h</span><span class="w">  </span><span class="n">pardo</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="n">B</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">h</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="n">i</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">h</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="n">i</span><span class="p">)</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">pardo</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">   </span><span class="n">output</span><span class="w">  </span><span class="n">B</span><span class="p">(</span><span class="n">log</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
+<p><img alt="alt text" src="../image-78.png" /></p>
+<hr />
 <p>Measuring the performence</p>
 <ul>
 <li>Work load - total number of operation 工作量</li>
 <li>Worst-case running time: T(n) 工时</li>
 <li>等价描述：<ul>
-<li>W(n) operatiom and T(n) time</li>
+<li>W(n) operations and T(n) time</li>
 <li>P(n) = W(n)/T(n) processors and T(n) time (on a PRAM)</li>
 <li>W(n)/p time using any number of p ≤ W(n)/T(n) processors (on a PRAM)</li>
 <li>W(n)/p + T(n) time using any number of p processors (on a PRAM)</li>
@@ -1555,55 +1624,103 @@ Pr[S]=\sum_{}
 </li>
 </ul>
 <p>只对 PRAM 成立的原因是，PRAM 每个处理器的工作量是相同的（stay idle 也算作工作量），WD 不是。</p>
+<p>分析上面提到的 WD 算法：</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">for</span><span class="w"> </span><span class="n">Pi</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w">  </span><span class="n">pardo</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">   </span><span class="n">B</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">for</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="n">n</span><span class="w"> </span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">Pi</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="o">^</span><span class="n">h</span><span class="w">  </span><span class="n">pardo</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="n">B</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">h</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="n">i</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">h</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">pardo</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">   </span><span class="n">output</span><span class="w">  </span><span class="n">B</span><span class="p">(</span><span class="n">log</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+$$
+T(n) = logn + 2
+$$
+$$
+W(n) = n + n/2 + n/2^2 + ... + n/2^k + 1 = 2n(2^k = n)
+$$</p>
+<ul>
+<li>WD-presentation Sufficiency Theorem - WD 模式中的算法可以在 O(W(n)/P(n) + T(n)) 时间内由<strong>任何</strong> P(n) 个处理器实现，使用与 WD 表示中相同的并发写入约定。</li>
+</ul>
+<hr />
 <blockquote>
-<p>Exampel: Merging – merge two non-decreasing arrays A(1), A(2), …, A(n) and B(1), B(2), …, B(m) into another non-decreasing array C(1), C(2), …, C(n+m) </p>
+<p>Example:</p>
+<p>Example: Merging – merge two non-decreasing arrays A(1), A(2), …, A(n) and B(1), B(2), …, B(m) into another non-decreasing array C(1), C(2), …, C(n+m) </p>
 </blockquote>
 <ul>
-<li>RANK(j,A) = Bj 在 A 数组中比多少个元素大</li>
+<li>RANK( j, A) = Bj 在 A 数组中比多少个元素大</li>
 <li>RANK( j, A) = i,   if A(i) &lt; B(j) &lt; A(i + 1), for 0 &lt; i &lt; n</li>
 <li>RANK( j, A) = 0,  if B(j) &lt; A(1) </li>
 <li>RANK( j, A) = n,  if B(j) &gt; A(n)</li>
 </ul>
-<p>算出 RANK 值后，可以用下面的算法并行得到数组 C</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>for Pi , 1 &lt;= i &lt;= n  pardo
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    C(i + RANK(i, B)) := A(i)
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>for Pi , 1 &lt;= i &lt;= n  pardo
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    C(i + RANK(i, A)) := B(i)
-</code></pre></div>
+<p>算出 RANK 值后，可以用下面的算法并行得到数组 C，O(1) time and O(n+m) work.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">for</span><span class="w"> </span><span class="n">Pi</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w">  </span><span class="n">pardo</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">C</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">RANK</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">))</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">for</span><span class="w"> </span><span class="n">Pi</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w">  </span><span class="n">pardo</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="n">C</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">RANK</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">))</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div></p>
 <p>怎么算 RANK 值</p>
 <ul>
 <li>二分搜索树 <span class="arithmatex">\(T(n) = O(logn), W(n) = O(nlogn)\)</span>
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>for Pi , 1 &lt;= i &lt;= n  pardo
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    RANK(i, B) := BS(A(i), B)
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    RANK(i, A) := BS(B(i), A)
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">for</span><span class="w"> </span><span class="n">Pi</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w">  </span><span class="n">pardo</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">RANK</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">BS</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="w"> </span><span class="n">B</span><span class="p">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">RANK</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">BS</span><span class="p">(</span><span class="n">B</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="w"> </span><span class="n">A</span><span class="p">)</span>
 </code></pre></div></li>
-<li>Serial Ranking T(n) = W(n) = O(n+m)<ul>
+<li>Serial Ranking <span class="arithmatex">\(T(n) = W(n) = O(n+m)\)</span><ul>
 <li>维护两个指针，计算 rank</li>
+<li>指向的 A 比 B 小，则确定了 A 在 B 中的位置，后移 A 的指针
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="n">RANK</span><span class="p">(</span><span class="o">++</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="p">;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="n">RANK</span><span class="p">(</span><span class="o">++</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">}</span>
+</code></pre></div></li>
 </ul>
 </li>
 </ul>
-<p>Pa</p>
+<hr />
+<p>Parallel Ranking</p>
 <ul>
 <li>
-<p>先选取 p = n/logn 个中间点，串行算 rank</p>
+<p>先选取 <strong>p = n/logn</strong> 个中间点，串行算 rank - <span class="arithmatex">\(T = O(logn), W = O(plogn) = O(n)\)</span></p>
+<ul>
+<li>A_Select( i ) = A( 1+(i-1)logn )   for 1 &lt;= i &lt;= p</li>
+<li>B_Select( i ) = B( 1+(i-1)logn )   for 1 &lt;= i &lt;= p</li>
+</ul>
 </li>
 <li>
-<p>再分解成下面的这些子问题，最多 2p 个，sized O(logn)</p>
+<p>再分解成下面的这些子问题，最多 2p 个，sized O(logn) - <span class="arithmatex">\(T = O(logn), W = O(plogn) = O(n)\)</span></p>
 </li>
 </ul>
 <p><img alt="alt text" src="../image-70.png" /></p>
 <ul>
-<li>T = O(logn)，W = O(plogn) = O(ns)</li>
+<li>总的来说：<span class="arithmatex">\(T = O(logn)，W = O(plogn) = O(n)\)</span></li>
 </ul>
+<hr />
 <blockquote>
 <p>Example: Maximum Finding.</p>
 </blockquote>
+<div class="highlight"><span class="filename">compare all pairs</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">for</span><span class="w"> </span><span class="n">Pi</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w">  </span><span class="n">pardo</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">B</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w">  </span><span class="n">pardo</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">j</span><span class="p">))</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">((</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">j</span><span class="p">))</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">j</span><span class="p">))</span><span class="w"> </span><span class="p">)</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">            </span><span class="n">B</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="k">for</span><span class="w"> </span><span class="n">Pi</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w">  </span><span class="n">pardo</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">       </span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">maximum</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">A</span>
+</code></pre></div>
+<p>上面的算法 - <span class="arithmatex">\(T(n) = O(1),W(n) = O(n^2)\)</span>（B(i) 是并行写入的，只要有一个为 1 就写入 1）</p>
+<p>A Doubly-logarithmic Paradigm</p>
+<p>方法一：Partition by <span class="arithmatex">\(\sqrt{n}\)</span></p>
 <ul>
 <li>切割成 <span class="arithmatex">\(\sqrt{n}\)</span> 个子问题</li>
 <li>递归求解</li>
 <li>最后计算两两打架（O(1)）</li>
 </ul>
-<p>另一种方法：</p>
+<p><img alt="alt text" src="../image-79.png" /></p>
+<p>方法二：Partition by h = log log n</p>
 <ul>
 <li>Part</li>
 </ul>
@@ -1612,39 +1729,87 @@ Pr[S]=\sum_{}
 <li>采样 <span class="arithmatex">\(B^{\frac{7}{8}}\)</span> 个元素</li>
 <li>T(n)</li>
 <li>检查外面有没有更大的元素
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>while (there is an element larger than M) {
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>     for (each element larger than M)
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>         Throw it into a random place in a new B(n7/8);
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>     Compute a new M;
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>}
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>while (there is an element larger than M) {
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>     for (each element larger than M)
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>         Throw it into a random place in a new B(n7/8);
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>     Compute a new M;
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>}
 </code></pre></div></li>
 </ul>
-<h2 id="external-sorting">External Sorting</h2>
-<p>Disk 拿到数据需要</p>
-<ol>
-<li>1</li>
-<li>2</li>
-<li>3</li>
-</ol>
-<p>quick sort 每次拿取时间很长，效率低</p>
+<hr />
+<h2 id="external-sorting">External Sorting ✔️</h2>
+<p>Disk 拿到数据时间长，数据量大时需要一个内存外部排序的算法</p>
 <blockquote>
-<p>Example</p>
-<p>run</p>
-<p>Number of passes = 1+3</p>
-<p><span class="arithmatex">\(1+\lceil log_2\frac{N}{M}\rceil\)</span></p>
+<p>quick sort 每次拿取时间很长（需要移动磁头、等待旋转等等），效率低</p>
 </blockquote>
-<p>reduce pass:</p>
+<p>简化问题的假设</p>
 <ul>
-<li>多路归并——需要 k 个 input tape，k 个 output tape，交换着用</li>
-<li>减少要用的 tape 数：k 个 input，1 个 output，转换时将 output 的一部分 copy 到之前的 input tape 里</li>
-<li>或者不均分，详见 ppt 例子（不需要 copy），如果是斐波那契数，需要的合并很少</li>
-<li>直接顺序拿取 k 个，按大小排序，拿取新的时可能不能放在后面 -&gt; 成为死空间，当 k 个位置都是死空间 -&gt; 放在下一个 tape，这样平均情况下，每个 run 是之前的 两倍</li>
-<li>最小 merge 操作：霍夫曼树</li>
+<li>Store data on tapes (can only be accessed sequentially)</li>
+<li>Can use at least 3 tape drives</li>
 </ul>
+<blockquote>
+<p>Example: Suppose that the internal memory can handle M = 3 records at a time.</p>
+<p>run - 在排序过程中的一个连续的有序子序列</p>
+<p>pass - 将多个有序的 runs 进行合并的过程</p>
+<p><img alt="alt text" src="../image-71.png" /></p>
+<p>N - 总元素数，M - 内部存储大小</p>
+</blockquote>
+<p>时间消耗：</p>
+<ul>
+<li>Seek time — O( number of passes )</li>
+<li>Time to read or write one block of records</li>
+<li>Time to internally sort M records</li>
+<li>Time to merge N records from input buffers to the output buffer</li>
+</ul>
+<blockquote>
+<p>Computer can carry out I\O and CPU processing in parallel</p>
+</blockquote>
+<hr />
+<p>为减少耗时，reduce pass:</p>
+<ul>
+<li>多路归并 - 需要 k 个 input tape，k 个 output tape，交换着用</li>
+<li>减少要用的 tape 数：k 个 input，1 个 output，转换时将 output 的一部分 copy 到之前的 input tape 里<ul>
+<li>前两次 pass：<img alt="alt text" src="../image-72.png" /></li>
+<li>copy 操作（消耗大）：<img alt="alt text" src="../image-73.png" /></li>
+<li>全部执行下来 - 1 + 6 passes + 5 copies</li>
+</ul>
+</li>
+<li>或者不均分，则不需要 copy，如果是斐波那契数，需要的合并很少<ul>
+<li>将 T1 的 34 个 run 分成下面两个：<img alt="alt text" src="../image-74.png" /></li>
+<li>将 T2 和 T3 的前 13 个 run 合并到 T1，T2 还剩 8 个 run：<img alt="alt text" src="../image-75.png" /></li>
+<li>以此类推，将 T1 和 T2 的前 8 个 run 合并到 T3：<img alt="alt text" src="../image-76.png" /></li>
+<li>图中情况仅需 1 + 7 passes，只需要 k + 1 个 tapes</li>
+</ul>
+</li>
+</ul>
+<p>结论：</p>
+<ul>
+<li>两路合并的情况，如果是 N/M 是斐波那契数 <span class="arithmatex">\(F_N\)</span>，则分成 <span class="arithmatex">\(F_{N-1}\)</span> 和 <span class="arithmatex">\(F_{N-2}\)</span> 是最佳选择</li>
+<li>k 路合并，定义 k 路斐波那契数 <span class="arithmatex">\(F_N^k = F_{N-1}^k + F_{N-2}^k + ... + F_{N-k}^k\)</span>, (<span class="arithmatex">\(F_N^k = 0,\ 0\leqN\leqk-2\)</span>, <span class="arithmatex">\(F_{k-1}^k = 1\)</span>)</li>
+</ul>
+<hr />
 <p>handle buffer</p>
 <ul>
+<li>如果只有一个 output buffer，在它输出磁盘时，排序会停止</li>
 <li>用两个 output buffer，其中一个接受 input buffer 的数据，另一个往 disk 写数据</li>
+<li>因此 k-way 的排序，需要 2k 个 input buffer，2 个 output buffer</li>
 </ul>
+<p>在内存固定的情况下，路越多，buffer 越小，即 M 越小，在 pass 数的计算公式中，与 log 的底数相制衡。因此不是路数越多越好。</p>
+<p>加大每个 run 的大小 - Replacement selection</p>
+<ul>
+<li>直接顺序拿取 k 个，按大小排序，选取最小的放在新 tape 里，在空出来的位置拿取新的。</li>
+<li>拿取新的时可能不能放在新 tape run 的后面 -&gt; 成为死空间</li>
+<li>当 k 个位置都是死空间 -&gt; 放在下一个 tape，这样平均情况下，每个 run 是之前的两倍</li>
+</ul>
+<blockquote>
+<p>Powerful when input is often nearly sorted for external sorting.</p>
+</blockquote>
+<p>最小 merge 操作：霍夫曼树</p>
+<p>用下面的例子说明</p>
+<blockquote>
+<p>Suppose we have 4 runs of length 2, 4, 5, and 15, respectively. How can we arrange the merging to obtain minimum merge times?</p>
+<p><img alt="alt text" src="../image-77.png" /></p>
+</blockquote>
 
 
 

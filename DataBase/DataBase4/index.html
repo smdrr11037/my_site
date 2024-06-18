@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://example.com/DataBase/DataBase4/">
       
       
+        <link rel="prev" href="../DataBase3/">
+      
+      
+        <link rel="next" href="../DataBase5/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Entity-Relationship Model —— Database System - smdrr's note</title>
+        <title>E-R Model - smdrr's note</title>
       
     
     
@@ -148,7 +152,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Entity-Relationship Model —— Database System
+              E-R Model
             
           </span>
         </div>
@@ -318,10 +322,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../DataBase/" class="md-tabs__link">
           
   
@@ -727,6 +733,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/CO_5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6 (I/O)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -856,6 +883,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/oop5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Encapsulation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -867,23 +915,28 @@
       
   
   
+    
   
   
+  
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -894,7 +947,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             DataBase
@@ -959,6 +1012,103 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    E-R Model
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    E-R Model
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#e-r-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      E-R Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weak-entity-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Weak Entity Sets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extended" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extended
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-of-an-e-r-database-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design of an E-R Database Schema
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1316,28 +1466,16 @@
 <p>将 E-R 图转换为表</p>
 </blockquote>
 <ul>
-<li>多值属性变成两张表</li>
+<li>A strong entity set  =&gt; to a table with the same attributes</li>
+<li>复合属性变成多个 attribute - name =&gt; first-name and last-name</li>
+<li>多值属性变成两张表 - employee(emp-id, ename, sex, age, dependent-names) =&gt; employee(emp-id, ename, sex, age), employee-dependent-names(emp-id, dependent-name)</li>
 <li>弱实体的联系的表是多余的</li>
+<li>弱实体 + identifying strong entity set 的主键变成一张表</li>
 <li>多对多之间的关系 - 双方的 key + 关系属性变成一张表</li>
-<li>多对一 - 在上一条的基础上，把关系的表合并到多这一端</li>
+<li>多对一 - 在上一条的基础上，把关系的表合并到多这一端（如 account-banker 关系，合并到 account 表中）</li>
+<li>如果多的一方的 participation is partial，一些属性可能为空</li>
+<li>一对一关系 - 合并到任意一边</li>
 </ul>
-<h1 id="relational-database-design">Relational Database Design</h1>
-<h2 id="first-normal-form">First Normal Form</h2>
-<p>Domain is atomic if its elements are considered to be indivisible units. </p>
-<blockquote>
-<p>Examples of non-atomic domains: </p>
-<p>Composite attributes --- set of names </p>
-<p>Multi-value attribute --- a person’s phones </p>
-<p>Complex data type--- object-oriented </p>
-</blockquote>
-<p>第一范式（1NF）：所有的属性都具有原子性（不可分割）</p>
-<h2 id="pitfalls-in-relational-database-design">Pitfalls in Relational Database Design</h2>
-<h2 id="functional-dependencies">Functional Dependencies</h2>
-<h2 id="decomposition">Decomposition</h2>
-<h2 id="boyce-codd-normal-form">Boyce-Codd Normal Form</h2>
-<h2 id="third-normal-form">Third Normal Form</h2>
-<h2 id="multivalued-dependencies">Multivalued Dependencies</h2>
-<h2 id="fourth-normal-form">Fourth Normal Form</h2>
 
 
 
