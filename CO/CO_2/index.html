@@ -1686,7 +1686,7 @@
 <hr />
 <h2 id="27-instruction-for-making-decision">2.7 Instruction for making decision</h2>
 <p>分支跳转</p>
-<p><div class="highlight"><span class="filename">c</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="n">h</span><span class="p">;</span><span class="w"> </span>
+<p><div class="highlight"><span class="filename">c</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="n">h</span><span class="p">;</span><span class="w"> </span>
 </code></pre></div>
 ( Assume: f ~ j ---- x19 ~ x23 )
 <div class="highlight"><span class="filename">RISC-V</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">bne</span><span class="w"> </span><span class="no">x22</span><span class="p">,</span><span class="w"> </span><span class="no">x23</span><span class="p">,</span><span class="w"> </span><span class="no">ELSE</span><span class="w"> </span><span class="c1">// go to ELSE if i != j</span>
@@ -1962,7 +1962,7 @@
 <p>无条件跳转</p>
 <p><code>jal x0, 2000</code> - j型指令（只有这一条）</p>
 <p><img alt="alt text" src="../image-26.png" /></p>
-<p>跳转范围<span class="arithmatex">\(\pm 1\)</span>G字节</p>
+<p>跳转范围<span class="arithmatex">\(\pm 1\)</span>M字节</p>
 <ul>
 <li>For long jumps, eg, to 32-bit absolute address<ul>
 <li>lui: load address[31:12] to temp register</li>
@@ -1982,12 +1982,12 @@
 <h2 id="211-parallelism-and-instructions-synchronization">2.11 Parallelism and Instructions: Synchronization</h2>
 <p>在load和save时，可能有并行的程序导致地址不可用，操作失败，因此加入判断</p>
 <ul>
-<li>Load reserved: lr.d rd,(rs1)<ul>
+<li>Load reserved: <code>lr.d rd,(rs1)</code><ul>
 <li>把 rs1 地址里的值存在 rd 中</li>
 <li>保持地址存放的东西不变</li>
 </ul>
 </li>
-<li>Store conditional: sc.d rd,(rs1),rs2<ul>
+<li>Store conditional: <code>sc.d rd,(rs1),rs2</code><ul>
 <li>把 rs2 的值存在 rs1 中的地址里</li>
 <li>成功时（location 没变）返回0</li>
 <li>失败时返回非零值</li>
@@ -2018,11 +2018,13 @@
 <ul>
 <li><code>aulpc</code></li>
 </ul>
-<p>M: integer multiply, divide, remainder
- A: atomic memory operations
- F: single-precision floating point
- D: double-precision floating point
- C: compressed instructions</p>
+<p>M: integer multiply, divide, remainder</p>
+<ul>
+<li>A: atomic memory operations</li>
+<li>F: single-precision floating point</li>
+<li>D: double-precision floating point</li>
+<li>C: compressed instructions</li>
+</ul>
 <h2 id="212-translating-and-starting-a-program">2.12 Translating and Starting a Program</h2>
 <p><img alt="alt text" src="../image-27.png" /></p>
 <p>object file 和 executable file</p>

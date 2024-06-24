@@ -1993,7 +1993,7 @@ a 情况：不 redo；b 情况：redo T0；c 情况：redo T0 &amp; T1；</p>
 <p>缺点：</p>
 <ul>
 <li>复制整个页表非常昂贵<ul>
-<li>通过使用类似B+树结构的页表可以减少这一成本</li>
+<li>通过使用类似 B+ 树结构的页表可以减少这一成本</li>
 <li>无需复制整棵树，只需复制通向更新的叶节点的路径</li>
 </ul>
 </li>
@@ -2207,6 +2207,27 @@ a 情况：不 redo；b 情况：redo T0；c 情况：redo T0 &amp; T1；</p>
 <p>当使用模糊检查点进行恢复时，从 last_checkpoint 指向的检查点记录开始扫描。last_checkpoint 之前的日志记录的更新已经反映在磁盘上的数据库中，不需要重做。在执行检查点时系统崩溃的不完整检查点也能被安全处理（这时 last_checkpoint 指向前一个检查点）</p>
 <hr />
 <h3 id="aries-recovery-algorithm">ARIES Recovery Algorithm</h3>
+<ul>
+<li>Physiological redo - 物理页号找到页、操作可以 logical 表示<ul>
+<li>比如删除一个记录，后面的记录需要填补到前面，可以只记录“删除”，而不是每个位置的数据变化</li>
+<li>页面原子性</li>
+</ul>
+</li>
+</ul>
+<p>ARIES 算法需要的数据结构：</p>
+<ul>
+<li>Log sequence number (LSN) - sequentially increasing</li>
+<li>Page LSN - the LSN of the last log record whose effects are reflected on the page<ul>
+<li>写 page 到磁盘需要 S 锁</li>
+</ul>
+</li>
+<li>Log records of several different types<ul>
+<li>包含该事务的前一条日志的 LSN<img alt="alt text" src="../image-29.png" /></li>
+<li>compensation log record (CLR) - 只有 redo 信息的日志，用于 operation-abort log records，避免重复 undo<img alt="alt text" src="../image-30.png" /></li>
+</ul>
+</li>
+<li>Dirty page table</li>
+</ul>
 <p><img alt="alt text" src="../image-15.png" /></p>
 <p>Checkpoint log record</p>
 <ul>
@@ -2215,9 +2236,20 @@ a 情况：不 redo；b 情况：redo T0；c 情况：redo T0 &amp; T1；</p>
 <p>支持部分恢复</p>
 <p>ARIES Recovery Algorithm (3 passes)</p>
 <ul>
-<li>Analysis pass: 分析哪些事务需要 redo、哪些 page dirty、RedoLSN (LSN from which redo should start) </li>
-<li>Redo pass</li>
-<li>Undo pass: 根据日志恢复一个事务（会跳过别的事务）</li>
+<li>Analysis pass: 从 checkpoint 往后扫描<ul>
+<li>undo list - list of transactions in checkpoint log record + 新扫描的事务 - commit 了的事务 </li>
+<li>哪些 page dirty（包括 RecLSN）- minimize redo work</li>
+<li>RedoLSN (dirty page 的最小 RecLSN) - where to start redo</li>
+<li>记录 undo list 里的事务最后的 LSN</li>
+</ul>
+</li>
+<li>Redo pass: 从 RedoLSN 往后扫描，如果 LSN 的 page dirty 且是 RecLSN 才 redo</li>
+<li>Undo pass: 根据日志恢复一个事务（会跳过别的事务）<ul>
+<li>Generate a CLR containing the undo action performed.（下面的 n'）</li>
+<li>Set UndoNextLSN of the CLR to the PrevLSN value of the update log record</li>
+<li>pick largest of these LSNs to undo</li>
+</ul>
+</li>
 </ul>
 
 

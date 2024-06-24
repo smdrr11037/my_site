@@ -733,57 +733,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#local-search" class="md-nav__link">
-    <span class="md-ellipsis">
-      Local Search
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Local Search">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#framwork" class="md-nav__link">
-    <span class="md-ellipsis">
-      Framwork
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vector-cover-problem" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vector Cover Problem
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hopfield-neural-networks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hopfield Neural Networks
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#maximum-cut-problem" class="md-nav__link">
-    <span class="md-ellipsis">
-      Maximum Cut Problem
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1643,57 +1592,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#local-search" class="md-nav__link">
-    <span class="md-ellipsis">
-      Local Search
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Local Search">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#framwork" class="md-nav__link">
-    <span class="md-ellipsis">
-      Framwork
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vector-cover-problem" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vector Cover Problem
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hopfield-neural-networks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hopfield Neural Networks
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#maximum-cut-problem" class="md-nav__link">
-    <span class="md-ellipsis">
-      Maximum Cut Problem
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2212,18 +2110,45 @@ c_{1,j} =
 <li>最困难的： 无解</li>
 <li>介于二者之间：NPC 和 NPH</li>
 </ul>
+<blockquote>
+<p>停机问题 - 是否可以检测某个程序会自行停止</p>
+</blockquote>
+<div class="highlight"><span class="filename">检测自身是否可停机</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Loop</span><span class="p">(</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">{</span><span class="w">  </span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="cm">/* 1 */</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="n">P</span><span class="p">)</span><span class="w"> </span><span class="n">loops</span><span class="w"> </span><span class="p">)</span><span class="w">   </span><span class="n">print</span><span class="w"> </span><span class="p">(</span><span class="n">YES</span><span class="p">);</span><span class="c1">// 不可能去判断</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="cm">/* 2 */</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">infinite_loop</span><span class="p">();</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
 <p>图灵机：</p>
 <ul>
 <li>Deterministic Turing Machine: executes one instruction at each point in time.  Then depending on the instruction, it goes to the next unique instruction.</li>
 <li>Nondeterministic Turing Machine: is free to choose its next step from a finite set.  And if one of these steps leads to a solution, it will always choose the correct one.</li>
 </ul>
-<p>定义：</p>
+<blockquote>
+<p>如果本来不知道选什么，不确定图灵机也不能决定</p>
+</blockquote>
+<p><strong>NP: Nondeterministic polynomial-time</strong> 定义：</p>
 <ul>
 <li>P 问题：确定性图灵机可以在多项式时间内解决的问题</li>
 <li>NP 问题：非确定性图灵机可以在多项式时间内解决的问题</li>
 </ul>
 <blockquote>
-<p>例题：假设汉密尔顿是 NP 问题，求证旅行商问题也是 NP 问题</p>
+<p>典型的 NP 问题：Hamilton cycle problem - Find a single cycle that contains every vertex</p>
+</blockquote>
+<ul>
+<li>Not all decidable problems are in NP.  For example, consider the problem of determining whether a graph does not have a Hamiltonian cycle.</li>
+</ul>
+<p>显然 P 问题一定是 NP 问题，但 P 问题是否完全等于 NP 问题，还没有解决</p>
+<ul>
+<li>NP-Complete Problems (hardest): An NP-complete problem has the property that any problem in NP can be <strong>polynomially reduced</strong> to it.</li>
+<li>polynomially reduced: </li>
+</ul>
+<p>如果我们可以在多项式时间解决任意一个 NPC 问题，那么可以在多项式时间内解决所有 NP 问题（即 P = NP）</p>
+<blockquote>
+<p>例题：假设汉密尔顿是 NPC 问题，求证旅行商问题也是 NPC 问题</p>
+<p>Hamiltonian cycle problem: Given a graph G=(V, E), is there a simple cycle that visits all vertices?</p>
+<p>Traveling salesman problem: Given a complete graph G=(V, E), with edge costs, and an integer K, is there a simple cycle that visits all vertices and has total cost &lt;= K?</p>
 </blockquote>
 <hr />
 <p>A Formal-language Framework —— 计算机能看懂的语言</p>
@@ -2272,109 +2197,7 @@ S_i = 1/7+\varepsilon
 </ul>
 <h3 id="the-k-center-problem">The K-center Problem</h3>
 <p>定理</p>
-<h2 id="local-search">Local Search</h2>
-<blockquote>
-<p>梯度下降</p>
-</blockquote>
-<h3 id="framwork">Framwork</h3>
-<ul>
-<li>
-<p>Local</p>
-<ul>
-<li>定义一个邻居</li>
-<li>A <strong>local optimum</strong> is a best solution in a neighborhood</li>
-</ul>
-</li>
-<li>
-<p>Search</p>
-</li>
-</ul>
-<p>如何得到邻居：</p>
-<ul>
-<li>S~S': S' 是一个邻居，由 S 经过小小改动得到</li>
-<li>N(S): S 的邻居 - S' 组成的集合</li>
-</ul>
-<p><strong>算法：</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">SolutionType</span><span class="w"> </span><span class="nf">Gradient_descent</span><span class="p">()</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">{</span><span class="w">   </span><span class="n">Start</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">feasible</span><span class="w"> </span><span class="n">solution</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="err"></span><span class="w"> </span><span class="n">FS</span><span class="w"> </span><span class="p">;</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">MinCost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cost</span><span class="p">(</span><span class="n">S</span><span class="p">);</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="n">S</span><span class="err">’</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Search</span><span class="p">(</span><span class="w"> </span><span class="n">N</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="cm">/* find the best S’ in N(S) */</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">        </span><span class="n">CurrentCost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cost</span><span class="p">(</span><span class="n">S</span><span class="err">’</span><span class="p">);</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">CurrentCost</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MinCost</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">            </span><span class="n">MinCost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CurrentCost</span><span class="p">;</span><span class="w">    </span><span class="n">S</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">S</span><span class="err">’</span><span class="p">;</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">        </span><span class="k">else</span><span class="w">  </span><span class="k">break</span><span class="p">;</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">S</span><span class="p">;</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="p">}</span>
-</code></pre></div>
-<h3 id="vector-cover-problem">Vector Cover Problem</h3>
-<blockquote>
-<p>Given an undirected graph G = (V, E).  Find a <strong>minimum</strong> subset S of  V such that for each edge (u, v) in E, either u or v  is in S.</p>
-</blockquote>
-<p>分析：</p>
-<ul>
-<li>可行解的集合：FS-所有顶点覆盖的方法</li>
-<li>目标函数：cost(S)，顶点集合的大小</li>
-<li>邻居：</li>
-<li>Search： 那么，了。 Start from S = V; delete a node and check if S' is a vertex cover with a smaller cost.</li>
-</ul>
-<h3 id="hopfield-neural-networks">Hopfield Neural Networks</h3>
-<blockquote>
-<p>Graph G = (V, E) with integer edge weights w (positive or negative).</p>
-<p>If we &lt; 0, where e = (u, v), then u and v want to have the same state; if we &gt; 0 then u and v want different states.</p>
-</blockquote>
-<p>定义：</p>
-<ul>
-<li>好边和坏边: In a configuration S, edge e = (u, v) is good if we su sv &lt; 0 (we &lt; 0 iff su = sv ); otherwise, it is bad.</li>
-<li>顶点的满足条件：In a configuration S, a node u is satisfied if the weight of incident good edges <span class="arithmatex">\(\geq\)</span> weight of incident bad edges.</li>
-</ul>
-<p>定理：一定有稳定解，最多翻 <span class="arithmatex">\(\sum_e|W_e|\)</span></p>
-<p>Proof: Measure of proggress:</p>
-<div class="arithmatex">\[
-\Phi(S)=\sum_{e\ is\ good}|W_e|
-\]</div>
-<p>u 个翻转发生后：（此时 S 变成了 S'）</p>
-<h3 id="maximum-cut-problem">Maximum Cut Problem</h3>
-<blockquote>
-<p>: Given an undirected graph G = (V, E) with positive integer edge weights we, find a node partition (A, B) such that the total weight of edges crossing the cut is maximized.</p>
-<p>每个顶点染色，希望顶点颜色不同的边的权重和最大</p>
-<p>是 Hopfield Neural Networks 的 special case</p>
-<p>目标函数转化成好边的边权和</p>
-</blockquote>
-<!--  -->
-
-<blockquote>
-<p>应用</p>
-</blockquote>
-<p>问题分析：</p>
-<ul>
-<li>目标函数：最大化 w(A, B)</li>
-<li>可行解：任何染色的方式</li>
-<li>邻居：把一个点的颜色改变（翻转没有被满足的节点）</li>
-</ul>
-<p>不能保证一定得到最优解</p>
-<blockquote>
-<p>局部解有多好？</p>
-</blockquote>
-<p>定理：得到的解不会小于最优解的 1/2</p>
-<p>证明：算法结束后，对任何一个节点，好边权重和肯定大于坏边权重和，即
-$$</p>
-<p>$$</p>
-<p>不一定在多项式时间内收敛：</p>
-<ul>
-<li>如果目标函数的改变比 <span class="arithmatex">\(公式\)</span> 小，则退出</li>
-</ul>
-<p>Claim：在用了上面的方法后，最多翻转 <span class="arithmatex">\(O(n/\epsilo logW\)</span>（多项式时间复杂度）</p>
-<ul>
-<li>
-<p>找一个更好的邻居</p>
-<ul>
-<li>选择范围变大（增大步长），邻居由 {v1, v2, v3} 变为 {(v1),(v1, v2)};</li>
-</ul>
-</li>
-</ul>
+<hr />
 
 
 

@@ -808,6 +808,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#dependability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buses-and-other-connections-between-processors-memory-and-io-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buses and Other Connections between Processors Memory, and I/O Devices
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1358,6 +1376,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#dependability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buses-and-other-connections-between-processors-memory-and-io-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buses and Other Connections between Processors Memory, and I/O Devices
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1411,6 +1447,67 @@
 </li>
 </ul>
 <p><img alt="alt text" src="../image-82.png" /></p>
+<blockquote>
+<p>计算从磁盘拿数据的时间
+<img alt="alt text" src="../image-91.png" /></p>
+</blockquote>
+<h2 id="dependability">Dependability</h2>
+<ul>
+<li>MTTF - mean time to failure（平均无故障时间）</li>
+<li>MTTR - 平均修复时间</li>
+<li>
+<p>MTBF - 平均故障间隔时间</p>
+</li>
+<li>
+<p><strong>Availability</strong> - 可用性</p>
+<div class="arithmatex">\[
+Availability = \frac{MTTF}{MTTF+MTTR}
+\]</div>
+</li>
+</ul>
+<p>Three way to improve MTTF - Fault avoidance、Fault tolerance、Fault forecasting</p>
+<p>Array Reliability</p>
+<ul>
+<li>
+<p>Reliability of N disks = Reliability of 1 Disk ÷ N</p>
+</li>
+<li>
+<p>Redundant Arrays of (Inexpensive) Disks (RAID, 同数据库)</p>
+<ul>
+<li>RAID0 - 正常无冗余，数据<strong>条带化</strong>，大磁盘分为小磁盘，可以改善性能（多个读写磁头）</li>
+<li>RAID1 - 将数据复制一份存在另一组磁盘里（镜像）</li>
+<li>RAID2 - 算校验码（现在不用</li>
+<li>RAID3 - 按位交叉，所有的磁盘按位算校验码（需要同时读所有盘）</li>
+<li>RAID4 - 按块交叉（不能同时写不同盘）</li>
+<li>RAID5 - 块交叉，将冗余信息放在不同的盘上，这样可以同时写入</li>
+<li>RAID6 - P+Q，每行、每列都算一个校验位</li>
+</ul>
+</li>
+</ul>
+<h2 id="buses-and-other-connections-between-processors-memory-and-io-devices">Buses and Other Connections between Processors Memory, and I/O Devices</h2>
+<p>bus 包含两种 line - control line（表明信息类型）data line</p>
+<p>bus 事务：发送地址/接收或发送信息</p>
+<p>bus 操作：input/output
+<img alt="alt text" src="../image-92.png" />
+<img alt="alt text" src="../image-93.png" /></p>
+<ul>
+<li>
+<p>总线类型</p>
+<ul>
+<li>处理器-内存总线</li>
+<li>背板总线</li>
+<li>I/O 总线</li>
+</ul>
+<p><img alt="alt text" src="../image-73.png" /></p>
+<ul>
+<li>分离总线
+<img alt="alt text" src="../image-74.png" /> </li>
+</ul>
+</li>
+<li>
+<p>握手协议</p>
+</li>
+</ul>
 <p>6.3 Networks (Skim)
 6.4 Buses and Other Connections between
 Processors Memory, and I/O Devices

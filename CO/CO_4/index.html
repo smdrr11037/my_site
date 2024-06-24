@@ -874,24 +874,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#dependability" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dependability
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#output" class="md-nav__link">
-    <span class="md-ellipsis">
-      output
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1550,24 +1532,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#dependability" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dependability
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#output" class="md-nav__link">
-    <span class="md-ellipsis">
-      output
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1835,6 +1799,10 @@
 <li>重新计算校验位 H</li>
 <li><img alt="alt text" src="../image-86.png" /></li>
 </ul>
+<p>SEC/DED Code - Add an additional parity bit for the whole word (pn), Make Hamming distance = 4</p>
+<ul>
+<li>用 8 位保护 64 位</li>
+</ul>
 <hr />
 <h2 id="56-virtual-machines">5.6 Virtual Machines</h2>
 <blockquote>
@@ -1981,51 +1949,6 @@
 <li>Confilct misses (aka collision misses) - 非全相联时 ...</li>
 </ul>
 <p>Cache Controller FSM</p>
-<h2 id="dependability">Dependability</h2>
-<ul>
-<li>MTTF - mean time to failure（平均无故障时间）</li>
-<li>MTTR - 平均修复时间</li>
-<li>
-<p>MTBF - 平均故障间隔时间</p>
-</li>
-<li>
-<p><strong>Availability</strong> - 可用性</p>
-<div class="arithmatex">\[
-Availability = \frac{MTTF}{MTTF+MTTR}
-\]</div>
-</li>
-</ul>
-<p>Array Reliability</p>
-<ul>
-<li>Redundant Arrays of (Inexpensive) Disks (RAID, 同数据库)<ul>
-<li>RAID0 - 正常无冗余，数据条带化，大磁盘分为小磁盘，可以改善性能（多个读写磁头）</li>
-<li>RAID1 - 将数据复制一份存在另一组磁盘里（镜像）</li>
-<li>RAID2 - 算校验码（现在不用</li>
-<li>RAID3 - 按位交叉，所有的磁盘按位算校验码（需要同时读所有盘）</li>
-<li>RAID4 - 按块交叉（不能同时写不同盘）</li>
-<li>RAID5 - 块交叉，将冗余信息放在不同的盘上，这样可以同时写入</li>
-<li>RAID6 - P+Q，每行、每列都算一个校验位</li>
-</ul>
-</li>
-</ul>
-<h2 id="output">output</h2>
-<ul>
-<li>
-<p>总线类型</p>
-<ul>
-<li>背板总线</li>
-<li>I/O 总线</li>
-</ul>
-<p><img alt="alt text" src="../image-73.png" /></p>
-<ul>
-<li>分离总线
-<img alt="alt text" src="../image-74.png" /> </li>
-</ul>
-</li>
-<li>
-<p>握手协议</p>
-</li>
-</ul>
 
 
 

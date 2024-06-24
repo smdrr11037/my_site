@@ -1517,19 +1517,38 @@
 <li>最后一次不写回，只输出</li>
 </ul>
 <h3 id="join-operation">Join Operation</h3>
+<blockquote>
+<p>problem: 计算表 r 和 s 基于条件 theta 的自然连接</p>
+</blockquote>
 <p>方法一：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">tuple</span><span class="w"> </span><span class="n">tr</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="n">begin</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">tuple</span><span class="w"> </span><span class="n">ts</span><span class="w">  </span><span class="n">in</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="n">begin</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="n">test</span><span class="w"> </span><span class="n">pair</span><span class="w"> </span><span class="p">(</span><span class="n">tr</span><span class="p">,</span><span class="n">ts</span><span class="p">)</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">see</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">they</span><span class="w"> </span><span class="n">satisfy</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">join</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="err"></span><span class="w"> </span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="n">test</span><span class="w"> </span><span class="n">pair</span><span class="w"> </span><span class="p">(</span><span class="n">tr</span><span class="p">,</span><span class="n">ts</span><span class="p">)</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">see</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">they</span><span class="w"> </span><span class="n">satisfy</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">join</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="n">theta</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">they</span><span class="w"> </span><span class="k">do</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">tr</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="n">ts</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">result</span><span class="p">.</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">end</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">end</span>
 </code></pre></div>
 <ul>
-<li>复杂度分析</li>
+<li>r  is called the outer relation and s the inner relation of the join</li>
+<li>不需要任何索引且能用于任何自然连接</li>
+<li>expensive</li>
+<li>
+<p>复杂度分析</p>
+<p>最坏情况，内存最多容纳两个 block（r、s 各一个），需要 (nr * bs + br) block transfers, 加上 (nr + br) seeks</p>
+</li>
+<li>
+<p>If the smaller relation fits entirely in memory, use that as the inner relation.  </p>
+<ul>
+<li>Reduces cost to (br  + bs) block transfers and 2 seeks</li>
 </ul>
+</li>
+</ul>
+<blockquote>
+<p>nr、ns - r 和 s 的行数</p>
+<p>br、bs - r 和 s 的 block 数</p>
+</blockquote>
+<hr />
 <p>方法二：Block Nested-Loop Join（better）</p>
-<p>如果 s 能一次性读出，则极大提升效率</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// 如果 block Br 和 Block Bs 都在内存里，把他们俩连接</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="n">Br</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="n">begin</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="n">Bs</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="n">begin</span>
@@ -1544,8 +1563,18 @@
 </code></pre></div>
 <ul>
 <li>复杂度分析</li>
-<li>Cost =   <span class="arithmatex">\(<span class="arithmatex">\(\lceil b_r  / (M-2)\rceil \times b_s + b_r block transfers + 2 \lceil b_r  / (M-2)\rceil seeks\)</span>\)</span></li>
+<li>worst case: (br * bs + br)  block transfers + (2 * br)  seeks<ul>
+<li>seek 数 - br 次找 r 的 blcok，br 次找 s 最开始的 block</li>
 </ul>
+</li>
+<li>当内存不只能放两个 block 时，假设最多能放 n 个，M - 2 个位置放 outer relation，一个位置放 inner，一个位置放结果</li>
+<li>因此 Cost =   <span class="arithmatex">\(<span class="arithmatex">\(\lceil b_r  / (M-2)\rceil \times b_s + b_r block transfers + 2 \lceil b_r  / (M-2)\rceil seeks\)</span>\)</span></li>
+<li>如果 s 能一次性读出，则极大提升效率<ul>
+<li>Reduces cost to (br  + bs) block transfers and 2 seeks</li>
+</ul>
+</li>
+</ul>
+<hr />
 <p>方法三：Indexed Nested-Loop Join</p>
 <ul>
 <li>遍历 r 的每一行</li>
@@ -1560,6 +1589,7 @@
 <p>Cost: <span class="arithmatex">\(b_r (t_T + t_S) + n_r \times c\)</span></p>
 </li>
 </ul>
+<hr />
 <p>方法四：Merge-Join（排序归并连接）</p>
 <ul>
 <li>把连接的属性排好序</li>
@@ -1572,7 +1602,35 @@
 <ul>
 <li>Cost (不包括排序) = <span class="arithmatex">\(b_r + b_s  block transfers  + \lceil b_r / b_b\rceil + \lceil b_s / b_b\lceil  seeks\)</span></li>
 </ul>
+<hr />
 <p>方法五：Hash-Join (哈希连接)</p>
+<ul>
+<li>对连接的属性运用同样的哈希函数，这样连接属性相同的值都有同一个哈希值</li>
+<li>只有同一个哈希值的属性需要比较</li>
+</ul>
+<p><img alt="alt text" src="../image-28.png" /></p>
+<p>算法描述</p>
+<ul>
+<li>把 s 用哈希函数分成 n 个部分，每个部分需要一个 block - 因此哈希块的个数 = M-1</li>
+<li>对 r 进行相同操作</li>
+<li>对每个 i（即分成的每个块<ul>
+<li>将分区 si 加载到内存中，并使用连接属性在其上建立一个内存中的哈希索引。该哈希索引使用的函数与之前的哈希函数不同</li>
+<li>从磁盘中逐个读取分区 ri 中的元组。对于每个元组 tr，使用内存中的哈希索引定位在 si 中的每个匹配元组 ts。输出它们属性的连接结果</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Relation s is called the build input and  r  is called the probe input.</p>
+</blockquote>
+<ul>
+<li>选取哈希函数分成的部分数 n - <span class="arithmatex">\(\lceil b_s / M\rceil*1.2\)</span></li>
+<li>如果 n 比 M 大，需要 Recursive partitioning <ul>
+<li>use  M – 1 partitions </li>
+<li></li>
+</ul>
+</li>
+</ul>
+<hr />
 <h2 id="query-optimization">Query Optimization</h2>
 <h3 id="equivaience-rules">Equivaience Rules</h3>
 <ul>
