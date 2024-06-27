@@ -1549,7 +1549,14 @@
 <p>模板特化</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">template</span>
 </code></pre></div>
+<ul>
+<li>源程序调用函数模板，才会生成对应参数类型的模板函数的代码。</li>
+<li>类模板实例化为模板类是要产生相应的代码的，只能在编译阶段进行</li>
+</ul>
 <h2 id="exceptions">Exceptions</h2>
+<blockquote>
+<p>C++ 处理异常的机制是由检查、抛出和捕获 3 部分组成</p>
+</blockquote>
 <p>throw: 中断当前函数，回到调用者</p>
 <p>Define a class to represent the error</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">VectorIndexError</span><span class="w"> </span><span class="p">{</span>
