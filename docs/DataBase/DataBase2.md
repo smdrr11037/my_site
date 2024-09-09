@@ -184,6 +184,7 @@ FROM <r1, …>
 
 From → where → group (aggregate) → having → select → distinct → order by
 
+* having 对聚合后的函数进行比较
 
 ## Null Values
 -----
@@ -294,6 +295,139 @@ With Clause
 离开这条语句，local view不存在
 
 
-Modification of the Database 
+## Modification of the Database 
+------
+> 数据库的修改
 
-Joined Relations 
+**Delete**: `DELETE FROM <table | view> [WHERE <condition>] `
+
+```sql
+-- Delete all account records at the Perryridge branch. 
+
+DELETE FROM account 
+WHERE branch_name = ‘Perryridge’ 
+```
+
+> branch(**branch-name**, branch-city, assets) 
+> 
+> account(**account-number**, branch-name, balance) 
+> 
+> depositor(**customer-name**, **account-number**) 
+
+
+```sql title="Example query 1"
+-- Delete all accounts and relevant information at depositor
+-- for every branch located in Needham city. 
+
+DELETE FROM account 
+WHERE branch_name in (SELECT branch_name 
+                     FROM branch
+                     WHERE branch_city = ‘Needham’) 
+DELETE FROM depositor 
+WHERE account_number in (SELECT account_number 
+                        FROM branch B, account A 
+                        WHERE branch_city = ‘Needham’ 
+                        and B.branch_name = A.branch_name)  
+
+-- 错误示范
+
+DELETE FROM account, depositor, branch -- 不允许同时从多个表中删除数据
+WHERE account.accont_number = depositor.account_number 
+         and branch.branch_name = account.branch_name 
+         and branch_city = ‘Needham’ 
+```
+疑问：如果第一个DELETE语句成功删除了符合条件的账户信息，为什么第二条语句还能找到被删除的信息呢？
+
+> Chatgpt：如果您使用了子查询，并且子查询依赖于外部查询的数据，那么在执行子查询时会使用外部查询开始时的数据状态（也称为“consistent read”）。
+>
+> 在这种情况下，即使外部查询在执行过程中删除了某些数据，子查询也会使用外部查询开始时的数据状态，这可能导致子查询找到已被删除的数据。这被称为“一致性读取”或“一致性快照”。
+
+```sql title="Example query 2"
+-- Delete the record of all accounts with balances
+-- below the average at the bank. 
+
+DELETE FROM account 
+WHERE balance < (SELECT avg(balance) 
+               FROM account) 
+```
+
+* 问题：删除元组时，avg(balance)会改变
+
+* sql的解决方案：在同一SQL语句内，除非外层查询的元组变量引入内层查询，否则层查询只进行一次。
+
+------
+**Insertion**: `INSERT INTO <table|view> [(c1, c2,…)] VALUES (e1, e2, …) `
+
+也可以是 `INSERT INTO <table|view> [(c1, c2,…)] SELECT e1, e2, … FROM … `
+
+```sql
+-- Add a new tuple to account: 
+
+INSERT INTO account 
+VALUES (‘A_9732’, ‘Perryridge’, 1200) --需要按顺序
+-- or equivalently 
+INSERT INTO account (branch_name, balance, account_number) 
+VALUES (‘Perryridge’, 1200, ‘A_9732’)  -- 确定栏目后，不需要按顺序
+```
+
+* VALUES 可以是 null ，如果未指定 VALUES ，默认为空
+
+```sql
+-- Provide as a gift for all loan customers of the Perryridge branch,
+-- a $200 savings account.  Let the loan number serve as
+-- the account number for the new savings account. 
+
+-- Step 1: 
+         insert into account 
+         SELECT loan_number, branch_name, 200 
+         FROM loan 
+         WHERE branch_name = ‘Perryridge’ 
+-- Step 2: 
+         insert into depositor 
+         SELECT customer_name, A.loan_number 
+         FROM loan A, borrower B 
+         WHERE A.branch_name = ‘Perryridge’ and 
+               A.loan_number = B.loan_number 
+```
+
+* 将 SELECT 语句 insert into 前，会先将 SELECT 语句执行完
+
+因此，下面的语句可行
+
+```sql
+INSERT INTO table1 
+SELECT * 
+FROM table1 
+```
+
+------
+
+**Updates**: `UPDATE <table | view> SET [<c1 = e1 , c2 = e2, …>] [WHERE <condition>] `
+
+```sql title="Example"
+-- Increase all accounts with balances over $10,000 by 6%,
+-- all other accounts receive 5%. 
+
+UPDATE account 
+SET balance = balance * 1.06 
+WHERE balance > 10000 
+UPDATE account 
+SET balance = balance * 1.05 
+WHERE balance <= 10000 
+
+-- again, order important
+-- Can be done better using the case statement(regardless of order)
+
+UPDATE account 
+SET balance = case 
+               when balance <= 10000 
+               then balance * 1.05 
+               else balance * 1.06 
+              end 
+```
+
+更新视图：
+
+
+## Joined Relations 
+------

@@ -30,7 +30,7 @@ while ( read a document D ) {
 Write the inverted index to disk;
 ```
 
-### 优化
+### Optimize
 1. 对term进行处理
    
       * 只留下词根
@@ -77,7 +77,7 @@ Write the inverted index to disk;
     将空格和停用词去除，将词汇表线性存储，记录每个单词首字母位置差序列
 ![alt text](image-18.png)
 
-### 评估
+### Measures
 几个评价指标：
 
 * 索引的快慢
@@ -105,93 +105,247 @@ $$
 
 ## Leftist Heaps
 -------
-> review: 堆的操作
+> review: 堆的操作（以最小堆为例）
 
-* 插入
+* 插入 —— 插到完全二叉树最后的位置，跟父节点比较，比父节点小则交换，直到比父节点大（$O(logn)$）
 
-* 删除
+* 删除（最小值） —— 删除根，将最后位置的元素提到根上，再与两个儿子比较，把最小的儿子换到上面，直到两个儿子都比当前值大（$O(logn)$）
 
-* 合并——复杂度相当于重新建堆
-<!-- 具体的说明 -->
+* 建堆 —— 找到最后一个节点的父节点，从这个节点开始依次向前（以数组形式存储），把小儿子提上来（$O(n)$）
+
+* 合并 —— 复杂度相当于重新建堆（$O(n)$，n为两个堆size之和）
+
+堆有很好的顺序性质，合并操作应能简化
+
+
+左偏堆（Leftist Heaps）—— 一种不平衡的二叉树，也是堆（即根是子树中最大/小的元素）。利用结构的不平衡，**加速堆的合并**
+
 -------
-左偏堆——利用结构的不平衡，加速堆的合并
-
 ### Definition
 * 有两个儿子的节点是内部节点，其余为外部节点
 
-* **null path length, Npl(x)**: 到外部节点的最短路径
+* **null path length, Npl(x)**: 到外部节点的最短路径长度
 
 * 定义Npl(null) = -1
-
-* **左偏树**即所有的节点，左儿子的Npl大于等于右儿子的Npl
+* 从定义可以看出
+$$
+Npl(X) = min \\{ Npl(LeftChild) + 1 ,Npl(RightChild) + 1 , \\}
+$$
+* **左偏树** —— 即所有的节点，左儿子的Npl大于等于右儿子的Npl
 ![alt text](image-19.png)
 
-> Theorem: 右路径为r的左偏树，至少有$2^r-1$个节点
-<!-- ? -->
-<!-- 数学归纳法 -->
-> r = 1时，显然成立
-
-> r = k时，假设结论成立
-
-> r =  k+1时，右子树的Npl为k+1
+> Theorem: 右路径长度为 r 的左偏树，至少有 $2^r-1$ 个节点
 >
-> 由左偏树定义，左子树的Npl至少为k+1
->
-> 来看右子树
->
-> 左子树的右路径为k，因此左子树至少有$2^r-1$个节点
+> （右路径是从根节点开始，一直往右儿子遍历经过的所有节点（即右儿子的右儿子的右儿子······构成的路径），路径长等于经过的节点数）
+<!-- 分割 -->
+> 运用数学归纳法
+ 
+ r = 1 时，只有一个根节点，显然成立
+
+ r = k 时，假设结论成立
+
+ r =  k + 1 时，
+
+ 因为左偏堆要求左边节点的 Npl 大于等于右边节点，那么只有一直往右，才能以最短路径到达叶子节点。所以根节点的 Npl 长与右路径相关。
+ 
+ 因此 Npl(root) = k，Npl(RightChild) = k - 1，右子树的右路径为 k，由假设，右子树至少有$2^k-1$个节点
+
+ 因为左儿子的 Npl 不比右儿子小，我们想求节点数的下界，因此设 Npl(LeftChild) = k - 1
+ 
+ 同理（根节点的 Npl 长与右路径相关），左子树的右路径为k，因此左子树至少有$2^k-1$个节点
+
+ 总的节点数 = 左子树 + 右子树 + 根 = $2^{k+1}-1$，假设成立
+
+------
+### Implementation
+> 两个堆的合并
 
 
-### 实现：
 ```c
 struct TreeNode
 {
     ElementType     Element;
     PriorityQueue   Left;
     PriorityQueue   Right;
-    int             Npl;
+    int             Npl;// 特别的地方
 };
 ```
 
 方法一：递归
 
-1. Merge(R)
+1. Merge( H1->Right, H2 )
+   
+    先判断哪个堆顶的元素小，再把元素大的堆和小的右儿子 Merge  
+    ![alt text](image-25.png)
 
-2. Attach()
 
-3. Swap
+2. Attach( H2, H1->Right )
 
-<!-- 图片 -->
+    将 Merge 好的堆接到原来的右儿子位置上（递归假设 Merge 后的堆已经是左偏堆，因此只有根可能不符合左偏堆的定义）
+    ![alt text](image-26.png)
 
-<!-- 代码 -->
+3. Swap(H1->Right, H1->Left ) if necessary
 
+    因此只要查看左儿子和右二子的 Npl，来判断是否需要交换，即可保证结果是左偏堆
+    ![alt text](image-27.png)
+
+```c
+PriorityQueue  Merge ( PriorityQueue H1, PriorityQueue H2 )
+{ 
+    if ( H1 == NULL )   return H2;	
+    if ( H2 == NULL )   return H1;	
+    // 找到堆顶元素小的堆
+    if ( H1->Element < H2->Element )  return Merge1( H1, H2 );
+    else return Merge1( H2, H1 );
+}
+
+static PriorityQueue
+Merge1( PriorityQueue H1, PriorityQueue H2 )
+{ 
+    if ( H1->Left == NULL ) 	/* single node */
+        H1->Left = H2;	/* H1->Right is already NULL 
+                    and H1->Npl is already 0 */
+    else {
+        H1->Right = Merge( H1->Right, H2 );     /* Step 1 & 2 */
+        if ( H1->Left->Npl < H1->Right->Npl )
+            SwapChildren( H1 );	/* Step 3 */
+        H1->Npl = H1->Right->Npl + 1;/* 更新 Npl */
+    } /* end else */
+    return H1;
+}
+
+```
+
+$$
+T_p = O(log{N})
+$$
 
 方法二：迭代                              
 
-delete min
+1. Sort the right paths without changing their left children
+
+    用下面这个例子说明：先看 3 和 6，应该将 6 接到 3 的下面，因此保持 3 的左子树不变，把 6 跟右子树比较。
+
+    右子树中，6 比 8 小，因此保持 6 的左子树不变，把 6 接到 3 上，再比较 6 的右子树和 8，以此类推 ......
+    ![alt text](image-28.png)
+
+2. Swap children if necessary
+
+    从下到上回溯，发现 7 和 3 不满足，交换他们的孩子。（注意更新 Npl）
+    ![alt text](image-29.png)
+
+```c
+PriorityQueue  Merge ( PriorityQueue H1, PriorityQueue H2 )
+{ 
+    if ( H1 == NULL )   return H2;	
+    if ( H2 == NULL )   return H1;	
+    PriorityQueue root;
+    // 初始化
+    if(H1->Element < H2->Element){
+        root = H1;
+        push(H1);
+        H1 = H1->Right;
+    }else{
+        root = H2;
+        push(H2);
+        H2 = H2->Right;
+    }
+
+    // 迭代地将小的元素插到当前根的右边，并成为新的根
+    While(H1 && H2){
+        if(H1->Element < H2->Element){
+            root -> Right = H1; 
+            root = root -> Right;
+            push(H1);
+            H1 = H1->Right;
+        }else{
+            root -> Right = H2; 
+            root = root -> Right;
+            push(H2);
+            H2 = H2->Right;
+        }
+    }
+
+    if(H1)  root -> Right = H1; 
+    if(H2)  root -> Right = H2; 
+
+    PriorityQueue temp;
+    // 回溯，判断是否需要交换儿子，更新Npl
+    While(temp = pop()){
+        root = temp;
+        if(root->Left && root->Right){
+            if(root->Left->Npl < root->Right->Npl)  Swap(root);
+        root->Npl = root->Right->Npl + 1;
+        }else if(root->Right){
+            root->Left = root->Right;
+            root->Right = NULL;
+            root->Npl = 0;
+        }else   root->Npl = 0;
+    }
+    return root;
+}
+```
+
+> delete min
+>
+> Step 1: Delete the root
+>
+> Step 2: Merge the two subtrees
+
+$$
+T_p = O(log{N})
+$$
 
 ## Skew Heaps
 ------
-左偏树合并时不判断npl，直接交换左右子树，就是斜堆
+左偏树合并时不判断 Npl，直接交换左右子树，就是斜堆。（除右路径上最大的节点不交换）
 
-<!-- 怎么插入 -->
+可以保证均摊代价
 
-<!-- 例子 -->
+> Example: insert 15
 
+![alt text](image-30.png)
+
+
+```c
+// 这个也可以写代码
+
+
+```
+
+
+* 优点：不用存 Npl，不用判断
+
+* 开放性问题：如何保持右路径长度
 
 ------
 均摊分析（势能法）
 <!-- ? -->
 
-* 势能函数$\Phi(D_i)$=重节点的个数
+* 势能函数$\Phi(D_i)$ = 整个树中重节点的个数
 
-* 重节点：右子树节点个数严格大于左子树
+* 重节点：右子树节点个数严格大于左子树的节点
 
-* 只有右路径节点的轻重会改变
+* 只有右路径节点的轻重会改变，因此只下面只计算右路径的势能（其余抵消）
 
-* 操作后，重节点一定变轻，轻节点不一定变重，为求上界，假设轻节点都变重
+$$
+\Phi(D_0) = h1 + h2 + h 
+$$
 
-<!-- 推导和计算 -->
+* 操作后，重节点一定变轻，轻节点不一定变重，为求上界，假设轻节点都变重（势能函数就会变大，存储更多势能）
+
+$$
+\Phi(D_N) \leq l1 + l2 + h
+
+$$
+
+
+$$
+T_{amortized} = 
+$$
+
+* 最坏情况：Merge, Insert, DeleteMin 都是 O(N)
+* 均摊情况：都是 O(logN)
 
 
 ## Binomial Queue

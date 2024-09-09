@@ -156,7 +156,7 @@ each operation in the worst case.
 
 * 前两种与数据分布无关
 
-### 栈的例子
+### 栈的例子以及方法说明
 
 #### 聚合分析
   对于所有 n，n 个运算序列总共需要最坏情况时间（determine an upper bound） T（n）。因此，在最坏的情况下，每次操作的平均成本或摊销成本为 T（n）/n。
@@ -209,8 +209,15 @@ $$
 * $\Phi(D_i)$：势能函数，表示$D_i$状态的势能
 
 * $Credits =\Phi(D_i)-\Phi(D_{i-1})$; 
+    * 当 Credits > 0 时，势能增加，相当于把提前支付的代价存储为势能
+    * 当 Credits < 0 时，势能减少，相当于把提前支付的代价用掉
 
-* 合法的势能函数：保证$\Phi(D_{0})$是最小的，这样总的Credits$=\Phi(D_n)-\Phi(D_{0})$>0，均摊代价是实际代价的上界。下面公式中 $\hat{c_i}$ 是均摊代价， $c_i$ 是实际代价
+* 这样我们就能算出均摊代价($\hat{c_i}$ 是均摊代价， $c_i$ 是实际代价)
+  $$
+  \hat c_i = c_i+\Phi(D_i)-\Phi(D_{i-1})
+  $$
+
+* 合法的势能函数：保证$\Phi(D_{0})$是最小的，这样总的Credits$=\Phi(D_n)-\Phi(D_{0})$>0，使得均摊代价是实际代价的上界。
 $$
 \sum_{i=1}^n\hat{c_i}=\sum_{i=1}^n(c_i+\Phi(D_i)-\Phi(D_{i-1}))=\sum_{i=1}^nc_i+\Phi(D_n)-\Phi(D_{0})
 $$
@@ -237,7 +244,7 @@ $$
 
 (因为报告用英文写的所以下面是英文)
 
-In tree's amortized analysis, we often use the height of tree or the amount of nodes as the potential function, which satisfy $\Phi(0)$ is the minimum. To make the potential function increasing slowly, we choose $\Phi(T)=\sum_{i\in T}S(i)$, where S(i) is the number of descendants of i (i included). $\Phi(T)$ is also called rank of T, notion $R(T)$
+In tree's amortized analysis, we often use the height of tree or the amount of nodes as the potential function, which satisfy $\Phi(0)$ is the minimum. To make the potential function increasing slowly, we choose $\Phi(T)=log{\sum_{i\in T}S(i)}$, where S(i) is the number of descendants of i (i included). $\Phi(T)$ is also called rank of T, notion $R(T)$
 
 > Lemma: If $a+b\leq c$ 
 >
@@ -291,6 +298,7 @@ $$
 \hat{c_i} \leq 1+3(R_2(X)-R_1(X))=O(logN)
 $$
 
+------
 ### Incrementing a binary counter
 > 算法导论的摊还分析例子
 
@@ -300,7 +308,7 @@ Incrementing a binary counter(k bit in total)
 
 * worst case: 每次最多转k个bits——011...1=>100...0
 
-聚合分析：
+**聚合分析：**
 
 * A[0]每次都改变
 
@@ -316,7 +324,7 @@ $$
 
 因此总的时间复杂度上界为O(n)，均摊时间复杂度为O(n)/n=O(1).
 
-核算法：
+**核算法：**
 
 * 实际代价：1变为0 = 1, 0变为1 = 1
 
@@ -328,11 +336,41 @@ $$
 
 * 因此均摊代价为O(1)
 
-势能法：
+**势能法：**
 
-* 选取势能函数：当前1的数目，记为$b_i$
-<!--  怎么看到这就停了-->
+* 选取势能函数：第 i 次操作后 1 的数目，记为 $b_i$
 
+* 每次翻转，将低位的连续的 1 翻转为 0 ，遇到的第一个 0 翻转为 1 。将翻转1的数目计为 $t_i$ ，这样一次操作的实际代价 $c_i = t_i +1$
+
+* 分情况讨论 $b_i$ 和 $b_{i-1}$ 的关系，这样在 $\Phi(D_i)-\Phi(D_{i-1})$ 中消去 $b_i$
+    * $b_i=0$ —— 则第 i 次操作将 k 个 1 全部翻转为 0 ，所以 $b_{i-1}=k=t_i$
+    * $b_i>0$ —— 用 $b_{i-1}$ 和 $t_i$ 计算 $b_i$ ：$b_i=b_{i-1}-t_i+1$
+    * 因此，$b_i\leq b_{i-1}-t_i+1$
+
+
+* 现在来计算均摊代价
+    $$
+    \hat c_i = c_i+\Phi(D_i)-\Phi(D_{i-1}) = t_i +1 + b_i - b_{i-1}
+    $$
+    $$
+    \leq t_i +1 + b_{i-1}-t_i+1- b_{i-1} = 2
+    $$
+
+* 因此每次操作的均摊代价都是 $O(1)$
+
+当不从 0 开始计数时，即 $\Phi({D_0})\ne 0$ 时，虽然无法保证 $\Phi(D_i)-\Phi(D_{i-1})\geq 0$，但均摊代价仍是 $O(1)$
+
+前面我们知道
+$$
+\sum_{i=1}^n\hat{c_i}=\sum_{i=1}^n(c_i+\Phi(D_i)-\Phi(D_{i-1}))=\sum_{i=1}^nc_i+\Phi(D_n)-\Phi(D_{0})
+$$
+转换一下
+$$
+\sum_{i=1}^n{c_i}=\sum_{i=1}^n\hat c_i-\Phi(D_n)+\Phi(D_{0})=\sum_{i=1}^n\hat c_i-b_n+b_0 \leq \sum_{i=1}^n\hat c_i-k
+$$
+也就是说，它们之间相差一个常数 k ，而这对均摊代价是没有影响的，仍是 $O(1)$
+
+<!-- 后面还有一节和习题等等 -->
 
 ## Red-black Tree
 ------
@@ -353,10 +391,10 @@ $$
 
 --------
 
-* black height: 不算自己、不算哨兵，经过的黑色节点数
+* black height: 不算自己、不算哨兵，从自己到叶子经过的黑色节点数
 
-> 引理：
-<!-- 什么引理 -->
+> 引理：有 N 个内部节点的红黑树的高不超过 2ln(N+1)
+
 证明：
 
 ------
@@ -387,11 +425,25 @@ $$
 
 * 只有一个儿子：用儿子替代他
 
-* 有两个儿子：用左子树最大的/右子树最小的替代他。
+* 有两个儿子：用左子树最大的/右子树最小的替代他（保持本身的颜色不变，替换值），再递归地删除替换的节点
 
-此时
+* 如果删除的节点（x）是红色节点，那么它不会影响红黑树的性质，可以直接删除。删除黑色节点可能会破坏红黑树的性质，因此需要进行修正。删除黑色节点时会有以下几种情况需要考虑：
 
-<!--删除怎么删  -->
+    * case 1：被删除节点的兄弟节点是红色的，转换成后面的几种情况——先把兄弟节点的红色给父亲，再将兄弟节点旋转上去
+        ![alt text](image-60.png)
+
+    * case 2：被删除节点的兄弟节点是黑色的，且儿子都是黑色的——先令兄弟节点为红色，如果父亲是红色，则直接删除 x，并将父亲改为黑色，就完成了调整；如果父亲是黑色，则把父亲当作新的被删除节点进行调整（只是调整方法，不用删除）
+        ![alt text](image-62.png)
+    
+    * case 3：被删除节点的兄弟节点是黑色的，且近侄子是红色的——将红色给兄弟，再把近侄子转到兄弟的位置（变换成 case 4）
+        ![alt text](image-63.png) 
+    * case 4：被删除节点的兄弟节点是黑色的，且远侄子是红色的——兄弟与父亲交换颜色，再把兄弟转上来，删除 x
+      
+        ![alt text](image-64.png)
+
+> 具体例子
+>
+> ![alt text](image-65.png)
 
 ## B+ Tree
 ------
@@ -414,7 +466,7 @@ $$
 
 * 保证有序/找到位置：遍历（O(n)）
 
-* 如果推到前面——可能O(n)，因此实际操作不这么做
+* 如果推到前面——可能 O(n)，因此实际操作不这么做
 
 <!-- 伪代码  -->
 ```c
@@ -425,6 +477,9 @@ Btree Insert(ElementType X,Btree T)
 ```
 
 <!-- 时间复杂度 -->
+
+Find 的时间复杂度：O(logN)，不管度数是多少
+
 > choose M: best 3 or 4
 
 -------
@@ -432,5 +487,9 @@ Btree Insert(ElementType X,Btree T)
 
 ------
 ### 3. 删除过程
-<!-- 删除？ -->
 
+
+* 删除节点=>若低于最低数量限制则：
+    
+    * 若兄弟有多余节点，则借一个，更新键值
+    * 若没有，则与兄弟合并，并递归地向上操作，跟新键值

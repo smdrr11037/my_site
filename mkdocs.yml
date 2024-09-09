@@ -3,27 +3,52 @@ site_url: https://example.com/
 repo_url: https://github.com/smdrr11037/my_site
 nav:
   - Home: index.md
-  - Ads: 
-      - Part 1: ./ads/ads_part_1.md
-      - Part 2: ./ads/ads_part_2.md 
-      - Test Interface: ./ads/project2_test.md
-  - CO:
-      - Chapter 1、3: ./CO/CO.md
-      - Chapter 2: CO/CO_2.md
-  - oop:
-      - Basis: ./oop/oop.md
-      - Implementatin: ./oop/oop2.md
-  - DataBase:
-      - Introduction: ./DataBase/DataBase.md
-      - Use sql: ./DataBase/DataBase2.md
-  - 备忘: memoire.md
+  - Past:
+    - Ads: 
+        - Part 1: ./ads/ads_part_1.md
+        - Part 2: ./ads/ads_part_2.md 
+        - Part 3(开始算法分析): ./ads/ads_part_3.md
+        - Part 4: ./ads/ads_part_4.md
+        - Test Interface: ./ads/project2_test.md
+    - CO:
+        - Chapter 1、3: ./CO/CO.md
+        - Chapter 2 (Instructions): CO/CO_2.md
+        - Chapter 4 (Processor): CO/CO_3.md
+        - Chapter 5 (Memory): CO/CO_4.md
+        - Chapter 6 (I/O): CO/CO_5.md
+        
+    - oop:
+        - Basis: ./oop/oop.md
+        - Implementatin: ./oop/oop2.md
+        - Inheritance: ./oop/oop3.md
+        - Polymorphism: ./oop/oop4.md
+        - Encapsulation: ./oop/oop5.md
+    - DataBase:
+        - Introduction: ./DataBase/DataBase.md
+        - Use SQL: ./DataBase/DataBase2.md
+        - Advanced SQL: ./DataBase/DataBase3.md
+        - E-R Model: ./DataBase/DataBase4.md
+        - Relational Database Design: ./DataBase/DataBase5.md
+        - Storage and Indexing: ./DataBase/DataBase6.md
+        - Query Processing: ./DataBase/DataBase7.md
+        - Transaction Management: ./DataBase/DataBase8.md
+    - Matlab: ./Matlab/Matlab.md
+  - Reasearch:
+      - 文献阅读: ./Research/read.md
+  - 优化:
+      - part1: ./Opt/Opt1.md
+  - TOC:
+      - part1: ./TOC/TOC1.md
+  - 备忘: 
+      - Home: memoire.md
+      
 
   - DailyLife: ./DailyLife/DailyLife.md
   
   - OC: OC/oc.md
 
 theme:
-  custom_dir: overrides
+  # custom_dir: overrides
   logo: img/IMG_2839.PNG
   repo: img/IMG_2840.PNG
   
