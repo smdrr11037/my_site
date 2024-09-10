@@ -39,13 +39,15 @@ nav:
       - part1: ./Opt/Opt1.md
   - TOC:
       - part1: ./TOC/TOC1.md
+  - OS:
+      - part1: ./OS/OS1.md
   - 备忘: 
       - Home: memoire.md
       
 
   - DailyLife: ./DailyLife/DailyLife.md
   
-  - OC: OC/oc.md
+  # - OC: OC/oc.md
 
 theme:
   # custom_dir: overrides
