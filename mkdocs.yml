@@ -41,6 +41,13 @@ nav:
       - part1: ./TOC/TOC1.md
   - OS:
       - part1: ./OS/OS1.md
+  - CN:
+      - part1: ./CN/CN1.md
+      - 物理层: ./CN/CN2.md
+  - CA:
+      - part1: ./CA/CA1.md
+  - asm:
+      - part1: ./asm/asm1.md
   - 备忘: 
       - Home: memoire.md
       
