@@ -335,10 +335,10 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../TOC/TOC1/" class="md-tabs__link">
+        <a href="../../CV/CV1/" class="md-tabs__link">
           
   
-  TOC
+  CV
 
         </a>
       </li>
@@ -1251,6 +1251,73 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    TOC
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            TOC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TOC/TOC1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1414,7 +1481,7 @@
             
   
   <span class="md-ellipsis">
-    TOC
+    CV
   </span>
   
 
@@ -1424,7 +1491,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            TOC
+            CV
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1435,11 +1502,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../../TOC/TOC1/" class="md-nav__link">
+      <a href="../../CV/CV1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Overview
+    Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CV/CV2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Review
   </span>
   
 
@@ -2155,11 +2243,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../asm6/" class="md-nav__link">
+      <a href="../asm7/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    8086/8088 Hardware Specifications
+    Basic IO Interface
   </span>
   
 
@@ -2514,8 +2602,9 @@
 </blockquote>
 <p>RIP - (instruction pointer) addresses the next instruction in a section of memory</p>
 <p>RSP - (stack pointer) addresses an area of memory called the stack</p>
-<p>RFLAG</p>
+<h3 id="rflag">RFLAG</h3>
 <p><img alt="alt text" src="../image-21.png" /></p>
+<p>Status Flags</p>
 <ul>
 <li>condition &amp; control operation</li>
 <li>C 位 - carry after addition or borrow after subtraction</li>
@@ -2525,22 +2614,93 @@
 </ul>
 <p><img alt="alt text" src="../image-22.png" /></p>
 <ul>
-<li>A 位 - 支持 BCD 码直接计算</li>
-<li>D 位 - 字符串比对是低位还是高位</li>
-<li></li>
+<li>P 位 - the least-significant byte 有偶数个 1</li>
+<li>A 位 - 记录 BCD 码个位到十位的进位，支持 BCD 码直接计算</li>
+<li>D 位 - selects increment or decrement 
+mode for the DI and/or SI registers，字符串比对是低位还是高位</li>
 </ul>
+<p><img alt="alt text" src="../image-27.png" /></p>
+<p>System Flags</p>
+<ul>
+<li>T (trap) - The trap flag enables trapping through an on-chip debugging feature.  </li>
+<li>I (interrupt) - controls operation of the INTR (interrupt request) input pin.  </li>
+<li>VM (virtual mode) flag bit selects virtual mode operation in a protected mode system</li>
+</ul>
+<blockquote>
+<p>其他不重要，应该</p>
+</blockquote>
+<h3 id="segment-registers">Segment Registers</h3>
+<p>CS (code)</p>
+<p>DS (data) </p>
+<p>ES (extra) - used by some instructions to hold destination data</p>
+<p>SS (stack)</p>
+<p>FS and GS</p>
+<ul>
+<li>two additional memory</li>
+<li>for OS-related functionality </li>
+</ul>
+<p>64-bit mode - ignore DS, ES, and SS ( assumes they have a base address of 0)</p>
+<p><img alt="alt text" src="../image-28.png" /></p>
+<h3 id="system-registers">System Registers</h3>
+<p>Control Register - control system operation</p>
+<p>Discripter-Table Register - hold segmentation data structures used in protected mode</p>
+<p>Task-Register - hold state information for a given task </p>
 <hr />
-<p>Long mode &amp; 64-bit mode</p>
+<h2 id="22-modes-of-operation">2–2 Modes of Operation</h2>
+<h3 id="long-mode-64-bit-mode">Long mode &amp; 64-bit mode</h3>
+<p>Overview (from AMD64)</p>
+<p><img alt="alt text" src="../image-29.png" /></p>
+<p>Long mode </p>
+<ul>
+<li>Intel calls IA-32e ("e" for "extensions"), is an extension of legacy protected mode. </li>
+<li>2 submodes<ul>
+<li>64-bit mode - 支持 64 位架构</li>
+<li>compatibility mode - 二进制兼容 16/32 位应用</li>
+</ul>
+</li>
+<li>长模式不支持 legacy real mode or legacy virtual-8086 mode</li>
+</ul>
+<p>Legacy mode consists of three submodes</p>
+<ul>
+<li>Protected mode<ul>
+<li>支持 16/32 位程序</li>
+<li>有 memory segmentation, optional paging, and privilege-checking</li>
+<li>程序最多能访问 4GB 内存</li>
+</ul>
+</li>
+<li>Virtual-8086 mode<ul>
+<li>16 位实模式程序</li>
+<li>最多访问 1MB</li>
+</ul>
+</li>
+<li>Real mode<ul>
+<li>16 位程序</li>
+<li>Segment</li>
+<li>1 MB 内存</li>
+</ul>
+</li>
+</ul>
+<p>System management mode (SMM)</p>
+<ul>
+<li>an operating mode designed for system-control activities</li>
+<li>for platform firmware &amp; 底层 device drivers</li>
+</ul>
+<p><strong>运行模式切换</strong></p>
+<blockquote>
+<p>有点难啊这个，感觉记不住</p>
+</blockquote>
+<p><img alt="alt text" src="../image-30.png" /></p>
 <hr />
 <p>Memory Management Requirements</p>
 <ul>
 <li>Relocation - 代码无论放哪都能运行</li>
-<li>Protection</li>
-<li>Sharing</li>
+<li>Protection - 程序内存相互隔离</li>
+<li>Sharing - 多个程序访问同一段内存</li>
 </ul>
 <p>分段和分页的内存管理方式</p>
 <ul>
 <li>Segmentation - 每段大小可能不同<ul>
+<li>每段有自己的基地址和 limit <img alt="alt text" src="../image-31.png" /></li>
 <li>external fragmentation</li>
 </ul>
 </li>
@@ -2550,26 +2710,72 @@
 </ul>
 </li>
 </ul>
+<p><img alt="alt text" src="../image-32.png" /></p>
+<p><img alt="alt text" src="../image-33.png" /></p>
+<h2 id="23-real-mode-memory-addressing">2–3  REAL MODE MEMORY ADDRESSING</h2>
+<ul>
+<li>实模式运算只支持前 1MB 的内存地址</li>
+<li>前 1MB 又被叫做 real memory, conventional memory, or DOS memory system </li>
+</ul>
+<h3 id="segments-and-offsets">Segments and Offsets</h3>
+<ul>
+<li>segment address - 一个 64KB 段的起始地址</li>
+<li>offset address (Effective Address) - 64KB 段内的偏移地址</li>
+<li>Linear address - segment adress（16 位）左移 4 位加上 offset address（16 位）</li>
+</ul>
 <p>线性地址 -开启分页-&gt; 虚拟地址</p>
-<hr />
+<blockquote>
+<p>一个有四个段的程序 <img alt="alt text" src="../image-35.png" /></p>
+</blockquote>
 <p>地址回滚问题</p>
+<blockquote>
+<p>不太懂，应该不是重点</p>
+</blockquote>
+<p><img alt="alt text" src="../image-36.png" /></p>
 <hr />
+<h2 id="24-intro-to-protected-mode-memory-addressing">2–4  INTRO TO PROTECTED MODE MEMORY ADDRESSING</h2>
+<blockquote>
+<p>Segment（粗粒度）</p>
+</blockquote>
 <p>保护模式</p>
 <ul>
-<li>选择子</li>
-<li>描述符<ul>
-<li>全局描述符 - 规定第一个是空描述符（防止段没能初始化）</li>
+<li>选择子 - 存在段寄存器中，用来在描述符表中找到描述符 <img alt="alt text" src="../image-41.png" /></li>
+<li>描述符 - 包含段的 base address, limit, and access rights<ul>
+<li>全局描述符 - 规定第一个是空描述符（用于 unused 段的初始化）</li>
 <li>局部描述符</li>
+<li>门描述符 - 提供代码选择子和 entry point</li>
+</ul>
+</li>
+<li>描述符表<ul>
+<li>全局（系统）描述符表（GDT）- holds descriptors available to all programs（必须）</li>
+<li>局部（应用）描述符表（LDT）- holds descriptors used by a single program（可选）</li>
+<li>interrupt-descriptor table - 存储门描述符（必须）</li>
 </ul>
 </li>
 </ul>
+<p><img alt="alt text" src="../image-37.png" /></p>
 <blockquote>
 <p>保护模式下，能跑多少个线程？</p>
+<p>Solution: GDT 64KB，一个条目 8B，一个程序至少需要两个条目（Data 和 Code 段）</p>
+<p>因此最多 64K/16 = 4K = 4096 个线程</p>
 </blockquote>
-<p>G 位</p>
+<p><img alt="alt text" src="../image-38.png" /></p>
+<blockquote>
+<p>地址访问越界，a general protection exception (#GP) occurs</p>
+</blockquote>
+<p>G 位，granularity bit</p>
 <ul>
-<li>G = 0 - ending = starting + Limit</li>
-<li>G = 1 - ending = starting + (Limit)FFF H</li>
+<li>G = 0 - ending = starting + Limit B</li>
+<li>G = 1 - ending = starting + (Limit)*4K B</li>
+</ul>
+<p>描述符的访问权限</p>
+<p><img alt="alt text" src="../image-39.png" /></p>
+<blockquote>
+<p>通过门描述符，实现越权访问</p>
+<p>0 是最高权限</p>
+</blockquote>
+<ul>
+<li>DPL <img alt="alt text" src="../image-40.png" /></li>
 </ul>
 <p>保护模式的三个安全级别</p>
 <ul>
@@ -2578,36 +2784,44 @@
 <li>CPL - CPU（主体）</li>
 </ul>
 <p>检查</p>
-<!-- 好几张图 -->
-
-<blockquote>
-<p>通过门描述符，实现越权访问</p>
-<p>0 是最高权限</p>
-</blockquote>
-<hr />
-<h3 id="segmentation">Segmentation</h3>
-<blockquote>
-<p>粗粒度</p>
-</blockquote>
+<p><img alt="alt text" src="../image-42.png" /></p>
+<p><img alt="alt text" src="../image-43.png" /></p>
 <p>Memory Addressing</p>
 <ul>
 <li>选择子（索引）-&gt; 描述符（全局/局部，八个字节）-&gt; 安全检测 -&gt; 基地址+偏移地址（线性地址）</li>
 </ul>
-<!-- 图 -->
-
+<p>Invisible Register</p>
 <ul>
-<li>Multi-segment memory model<ul>
-<li>每个段分开，有各自的权限和空间</li>
+<li>GDTR，IDTR - 存储 GDT 和 IDT 的起始地址，在模式转换时设定</li>
+<li>LDTR - 通过 GDTR 设置<ul>
+<li>切换 task 时切换 LDTR 保证内存隔离</li>
 </ul>
 </li>
-<li>Flat-memory model</li>
+</ul>
+<p>Protected Mode Segmented-Memory Models</p>
+<ul>
+<li>Multi-segmented memory model <ul>
+<li>每个段分开，有各自的权限和空间 <img alt="alt text" src="../image-44.png" /></li>
+</ul>
+</li>
+<li>Flat-memory model <img alt="alt text" src="../image-45.png" /></li>
 </ul>
 <hr />
-<h3 id="memory-paging">Memory Paging</h3>
+<h3 id="2-5-memory-paging">2-5 Memory Paging</h3>
 <blockquote>
 <p>细粒度 </p>
 </blockquote>
-<p>Effective Address = Base + (Scale*Index) + Displacement</p>
+<p>四种内存地址类型及其转换关系 </p>
+<ul>
+<li>effective addresses, or segment offsets = Base + (Scale*Index) + Displacement（保护模式）</li>
+<li>Logical addresses = Segment Selector : Offset</li>
+<li>Linear (virtual) addresses = Segment Base Address +  Effective Address </li>
+<li>Physical addresses = linear address work through page table</li>
+</ul>
+<p><img alt="alt text" src="../image-46.png" /></p>
+<blockquote>
+<p>放一放，感觉四门课都讲过这个，不能再熟了</p>
+</blockquote>
 <p>multi-level paging method</p>
 <blockquote>
 <p>保证每级的索引都能放到一个 4KB 的页中</p>
@@ -2639,38 +2853,6 @@
 <p>Self-Referencing - PTE 指向自己而不是二级页表（不考</p>
 <p>Total Meltdown</p>
 <hr />
-<h3 id="operating-mode">Operating mode</h3>
-<ul>
-<li>16 bit - 操作数、地址 16 位</li>
-<li>32 bit - 操作数 32 位</li>
-<li>64 bit - 操作数 32 位、地址 64 位 <code>MOV EAX,[RBX]</code></li>
-</ul>
-<p>Addressing Mode</p>
-<ul>
-<li>Data-Addressing Modes - <code>MOV AX,DX</code></li>
-<li>Stack - <code>PUSH AX</code></li>
-<li>Program - <code>JMP</code>, <code>CALL</code></li>
-</ul>
-<p>Operands</p>
-<ul>
-<li>立即数</li>
-<li>寄存器操作数</li>
-<li>内存操作数</li>
-</ul>
-<blockquote>
-<p>目的操作数可能不变，e.g. <code>CMP</code> 指令改变状态寄存器 </p>
-</blockquote>
-<p>操作数长度不一致的情况</p>
-<ul>
-<li><code>MOV EAX,BX</code> - 报错</li>
-<li><code>MOV EAX,12345H</code> - 补零</li>
-</ul>
-<blockquote>
-<p><code>MOV AX,F2H</code>  - load a label named F2H</p>
-<p><code>MOV AX,0F2H</code> - 装一个 16 进制数</p>
-</blockquote>
-<hr />
-<p>RIP-relative</p>
 
 
 
