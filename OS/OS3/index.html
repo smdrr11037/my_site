@@ -22,7 +22,7 @@
     
     
       
-        <title>Inter-Process Communications - smdrr's note</title>
+        <title>Thread & IPC - smdrr's note</title>
       
     
     
@@ -152,7 +152,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Inter-Process Communications
+              Thread & IPC
             
           </span>
         </div>
@@ -1645,15 +1645,72 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Thread & IPC
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Inter-Process Communications
+    Thread & IPC
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definition
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-threads-vs-kernel-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Threads vs. Kernel Threads
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#threading-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Threading Issues
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2370,6 +2427,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definition
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-threads-vs-kernel-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Threads vs. Kernel Threads
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#threading-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Threading Issues
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2387,7 +2479,7 @@
 
 
 <h1 id="thread">Thread</h1>
-<p>Definition</p>
+<h2 id="definition">Definition</h2>
 <ul>
 <li><strong>Thread</strong> is the basic unit of execution within a process</li>
 <li>Each thread has its own<ul>
@@ -2423,10 +2515,29 @@
 <li>memory-constrained</li>
 <li>memory protection 不起作用</li>
 </ul>
-<p>User Threads vs. Kernel Threads</p>
+<blockquote>
+<p>多线程带来的挑战</p>
+<ul>
+<li>数据依赖、同步</li>
+<li>将任务和数据分成多个活动分给线程</li>
+<li>Balancing load among threads</li>
+<li>测试和 debug</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="user-threads-vs-kernel-threads">User Threads vs. Kernel Threads</h2>
+<ul>
+<li>可以只在用户模式下支持线程（managed by some user-level thread library (e.g., Java Green Threads)</li>
+<li>也可以由 Kernel 支持（需要 data structure and functionality <ul>
+<li>linux 没有对线程和进程的数据结构做出区分·</li>
+</ul>
+</li>
+</ul>
 <p>Many-to-One Model</p>
 <ul>
 <li>一个 kernel thread 对应多个 user thread </li>
+<li>缺点：不能很好地利用多核架构/如果一个线程被阻塞，所有都运行不了</li>
+<li>example - Java Green Threads/GNU Portable Threads</li>
 </ul>
 <p>One-to-One Model</p>
 <blockquote>
@@ -2434,25 +2545,83 @@
 <p>简单+硬件便宜</p>
 </blockquote>
 <ul>
-<li>一个 kernel thread 对应一个 user thread </li>
-<li>耗资源</li>
+<li>一个 kernel thread 对应一个 user thread</li>
+<li>可以消除 Many-to-One Model 的缺点</li>
+<li>耗资源，创建新线程要创建新的 kernel 线程，需要更多时间</li>
 <li>context 切换时，存在对应的 kernel space（tk</li>
+<li>Linux，Windows，Solaris 9 and later 用的都是这种模式</li>
 </ul>
-<p>Many-to-Many、Two-Level...</p>
+<hr />
+<p>其他不常见的模式</p>
+<ul>
+<li>Many-to-Many - 当一个线程被阻塞，创建新的 kernel 线程防止其他线程终止；一个线程的创建不一定需要新的 kernel 线程</li>
+<li>Two-Level - The user can say: “Bind this thread to its own kernel thread”</li>
+</ul>
 <hr />
 <p>Thread Library</p>
 <ul>
-<li>pthread</li>
-<li>OpenMP - <code>pragma omp parallel</code> 有多少核创建多少个进程</li>
+<li>为用户提供在自己程序中创建进程的方式</li>
+<li>In C/C++: pthreads and Win32 threads - 由 kernel 实现<ul>
+<li>pthreads - Specification, not implementation</li>
+</ul>
+</li>
+<li>In C/C++: OpenMP<ul>
+<li>Identifies <strong>parallel regions</strong></li>
+<li><code>pragma omp parallel</code> 有多少核创建多少个进程</li>
+</ul>
+</li>
 <li>Java Thread<ul>
-<li>JVM</li>
+<li>JVM 实现，追踪线程状态，进行 Schedule</li>
+<li>Old versions of the JVM used <strong>Green Threads</strong>（不能多核）<img alt="alt text" src="../image-33.png" /></li>
+<li>The JVM now provides <strong>native threads</strong>（mapped to kernel threads）<img alt="alt text" src="../image-34.png" /></li>
 </ul>
 </li>
 </ul>
-<p>Threading Issues</p>
+<h2 id="threading-issues">Threading Issues</h2>
+<p>Semantics of <code>fork()</code> &amp; <code>exec()</code> system calls</p>
 <ul>
-<li>Semantics of fork() &amp; exec() system calls</li>
+<li>多线程的情况下，call <code>fork()</code> 有两种可能<ul>
+<li>一个新的进程被创建，只有一个线程（即 call <code>fork()</code> 的那个线程的拷贝）</li>
+<li>一个新的进程被创建，源进程的所有线程都被 copy</li>
 </ul>
+</li>
+<li>有些 OS 提供两种选项（Linux 使用第一种</li>
+<li>If one calls <code>exec()</code> after <code>fork()</code>, <strong>all</strong> threads are “wiped out” anyway</li>
+</ul>
+<p>Signal handling</p>
+<ul>
+<li>多线程的情况下，call <code>signal()</code> 有很多种选择<ul>
+<li>Deliver the signal to the thread to which the signal applies</li>
+<li>Deliver the signal to every thread in the process</li>
+<li>Deliver the signal to certain threads in the process</li>
+<li>Assign a specific thread to receive all signals</li>
+</ul>
+</li>
+<li>Most UNIX versions: a thread can say which signals it accepts and which signals it doesn’t accept</li>
+<li>On Linux - tricky</li>
+</ul>
+<hr />
+<p>Thread cancellation of target thread</p>
+<ul>
+<li>Asynchronous - One thread terminates another immediately</li>
+<li>deferred - A thread periodically checks whether it should terminate</li>
+<li>If thread has cancellation disabled (off), cancellation remains pending until thread enables it</li>
+<li>Cancellation only occurs when thread reaches <strong>cancellation point</strong>（<code>pthread_testcancel()</code> in pthread）, Then cleanup handler is invoked</li>
+</ul>
+<p>Operating System Examples</p>
+<ul>
+<li>Windows Threads <img alt="alt text" src="../image-35.png" /></li>
+<li>Linux Threads <ul>
+<li><code>clone()</code> syscall 来创建线程/进程</li>
+<li>Shares execution context with its parent</li>
+<li>多线程进程，PID 为 leading thread ID，其他存在链表中<img alt="alt text" src="../image-36.png" /><img alt="alt text" src="../image-37.png" /></li>
+</ul>
+</li>
+<li>User thread to kernel thread mapping</li>
+</ul>
+<blockquote>
+<p>最后一点没看懂啊，感觉不重要</p>
+</blockquote>
 <hr />
 <h1 id="inter-process-communicationsipcs">Inter-Process Communications(IPCs)</h1>
 <blockquote>
@@ -2508,21 +2677,50 @@
 </li>
 <li>Message passing is key for distributed computing（不同主机不能共享内存</li>
 </ul>
-<hr />
-<p>Implementation of communication link</p>
+<h3 id="implementation-of-communication-link">Implementation of communication link</h3>
+<p>Physical:</p>
 <ul>
-<li>Physical:<ul>
 <li>Shared memory</li>
 <li>Hardware bus</li>
 <li>Network</li>
 </ul>
-</li>
-<li>Logical:<ul>
-<li>Direct or indirect</li>
-<li>Synchronous or asynchronous</li>
-<li>Automatic or explicit buffering</li>
+<p>Logical:</p>
+<ul>
+<li>Direct or indirect<ul>
+<li>Direct - 必须显式标明收发信息的线程</li>
+<li>indirect - mailbox (ports)</li>
 </ul>
 </li>
+<li>Synchronous or asynchronous<ul>
+<li>Blocking is considered synchronous</li>
+<li>Non-blocking is considered asynchronous</li>
+</ul>
+</li>
+<li>Automatic or explicit buffering<ul>
+<li>Zero capacity/Bounded capacity/Unbounded capacity</li>
+</ul>
+</li>
+</ul>
+<p>实例</p>
+<ul>
+<li>Signals are a UNIX form of IPC</li>
+<li>Pipes<ul>
+<li>Ordinary pipes（anonymous pipes in WIN） - 需要是父亲和孩子才能通过管道传递信息</li>
+<li>Named pipes</li>
+<li>UNIX pipe 是单边的， The command <code>ls | grep foo</code> creates two processes that communicate via a pipe<ul>
+<li>The ls process writes on the write-end</li>
+<li>The grep process reads on the read-end</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Client-Server<ul>
+<li>Socket = ip address + port number</li>
+</ul>
+</li>
+<li>Remote Procedure Calls -  done by a client stub</li>
+<li>RPCs</li>
+<li>RMI (JAVA)</li>
 </ul>
 <hr />
 <blockquote>
@@ -2537,138 +2735,6 @@
 <li>一个进程至少有一个线程</li>
 <li>share memory</li>
 </ul>
-<p>Signals</p>
-<p>Safe Thread Cancellation</p>
-<p>reproduce=</p>
-<p>clone - same memory space is shared</p>
-<p>single-threaded process vs. multi-threaded process</p>
-<hr />
-<h1 id="synchronization">Synchronization</h1>
-<blockquote>
-<p>求和的例子</p>
-</blockquote>
-<p>Critial-Section</p>
-<ul>
-<li><strong>三个要求</strong>（重要）</li>
-<li>multual exclusive 互斥</li>
-<li>bounded-waiting 有限等待</li>
-</ul>
-<h2 id="peterson-solution">Peterson solution</h2>
-<hr />
-<h2 id="hardware">Hardware</h2>
-<blockquote>
-<p>Memory Barriers（不要求掌握）</p>
-</blockquote>
-<h3 id="hardware-instruction">Hardware Instruction</h3>
-<p>Test-and-Set Instruction</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">do</span><span class="p">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<p>不能满足 bounded-waiting</p>
-<p>改进：轮流传递锁</p>
-</blockquote>
-<p>Compare-and-Swap Instruction</p>
-<blockquote>
-<p>现实实现了</p>
-</blockquote>
-<ul>
-<li>如果 store 前别的进程改动了数据，则当前进程的改动回滚</li>
-</ul>
-<h2 id="_1"><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>
-</code></pre></div></h2>
-<h2 id="mutex-locks">Mutex Locks</h2>
-<blockquote>
-<p>等同于 spin lock</p>
-</blockquote>
-<p>*</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">){</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="c1">//</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">acquire</span><span class="w"> </span><span class="n">lock</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">critical</span><span class="w"> </span><span class="n">section</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="n">release</span><span class="w"> </span><span class="n">lock</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="c1">// busy waiting</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="n">remainder</span><span class="w"> </span><span class="n">section</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><span class="filename">definition</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>
-</code></pre></div>
-<blockquote>
-<p>问题：太多的 spin 浪费 CPU 时间</p>
-<p>t0 获得锁，schedule 让 t1 执行，t1 的时间片被用来 busy waiting </p>
-</blockquote>
-<p>解决方法：让没有取得锁的进程 sleep，不放在 ready queue 里 - <strong>Semaphore</strong></p>
-<ul>
-<li>多了一个 waiting queue</li>
-<li>类型 - Counting Semaphore/Binary Semaphore</li>
-<li>Two operations: Block/wakeup</li>
-</ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">init</span><span class="p">(){</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">}</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kt">void</span><span class="w"> </span><span class="nf">lock</span><span class="p">(){</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="p">}</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">wait</span><span class="p">(</span><span class="n">semaphore</span><span class="p">){</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">--</span><span class="p">;</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="n">add</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">S</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">;</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="n">block</span><span class="p">();</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">}</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="n">signal</span><span class="p">(</span><span class="n">semaphore</span><span class="p">){</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">++</span><span class="p">;</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">        </span><span class="n">remove</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">proc</span><span class="p">.</span><span class="n">P</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">S</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">;</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="n">wakeup</span><span class="p">(</span><span class="n">P</span><span class="p">);</span>
-<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<p>wait/signal 需要是 atomic 的（用 spinlock）</p>
-<p>原因是多个进程 value++/-- 会出错</p>
-<p>因此存在 busy waiting</p>
-</blockquote>
-<div class="highlight"><span class="filename">用法</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">T1</span><span class="p">.</span><span class="n">wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sem</span><span class="p">);</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">T0</span><span class="p">.</span><span class="n">signal</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sem</span><span class="p">);</span>
-</code></pre></div>
-<hr />
-<p>适用场景</p>
-<ul>
-<li>Mutex or spinlock<ul>
-<li>no blocking</li>
-<li>short critical section</li>
-</ul>
-</li>
-<li>Semaphore(context switch consume time)<ul>
-<li>no looping</li>
-<li>long critical section</li>
-</ul>
-</li>
-</ul>
-<p>deadlock -&gt; starvation</p>
-<p>Priority Inversion</p>
-<ul>
-<li>先获得锁的低优先级的进程比高优先级的先执行</li>
-<li>solution：priority inheritance<ul>
-<li>把等待队列种的最高优先级暂时赋给该进程</li>
-</ul>
-</li>
-</ul>
-<hr />
-<p>linux <strong>spinlock</strong></p>
-<blockquote>
-<p>read-write lock/condition variable - 不要求掌握</p>
-</blockquote>
-<p>POSIX - userspace 的实现</p>
-<p><strong>reproduce</strong></p>
 
 
 

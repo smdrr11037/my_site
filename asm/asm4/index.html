@@ -1635,7 +1635,7 @@
         
   
   <span class="md-ellipsis">
-    Inter-Process Communications
+    Thread & IPC
   </span>
   
 
@@ -2301,9 +2301,33 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aaa" class="md-nav__link">
+  <a href="#aaa-ascii-adjust-after-addition" class="md-nav__link">
     <span class="md-ellipsis">
-      AAA
+      AAA (ASCII adjust after addition)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-4-basic-logic-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      5-4  BASIC LOGIC INSTRUCTIONS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5-4 BASIC LOGIC INSTRUCTIONS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shift-and-rotate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shift and Rotate
     </span>
   </a>
   
@@ -2591,9 +2615,33 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aaa" class="md-nav__link">
+  <a href="#aaa-ascii-adjust-after-addition" class="md-nav__link">
     <span class="md-ellipsis">
-      AAA
+      AAA (ASCII adjust after addition)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-4-basic-logic-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      5-4  BASIC LOGIC INSTRUCTIONS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5-4 BASIC LOGIC INSTRUCTIONS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shift-and-rotate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shift and Rotate
     </span>
   </a>
   
@@ -2623,11 +2671,6 @@
 
 
 <h1 id="chapter-5-arithmetic-and-logic-instructions">Chapter 5: Arithmetic and Logic Instructions</h1>
-<p>算术/逻辑/控制 
- 中断/异常 
- 实模式中断向量及入口地址计算 
-基本指令：and、or、xor、neg、
-sar、shr、test、jcc、enter、int </p>
 <h2 id="5-1-addition-subtraction-and-comparison">5-1 ADDITION, SUBTRACTION AND COMPARISON</h2>
 <h3 id="addition">Addition</h3>
 <p>add 指令</p>
@@ -2729,20 +2772,59 @@ sar、shr、test、jcc、enter、int </p>
 <li><img alt="alt text" src="../image-90.png" /></li>
 <li>64 位 - EAX &amp; EBX</li>
 </ul>
+<p>signed extension</p>
+<ul>
+<li>CBW/CWDE/CDQE - AX -&gt; RAX </li>
+<li>CWD/CDQ/CQO - AX -&gt; DX:AX</li>
+<li>MOVSX/MOVSXD - sign extension</li>
+<li>MOVZX - zero extending</li>
+</ul>
 <h2 id="5-3-bcd-and-ascii-arithmetic">5-3  BCD and ASCII Arithmetic</h2>
-<h3 id="aaa">AAA</h3>
+<blockquote>
+<p>感觉不重要，先略</p>
+</blockquote>
+<h3 id="aaa-ascii-adjust-after-addition">AAA (ASCII adjust after addition)</h3>
+<ul>
+<li>add two unpacked BCD numbers</li>
+<li>AL register is the implied source and destination</li>
+<li>把 AL 转换成 unpacked BCD</li>
+</ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">MOV</span><span class="w"> </span><span class="no">AL</span><span class="p">,</span><span class="err">&#39;</span><span class="mi">3</span><span class="err">&#39;</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nf">ADD</span><span class="w"> </span><span class="no">AL</span><span class="p">,</span><span class="err">&#39;</span><span class="mi">4</span><span class="err">&#39;</span><span class="w"> </span><span class="c1"># AL = 0x67</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nf">AAA</span><span class="w"> </span><span class="c1"># AL = 0x07, AH = 0x00, AF/CF 被置 0</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nf">MOV</span><span class="w">   </span><span class="no">AX</span><span class="p">,</span><span class="w">  </span><span class="err">&#39;</span><span class="mi">1</span><span class="err">&#39;</span><span class="w">       </span><span class="c1">;    AL = 0x31 (ASCII for &#39;1&#39;) </span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nf">ADD</span><span class="w">    </span><span class="no">AL</span><span class="p">,</span><span class="w">  </span><span class="err">&#39;</span><span class="mi">9</span><span class="err">&#39;</span><span class="w">       </span><span class="c1">;    AL = 0x6A </span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">                               </span><span class="c1">;    ASCII result for ‘1&#39; + ‘9&#39; = 0x31 + 0x39 = 0x6A </span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nf">AAA</span><span class="w">                       </span><span class="c1">;    AH = 1,  AL = 0,  CF = 1 and AF = 1</span>
 </code></pre></div>
-<p>除取非指令外，其他指令会改变 flag</p>
+<h2 id="5-4-basic-logic-instructions">5-4  BASIC LOGIC INSTRUCTIONS</h2>
+<p>AND, OR, Exclusive-OR, and NOT</p>
 <ul>
-<li>clear OF/CF</li>
+<li>TEST, a special form of the AND instruction<ul>
+<li>only affects the condition of the flag register</li>
+<li>the same manner as a CMP<img alt="alt text" src="../image-91.png" /></li>
+<li><code>TEST same,same</code> - 判断和 0 的大小</li>
 </ul>
-<p>NOT and NEG</p>
+</li>
+<li>NEG, similar to the NOT<ul>
+<li>NOT - logical</li>
+<li>NEG - arithmetic</li>
+<li>当且仅当操作数为 0，NEG 指令置 zero flag 为 0，否则为 1</li>
+</ul>
+</li>
+<li><strong>除 NOT 指令外</strong>，其他指令会改变 flag<ul>
+<li>clear the OF and CF flags</li>
+<li>change the SF, ZF, and PF flags to reflect the result</li>
+<li>the state of the AF flag is undefined</li>
+</ul>
+</li>
+</ul>
+<h3 id="shift-and-rotate">Shift and Rotate</h3>
 <ul>
-<li>取非不改变 flag</li>
-<li>当且仅当操作数为 0，取非指令置 zero flag 为 0，否则为 1</li>
+<li><code>SHL AX, 4</code> - logical</li>
+<li>SAL - arithmetic</li>
+<li>SHR/SAR</li>
 </ul>
 
 

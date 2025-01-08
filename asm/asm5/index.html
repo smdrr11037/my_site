@@ -1635,7 +1635,7 @@
         
   
   <span class="md-ellipsis">
-    Inter-Process Communications
+    Thread & IPC
   </span>
   
 
@@ -2261,9 +2261,42 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-4" class="md-nav__link">
+  <a href="#62-controlling-the-flow-of-the-program" class="md-nav__link">
     <span class="md-ellipsis">
-      6-4
+      6–2  CONTROLLING THE FLOW OF THE PROGRAM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-4-intro-to-interrupts" class="md-nav__link">
+    <span class="md-ellipsis">
+      6-4 INTRO TO INTERRUPTS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6-4 INTRO TO INTERRUPTS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interrupt-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interrupt Instructions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-machine-control-and-miscellaneous-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      6–5  MACHINE CONTROL AND MISCELLANEOUS INSTRUCTIONS
     </span>
   </a>
   
@@ -2464,9 +2497,42 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-4" class="md-nav__link">
+  <a href="#62-controlling-the-flow-of-the-program" class="md-nav__link">
     <span class="md-ellipsis">
-      6-4
+      6–2  CONTROLLING THE FLOW OF THE PROGRAM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-4-intro-to-interrupts" class="md-nav__link">
+    <span class="md-ellipsis">
+      6-4 INTRO TO INTERRUPTS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6-4 INTRO TO INTERRUPTS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interrupt-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interrupt Instructions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-machine-control-and-miscellaneous-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      6–5  MACHINE CONTROL AND MISCELLANEOUS INSTRUCTIONS
     </span>
   </a>
   
@@ -2502,13 +2568,49 @@
 <p>无条件跳转</p>
 </blockquote>
 <ul>
-<li>short jump</li>
-<li>near jump</li>
-<li>far jump</li>
+<li>short jump - +127 and –128 bytes<ul>
+<li>intrasegment jumps</li>
 </ul>
-<h2 id="6-4">6-4</h2>
+</li>
+<li>near jump - 3byte，±32K bytes<ul>
+<li>intersegment jumps</li>
+</ul>
+</li>
+<li>far jump - 5-byte，any memory location within the real memory system<ul>
+<li>FAR PTR or far label</li>
+</ul>
+</li>
+</ul>
+<p><img alt="alt text" src="../image-104.png" /></p>
+<ul>
+<li>JA, JB, JAE, JBE, JE, and JNE instructions - above and below refer to unsigned numbers</li>
+<li>JG, JL, JGE, JLE, JE, and JNE - greater than and less than refer to signed numbers</li>
+</ul>
+<p><img alt="alt text" src="../image-105.png" /></p>
+<h2 id="62-controlling-the-flow-of-the-program">6–2  CONTROLLING THE FLOW OF THE PROGRAM</h2>
+<h2 id="6-4-intro-to-interrupts">6-4 INTRO TO INTERRUPTS</h2>
+<blockquote>
+<p>exception handlers and interrupt handlers - interrupt service procedure (ISP)</p>
+</blockquote>
+<ul>
+<li>一个异常或中断有 vector number (interrupt vector)</li>
+<li>以这个 number 为 index 在 interrupt vector table (IVT) or interrupt descriptor table (IDT) 找 ISP<ul>
+<li>IVT is used in real mode</li>
+<li>IDT is used in protected mode and long mode </li>
+</ul>
+</li>
+</ul>
 <p>中断 - 主动请求</p>
+<ul>
+<li>有内部终中断和外部中断</li>
+<li>外部中断 maskable or nonmaskable（需不需要满足 FLAGS.IF=1 才能触发）</li>
+</ul>
 <p>异常 - 意外发生（可以带错误码）</p>
+<ul>
+<li>Program-Error Exceptions</li>
+<li>Software-Generated Exceptions - INTO, INT1, INT3, and BOUND instructions permit exceptions</li>
+<li>Machine-Check Exceptions</li>
+</ul>
 <blockquote>
 <p>E.g. <code>#GP(0)</code></p>
 <p><code>#</code> - pound sign</p>
@@ -2538,6 +2640,14 @@
 <li>特定中断对应相应的中断向量号</li>
 <li>中断向量被 trap 程序使用，跳转到对应的 service routine</li>
 <li>256 个，每个包含一个 ISP 的地址</li>
+<li>实模式下<ul>
+<li>4-byte number stored in the first 1024 bytes of memory (00000H–003FFH)</li>
+<li>Each vector contains a value for IP and CS that forms the address of the ISP</li>
+<li>the first 2 bytes contain IP; the last 2 bytes CS</li>
+<li><img alt="alt text" src="../image-106.png" /></li>
+</ul>
+</li>
+<li>保护模式 - IDT，8B 描述符</li>
 </ul>
 <blockquote>
 <p>Intel: 保留开始的 32 个 vector for predefined exception and interrupt conditions</p>
@@ -2557,12 +2667,19 @@
 <li>不同优先级，嵌套</li>
 </ul>
 <hr />
+<h3 id="interrupt-instructions">Interrupt Instructions</h3>
+<p>INT N, INT1, INT3 and INTO </p>
+<ul>
+<li>INT 10H instruction calls the interrupt service procedure whose address is stored beginning at memory location 40H (10H  4)</li>
+</ul>
+<h2 id="65-machine-control-and-miscellaneous-instructions">6–5  MACHINE CONTROL AND MISCELLANEOUS INSTRUCTIONS</h2>
 <p>多字节 NOP</p>
 <p>LOCK Prefix</p>
 <ul>
 <li>在一些读写指令前加上 LOCK 前缀，保证操作的原子性</li>
 <li>多核、共享内存的情况下保证独占性</li>
 <li>只有当指令 <strong>modify memory</strong>，才能使用 LOCK（否则报错 undefined opcode exception（#UD）</li>
+<li><img alt="alt text" src="../image-107.png" /></li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">; MOV 不是可以 LOCK 的指令</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nf">LOCK</span><span class="w"> </span><span class="no">MOV</span><span class="w"> </span><span class="p">[</span><span class="no">EAX</span><span class="p">],</span><span class="w"> </span><span class="no">EBX</span><span class="w">             </span><span class="c1">; #UD occurs</span>
@@ -2574,6 +2691,8 @@
 <ul>
 <li>create &amp; release stack frames for called procedure</li>
 <li>stack frame contains the local variables and the arguments passed by its caller</li>
+<li><code>ENTER stack space, nesting levels</code></li>
+<li>nested functions using enter and leave</li>
 </ul>
 
 

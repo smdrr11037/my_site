@@ -1749,7 +1749,7 @@
         
   
   <span class="md-ellipsis">
-    Inter-Process Communications
+    Thread & IPC
   </span>
   
 
@@ -2778,38 +2778,163 @@
 </ul>
 <p>CPU-I/O Burst Cycle</p>
 <ul>
-<li>I/O bound</li>
-<li>CPU bound</li>
+<li>I/O bound - 总是在等 I/O</li>
+<li>CPU bound - 总是在用 CPU，很少 I/O</li>
 </ul>
 <p>Non-preemtive scheduling - 非抢占式，跑到不想跑（Running to Ready 不会发生）</p>
+<ul>
+<li>Also called “cooperative” scheduling</li>
+</ul>
 <p>Preemtive scheduling - 抢占式</p>
-<p>Dispatcher latency</p>
+<ul>
+<li>不需要进程自愿放弃</li>
+<li>操作系统操控</li>
+<li>复杂，需要考虑很多 process synchronization 的问题<ul>
+<li>访问共享数据</li>
+<li>kernel mode 抢占</li>
+<li>操作系统在执行重要操作时发生抢占</li>
+</ul>
+</li>
+</ul>
+<p>可能发生的 Scheduling Decision：</p>
+<p><img alt="alt text" src="../image-38.png" /></p>
 <hr />
-<p>Scheduling Algorithms</p>
+<p>Scheduling 的目标</p>
+<ul>
+<li>Maximize CPU Utilization - CPU 不处在空闲状态的比例</li>
+<li>Maximize Throughput -  “useful work” done per time unit</li>
+<li>Minimize Turnaround Time - Time from process creation to process completion</li>
+<li>Minimize Waiting Time - time a process spends in the READY state</li>
+<li>Minimize Response Time - Time from process creation until the “first response” is received</li>
+</ul>
+<p>Scheduling queues</p>
+<ul>
+<li>链表实现</li>
+<li>Ready Queue contains processes that are in the READY state</li>
+<li>Device Queues contain processes waiting for particular devices<img alt="alt text" src="../image-39.png" /></li>
+</ul>
+<p>Dispatcher latency</p>
+<ul>
+<li>Dispatcher module<ul>
+<li>switching to kernel mode</li>
+<li>switching context</li>
+<li>switching to user mode</li>
+<li>jumping to the proper location in the user program to restart that program</li>
+</ul>
+</li>
+<li>Dispatch latency – time it takes for the dispatcher to stop one process and start another to run<img alt="alt text" src="../image-40.png" /></li>
+</ul>
+<hr />
+<h2 id="scheduling-algorithms">Scheduling Algorithms</h2>
 <blockquote>
 <p>一共六种</p>
+<p>必考一道大题</p>
 </blockquote>
+<p>First-Come, First-Served Scheduling</p>
 <ul>
 <li>先来的先执行</li>
+<li>Gantt chart <img alt="alt text" src="../image-41.png" /></li>
+<li>waiting time = start time - Arrivel time<ul>
+<li>上图的例子：Average waiting time:   (6 + 0 + 3)/3 = 3</li>
 </ul>
-<p>Gantt chart</p>
-<ul>
-<li>waiting time = start time - Arrivel time</li>
+</li>
+<li>Turnaround time = finish time – arrival time<ul>
+<li>Average turnaround time:   (30 + 3 + 6)/3 = 13</li>
 </ul>
-<p>SJF - 最优</p>
-<p>Quantum</p>
+</li>
+<li>如果 P1 先来，上面两个时间都会大幅度提高 - <strong>Convoy effect</strong></li>
+</ul>
+<hr />
+<p>Shortest-Job-First Scheduling</p>
 <ul>
+<li>SJF - 最优 for average wait time</li>
+<li>抢占式比非抢占式优</li>
+<li>Preemptive - shortest-remaining-time-first (SRPT)<ul>
+<li>此时 waiting time = finish time – arrival time - burst time =
+<img alt="alt text" src="../image-42.png" /></li>
+</ul>
+</li>
+<li>实际情况下，我们并不能准确知道 burst durations<ul>
+<li>Predicting - <strong>Exponential averaging</strong> <span class="arithmatex">\(T_{n+1} = \alpha t_n + (1-\alpha) T_n\)</span></li>
+<li>其中 T 是预测，t 是实际观测</li>
+<li>可以扩展</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>Round-Robin Scheduling</p>
+<ul>
+<li>抢占式</li>
+<li>定义 time Quantum（A fixed interval of time (10-100ms)）</li>
+<li>每个进程最多只能执行一个 Quantum（更短时间执行完也行）</li>
+<li>Ready Queue is a FIFO（被换下来的放在 end）</li>
+<li>好处 - 平均等待时间不如 SJF，但 better response time<ul>
+<li>没有 starvation</li>
+<li>waiting time 有上界</li>
+</ul>
+</li>
+<li>坏处：Quantum<ul>
 <li>太长了 - low overhead</li>
 <li>太短了 - context switch</li>
 </ul>
+</li>
+</ul>
+<hr />
 <p>Priority Scheduling</p>
 <ul>
+<li>选取优先级最高的程序执行<ul>
+<li>priority 可以是对时间的预测（SJF）- internal</li>
+<li>也可以 set by users to specify relative importance of job - externel</li>
+<li>一般来说，数字越小，优先级越高</li>
+</ul>
+</li>
+<li>Simply implement the Ready Queue as a Priority Queue</li>
 <li>problem - 优先级低的程序执行不了（starvation）</li>
 <li>aging - 增长年龄，也是优先级的一部分</li>
 </ul>
-<p>Multilevel Feedback Queues</p>
-<p>Multicore Processors</p>
+<hr />
+<p>Multilevel Queue Scheduling </p>
+<ul>
+<li>The RR Scheduling scheme treats all processes equally</li>
+<li>为一个类的进程创建一个 ready queue（例如不同优先级的程序放在不同类里</li>
+<li>Scheduling within queues<ul>
+<li>每个队列有不同的方式（比如可以 High-priority could be RR, Low-priority could be FCFS</li>
+</ul>
+</li>
+<li>Scheduling between the queues <ul>
+<li>Typically preemptive priority scheduling, Or time-slicing among queues (为高优先级的队列分配更多时间)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>Multilevel Feedback Queue Scheduling</p>
+<ul>
+<li>Processes can move among the queues</li>
+<li>如果 process's characteristics have changed，例如预测 burst time 变少，可以从低优先级队列放到高优先级队列中（可以实现 priority aging</li>
+</ul>
+<blockquote>
+<p>What’s a Good Scheduling Algorithm?</p>
+<ul>
+<li>Few analytical/theoretical results are available</li>
+<li>Another option: Simulation</li>
+<li>Finally: Implementation</li>
+</ul>
+</blockquote>
+<hr />
+<p>Thread Scheduling</p>
+<blockquote>
+<p>感觉不重要</p>
+</blockquote>
+<ul>
+<li>进程内部 process-contention scope (PCS)</li>
+<li>所有进程之间 system-contention scope (SCS) </li>
+<li>Multicore Processors</li>
+</ul>
+<h2 id="operating-system-examples">Operating System Examples</h2>
 <p>windows - 数越大优先级越高</p>
+<ul>
+<li>XP - Priority-based, time quantum-based, multi-queue, preemptive scheduling</li>
+</ul>
 <p>idle thread</p>
 <p>Linux - 数越小优先级越高（NICE）</p>
 <ul>
@@ -2820,8 +2945,7 @@
 <li>后续优化：bitmap - O(1)</li>
 <li>CFS 算法</li>
 </ul>
-<!-- 代码截图 -->
-
+<p><img alt="alt text" src="../image-43.png" /></p>
 <blockquote>
 <p>会画甘特图</p>
 <p>会算 average waiting time</p>

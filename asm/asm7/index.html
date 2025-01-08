@@ -1635,7 +1635,7 @@
         
   
   <span class="md-ellipsis">
-    Inter-Process Communications
+    Thread & IPC
   </span>
   
 
@@ -2312,14 +2312,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-3" class="md-nav__link">
+  <a href="#113-the-programmable-peripheral" class="md-nav__link">
     <span class="md-ellipsis">
-      11-3
+      11–3  THE PROGRAMMABLE PERIPHERAL
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="11-3">
+    <nav class="md-nav" aria-label="11–3 THE PROGRAMMABLE PERIPHERAL">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#82c55" class="md-nav__link">
+    <span class="md-ellipsis">
+      82C55
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#mode-0-operation" class="md-nav__link">
@@ -2360,12 +2369,27 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="11–4 8254 PROGRAMMABLE INTERVAL TIMER">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programming-the-8254" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programming the 8254
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-5-16550" class="md-nav__link">
+  <a href="#11-5-16550-programmable-communications-interface" class="md-nav__link">
     <span class="md-ellipsis">
-      11-5 16550
+      11-5 16550 PROGRAMMABLE COMMUNICATIONS INTERFACE
     </span>
   </a>
   
@@ -2575,14 +2599,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-3" class="md-nav__link">
+  <a href="#113-the-programmable-peripheral" class="md-nav__link">
     <span class="md-ellipsis">
-      11-3
+      11–3  THE PROGRAMMABLE PERIPHERAL
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="11-3">
+    <nav class="md-nav" aria-label="11–3 THE PROGRAMMABLE PERIPHERAL">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#82c55" class="md-nav__link">
+    <span class="md-ellipsis">
+      82C55
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#mode-0-operation" class="md-nav__link">
@@ -2623,12 +2656,27 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="11–4 8254 PROGRAMMABLE INTERVAL TIMER">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programming-the-8254" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programming the 8254
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-5-16550" class="md-nav__link">
+  <a href="#11-5-16550-programmable-communications-interface" class="md-nav__link">
     <span class="md-ellipsis">
-      11-5 16550
+      11-5 16550 PROGRAMMABLE COMMUNICATIONS INTERFACE
     </span>
   </a>
   
@@ -2695,11 +2743,6 @@
 
 
 <h1 id="chapter-11">Chapter 11</h1>
-<p> 82C55：1）器件构成；2）3种运行方式；3）控制字设置 
- 8254：1）器件构成；2）6种运行方式；3）两阶段初始化（控制
-字设置、计数值计算）；4）3种读计数器方式 
- 16550：1）器件构成；2）两阶段编程：初始化（控制字设置、时
-钟分频设置）、收发使能控制；3）收发通信状态检测</p>
 <h2 id="111-intro-to-io-interface">11–1  INTRO TO I/O INTERFACE</h2>
 <p>Hardware interfaces - connection and communication of different devices</p>
 <p><img alt="alt text" src="../image-60.png" /></p>
@@ -2829,65 +2872,193 @@
 </blockquote>
 <p><img alt="alt text" src="../image-69.png" /></p>
 <h2 id="112-io-port-address-decoding">11–2  I/O PORT ADDRESS DECODING</h2>
-<h2 id="11-3">11-3</h2>
-<h3 id="mode-0-operation">Mode 0 Operation</h3>
 <ul>
-<li>输入：buffer</li>
-<li>输出：latch</li>
+<li>Interfacing I/O device includes<ul>
+<li>selection of I/O port</li>
+<li>transfer of data</li>
+</ul>
+</li>
+<li>I/O port address decoding<ul>
+<li>memory-mapped I/O</li>
+<li>isolated I/O<ul>
+<li>less address pins</li>
+<li>generates separate control signals</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="alt text" src="../image-92.png" /></p>
+<p>one byte transfer - unaligned memory accesses</p>
+<ul>
+<li>any 8-bit I/O write request requires separate write strobes</li>
+<li>read 不需要</li>
+</ul>
+<p>32 bit</p>
+<h2 id="113-the-programmable-peripheral">11–3  THE PROGRAMMABLE PERIPHERAL</h2>
+<h3 id="82c55">82C55</h3>
+<blockquote>
+<p>用于键盘 (60H–63H) 和打印机接口 (378H–37BH)</p>
+</blockquote>
+<ul>
+<li>three I/O ports (labeled A, B, and C) </li>
+<li>2 groups<ul>
+<li>Group A (port A and the upper part of port C)
+<img alt="alt text" src="../image-93.png" /></li>
+</ul>
+</li>
+<li>Basic Operation <img alt="alt text" src="../image-94.png" /></li>
+<li>通过两个内部 <strong>command registers</strong> 编程 <img alt="alt text" src="../image-95.png" /><ul>
+<li>如果 0 is placed in bit position 7 of byte A, byte B is selected</li>
+</ul>
+</li>
+</ul>
+<p><img alt="alt text" src="../image-96.png" /></p>
+<h3 id="mode-0-operation">Mode 0 Operation</h3>
+<blockquote>
+<p>Basic input/output operation</p>
+</blockquote>
+<p>Mode 0 让 82C55：</p>
+<ul>
+<li>可以作为输入buffer</li>
+<li>可以作为输出latch</li>
 </ul>
 <p><img alt="alt text" src="../image-2.png" /></p>
-<p>Full-step Excitation Mode</p>
+<blockquote>
+<p>The following example multiplexes the 8-digit display</p>
+</blockquote>
+<p><img alt="alt text" src="../image-97.png" /></p>
+<p>stepper motor - 把电信号转换成运动</p>
 <ul>
+<li>Full-step Excitation Mode<ul>
 <li>one-phase</li>
-<li>two-phase（力矩更稳定）</li>
+<li>two-phase（力矩更稳定）<img alt="alt text" src="../image-3.png" /></li>
 </ul>
-<p><img alt="alt text" src="../image-3.png" /></p>
+</li>
+<li>half-step<img alt="alt text" src="../image-98.png" /></li>
+<li>micro-step</li>
+</ul>
 <p>Half-step Excitation Mode</p>
 <p><img alt="alt text" src="../image-4.png" /></p>
 <p>Micro-step Excitation Mode</p>
 <h3 id="mode-1">Mode 1</h3>
+<blockquote>
+<p>Strobe input/output operation</p>
+</blockquote>
+<ul>
+<li>the strobe, interrupt and other “hand shaking” signals are used</li>
+<li>port C is used for control or handshaking signals</li>
+</ul>
 <h4 id="_1">外部设备输入</h4>
 <p><img alt="alt text" src="../image-5.png" /></p>
 <p>符号定义</p>
 <ul>
-<li><span class="arithmatex">\(\bar{STB}\)</span> - strobe，把数据 load 到 port latch 里</li>
-<li><span class="arithmatex">\(IBF\)</span> - Input buffer full，输出表明 input latch 包含了信息</li>
-<li><span class="arithmatex">\(INTR\)</span></li>
-<li><span class="arithmatex">\(INTB\)</span></li>
-<li><span class="arithmatex">\(\bar{signal}\)</span> 意味着低电平有效</li>
+<li><span class="arithmatex">\(\overline{STB}\)</span> - strobe，把数据 load 到 port latch 里</li>
+<li><span class="arithmatex">\(IBF\)</span> - Input buffer full，表明 input latch 包含了信息的一个输出</li>
+<li><span class="arithmatex">\(INTR\)</span> - Interrupt request </li>
+<li><span class="arithmatex">\(INTB\)</span> - Interrupt enable</li>
+<li><span class="arithmatex">\(\overline{signal}\)</span> 意味着低电平有效</li>
 </ul>
 <p>工作时序</p>
 <p><img alt="alt text" src="../image-6.png" /></p>
 <blockquote>
 <p>Example: keyboard</p>
 <ul>
-<li><span class="arithmatex">\(\bar{DAV}\)</span> - 接 <span class="arithmatex">\(\bar{STB}\)</span></li>
+<li><span class="arithmatex">\(\overline{DAV}\)</span> - 接 <span class="arithmatex">\(\overline{STB}\)</span>
+<img alt="alt text" src="../image-99.png" /></li>
 </ul>
 </blockquote>
 <h4 id="_2">输出数据到外部设备</h4>
 <p><img alt="alt text" src="../image-7.png" /></p>
 <p>符号定义</p>
 <ul>
-<li><span class="arithmatex">\(\bar{OBF}\)</span> - Output buffer full，当 port A latch 有数据输出时有效，接收到 <span class="arithmatex">\(\bar{ACK}\)</span> pulse 时，return 无效</li>
-<li><span class="arithmatex">\(\bar{ACK}\)</span></li>
+<li><span class="arithmatex">\(\overline{OBF}\)</span> - Output buffer full，当 port A latch 有数据输出时有效，接收到 <span class="arithmatex">\(\overline{ACK}\)</span> pulse 时，return 无效</li>
+<li><span class="arithmatex">\(\overline{ACK}\)</span> - acknowledge signal</li>
 </ul>
 <p>工作时序</p>
 <p><img alt="alt text" src="../image-8.png" /></p>
 <blockquote>
 <p>Example: 打印机</p>
+<p><img alt="alt text" src="../image-100.png" /></p>
 </blockquote>
 <h3 id="mode-2-bidirectional-operation">Mode 2 Bidirectional Operation</h3>
 <blockquote>
 <p>既要输入又要输出</p>
+<p>group A only</p>
 </blockquote>
 <p><img alt="alt text" src="../image-9.png" /></p>
 <p><img alt="alt text" src="../image-10.png" /></p>
+<p><img alt="alt text" src="../image-101.png" /></p>
 <h2 id="114-8254-programmable-interval-timer">11–4  8254 PROGRAMMABLE INTERVAL TIMER</h2>
-<!-- 结果还是没好好学啊 -->
-
+<p>三个可编程 counters (timers)</p>
+<ul>
+<li>Timer 0 generates an 18.2 Hz signal that interrupts the microprocessor for a clock tick.  <ul>
+<li>often used to time programs and events in DOS  </li>
+</ul>
+</li>
+<li>Timer 1 is programmed for 15 µs, used on the PC to request a DMA action used to refresh the dynamic RAM. </li>
+<li>Timer 2 is programmed to generate a tone on the PC speaker.</li>
+<li>Each timer contains<ul>
+<li>CLK input</li>
+<li>gate input</li>
+<li>output</li>
+</ul>
+</li>
+</ul>
 <p>Modes of Operation - 6 种编程模式</p>
+<ul>
+<li>Mode 0: interrupt at the end of count<ul>
+<li>计数归零时 OUT = 1</li>
+<li>Gate 低电平时 disable</li>
+</ul>
+</li>
+<li>Mode 1: hardware retriggerable one-shot <ul>
+<li>Gate pulse 时重启</li>
+</ul>
+</li>
+<li>Mode 2: rate generator <ul>
+<li>计数为 1 时 OUT = 0，回到最开始</li>
+<li>duty cycle = N-1/N</li>
+</ul>
+</li>
+<li>Mode 3: square wave generator <ul>
+<li>计数小于 1/2 N 时，OUT = 0</li>
+</ul>
+</li>
+<li>Mode 4: software-triggered strobe<ul>
+<li>计数归零时 OUT 下降一个周期 </li>
+</ul>
+</li>
+<li>Mode 5: hardware-triggered strobe <ul>
+<li>与 mode 4 相同，Gate pulse 时重启</li>
+</ul>
+</li>
+</ul>
+<p>信号</p>
+<ul>
+<li><span class="arithmatex">\(\overline{CS}\)</span> - Chip select enable</li>
+<li><span class="arithmatex">\(A_0, A_1\)</span> - address inputs select one of four internal registers</li>
+</ul>
+<h3 id="programming-the-8254">Programming the 8254</h3>
+<ul>
+<li>Each counter is programmed by writing a control word</li>
+<li>Two write operation conventions<ul>
+<li>控制字先于计数值写入</li>
+<li>The initial count must follow the count format specified in the control word (least significant byte only, most significant byte only, or least significant byte and then most significant byte).
+<img alt="alt text" src="../image-102.png" />
+<img alt="alt text" src="../image-103.png" /></li>
+</ul>
+</li>
+</ul>
 <p>Operation Common to All Modes</p>
-<h2 id="11-5-16550">11-5 16550</h2>
+<ul>
+<li></li>
+<li>New initial counts are loaded and counters are decremented on the <strong>falling edge</strong> of CLK pulse</li>
+<li>The counter does not stop when it reaches zero</li>
+</ul>
+<p><img alt="alt text" src="../image-108.png" />
+<img alt="alt text" src="../image-109.png" /></p>
+<h2 id="11-5-16550-programmable-communications-interface">11-5 16550 PROGRAMMABLE COMMUNICATIONS INTERFACE</h2>
 <p>三种通信方式</p>
 <ul>
 <li>simplex mode</li>
@@ -2895,15 +3066,30 @@
 <li>full duplex mode</li>
 </ul>
 <p><img alt="alt text" src="../image-23.png" /></p>
+<p>UART and USART are hardware that convert parallel data into serial data</p>
 <p><img alt="alt text" src="../image-24.png" /></p>
 <p>Baud Rate - 每秒钟传输多少 bit</p>
-<p>过采样 - 根据分频系数产生波特时钟</p>
+<p>过采样 - 根据分频系数产生波特时钟（需要比波特率高很多倍 oversampling factor is called baud rate divisor）</p>
 <ul>
+<li>baud clock (BCLK)</li>
+<li>BCLK = baud rate×baud rate divisor</li>
 <li>Divisor = input clock frequency/(baud rate * baud rate divisor)
     <img alt="alt text" src="../image-25.png" /></li>
+<li>异步串行数据 <img alt="alt text" src="../image-110.png" /></li>
 </ul>
 <p>16550</p>
+<p><img alt="alt text" src="../image-111.png" /></p>
 <ul>
+<li>两步编程<ul>
+<li>setup<ul>
+<li>baud rate generator</li>
+<li>line control register</li>
+<li><img alt="alt text" src="../image-112.png" /></li>
+</ul>
+</li>
+<li>operation</li>
+</ul>
+</li>
 <li>从低位开始传</li>
 <li>编程产生波特率时钟（波特率因子固定为 16</li>
 <li>端口复用 </li>

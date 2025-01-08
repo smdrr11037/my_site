@@ -1640,7 +1640,7 @@
         
   
   <span class="md-ellipsis">
-    Inter-Process Communications
+    Thread & IPC
   </span>
   
 
@@ -1766,9 +1766,60 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#file-system-structure" class="md-nav__link">
+  <a href="#file" class="md-nav__link">
     <span class="md-ellipsis">
-      File system structure
+      File
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      File concept
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessmethods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessmethods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directory structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-system-structure-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      File system structure (layers)
     </span>
   </a>
   
@@ -1785,9 +1836,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#file-control-block" class="md-nav__link">
+  <a href="#on-disk-structure-in-memory-structure" class="md-nav__link">
     <span class="md-ellipsis">
-      file control block
+      On-disk structure, in-memory structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inode-unix-fcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      inode (Unix FCB)
     </span>
   </a>
   
@@ -1804,6 +1864,30 @@
       File system operations
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="File system operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      File creation()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      File open()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1832,6 +1916,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Allocation Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contiguous" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contiguous
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linked" class="md-nav__link">
+    <span class="md-ellipsis">
+      linked
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexed" class="md-nav__link">
+    <span class="md-ellipsis">
+      indexed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1841,21 +1958,54 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Free-Space Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-system-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      File System Performance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#tow-key-abstration" class="md-nav__link">
+  <a href="#file-interfaces" class="md-nav__link">
     <span class="md-ellipsis">
-      Tow Key Abstration
+      File interfaces
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#link" class="md-nav__link">
+  <a href="#directory" class="md-nav__link">
     <span class="md-ellipsis">
-      link
+      Directory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hard-link-vs-soft-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hard link vs soft link
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on-disk-layout-of-fs" class="md-nav__link">
+    <span class="md-ellipsis">
+      On-disk layout of FS
     </span>
   </a>
   
@@ -2503,9 +2653,60 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#file-system-structure" class="md-nav__link">
+  <a href="#file" class="md-nav__link">
     <span class="md-ellipsis">
-      File system structure
+      File
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      File concept
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessmethods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessmethods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directory structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-system-structure-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      File system structure (layers)
     </span>
   </a>
   
@@ -2522,9 +2723,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#file-control-block" class="md-nav__link">
+  <a href="#on-disk-structure-in-memory-structure" class="md-nav__link">
     <span class="md-ellipsis">
-      file control block
+      On-disk structure, in-memory structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inode-unix-fcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      inode (Unix FCB)
     </span>
   </a>
   
@@ -2541,6 +2751,30 @@
       File system operations
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="File system operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      File creation()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      File open()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2569,6 +2803,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Allocation Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contiguous" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contiguous
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linked" class="md-nav__link">
+    <span class="md-ellipsis">
+      linked
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexed" class="md-nav__link">
+    <span class="md-ellipsis">
+      indexed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2578,21 +2845,54 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Free-Space Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-system-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      File System Performance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#tow-key-abstration" class="md-nav__link">
+  <a href="#file-interfaces" class="md-nav__link">
     <span class="md-ellipsis">
-      Tow Key Abstration
+      File interfaces
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#link" class="md-nav__link">
+  <a href="#directory" class="md-nav__link">
     <span class="md-ellipsis">
-      link
+      Directory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hard-link-vs-soft-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hard link vs soft link
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on-disk-layout-of-fs" class="md-nav__link">
+    <span class="md-ellipsis">
+      On-disk layout of FS
     </span>
   </a>
   
@@ -2617,66 +2917,296 @@
 
 
 <h1 id="file-system">File System</h1>
-<p>File concept
-Accessmethods
-Directory structure
-Protection</p>
 <blockquote>
+<p>CPU 时间被抽象为 process</p>
+<p>Memory 被抽象为 arrays</p>
 <p>Storage 被抽象为文件系统</p>
 </blockquote>
-<p>Acyclic Graph Directories</p>
+<p>文件系统</p>
 <ul>
-<li>dangling pointers 问题：删去某个结点，可能访问不了其他结点</li>
+<li>File 放在 Track/sector 中</li>
+<li>对用户进程来说<ul>
+<li>File system provides coherent view of a group of files</li>
+<li>File: a contiguous block of bytes (Unix)</li>
 </ul>
-<!-- 图 -->
-
+</li>
+<li>文件系统提供保护</li>
+</ul>
+<h2 id="file">File</h2>
 <blockquote>
-<p>History - 又贵又小</p>
+<p>感觉这前半部分都不怎么重要啊</p>
 </blockquote>
-<h2 id="file-system-structure">File system structure</h2>
-<p>File system layers</p>
+<h3 id="file-concept">File concept</h3>
+<p>File is a contiguous logical space for storing information</p>
+<blockquote>
+<p>database, audio, video, web pages...</p>
+</blockquote>
+<ul>
+<li>different types of file<ul>
+<li>data: character, binary, and application-specific</li>
+<li>program</li>
+<li>special one: proc file system - use file-system interface to retrieve system information</li>
+</ul>
+</li>
+<li>File Attributes<ul>
+<li>Name – only information kept in human-readable form</li>
+<li>Identifier – unique tag (number) identifies file within file system</li>
+<li>Typec– needed for systems that support different types</li>
+<li>Location – pointer to file location on device</li>
+<li>Size– current file size</li>
+<li>Protection – controls who can do reading, writing, executing</li>
+<li>Time, date, and user identification – data for protection, security, and usage monitoring</li>
+</ul>
+</li>
+<li>Information about files are kept in the <strong>directory structure</strong>, which is maintained on the disk</li>
+<li>Many variations, including extended file attributes such as file checksum</li>
+</ul>
+<hr />
+<p>File Operations</p>
+<ul>
+<li>create - space &amp; directory entry</li>
+<li>open - return a handler for other operations</li>
+<li>read/write: need to maintain a <strong>pointer</strong></li>
+<li>seek - reposition within file </li>
+<li>close</li>
+<li>delete - release space<ul>
+<li>Hardlink: maintain a counter - delete the file until the last link is deleted</li>
+</ul>
+</li>
+<li>truncate: empty a file but maintains its attributes</li>
+</ul>
+<hr />
+<p>open files</p>
+<ul>
+<li>Several data are needed to manage open files<ul>
+<li>Open-file table: tracks open files</li>
+<li>File pointer:  pointer to last read/write location, per process that has the file open</li>
+<li>File-open count: counter of number of times a file is open – to allow removal of data from open-file table when last processes closes it</li>
+<li>Disk location of the file: cache of data access information</li>
+<li>Access rights: per-process access mode information</li>
+</ul>
+</li>
+<li>一些文件系统提供锁<ul>
+<li>Shared lock</li>
+<li>exclusive lock</li>
+<li>两种机制：mandatory lock/advisory lock </li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>File Structure</p>
+<ul>
+<li>No structure: a stream of bytes or words<ul>
+<li>Linux dumps</li>
+</ul>
+</li>
+<li>Simple record structure: Lines of records, fixed length or variable length<ul>
+<li>database</li>
+</ul>
+</li>
+<li>Complex structures<ul>
+<li>Word document, relocatable program file</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>一般用户程序负责解析文件结构</p>
+</blockquote>
+<hr />
+<h3 id="accessmethods">Accessmethods</h3>
+<ul>
+<li>Sequential access</li>
+<li>Direct access</li>
+<li>index for the file points to blocks - Based on direct-access method<ul>
+<li>first search the index and then use the pointer to access the block</li>
+<li>We may use multiple layers of index</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="directory-structure">Directory structure</h3>
+<blockquote>
+<p>disk 可以分成小块，各自有不同的文件系统，也可以没有文件系统（数据库喜欢）</p>
+<p><img alt="alt text" src="../image-56.png" /></p>
+</blockquote>
+<p>Directory is a collection of nodes containing information about all files（也在 disk 上</p>
+<p>Operations Performed on Directory</p>
+<ul>
+<li>Create a file: new files need to be created and added to directory</li>
+<li>Delete a file: remove a file from directory</li>
+<li>List a directory: list all files in directory</li>
+<li>Search for a file: pattern matching</li>
+<li>Traverse the file system: access every directory and file within a directory</li>
+</ul>
+<p>Directory Organization</p>
+<ul>
+<li>目标 - Efficiency（快速找到某个文件） &amp; Naming（用户使用方便）<ul>
+<li>两个用户可以有命名相同，实际不同的文件，一个文件页可以有很多名字</li>
+</ul>
+</li>
+<li>Single-Level Directory <ul>
+<li>A single directory for all users</li>
+<li>Naming problems and grouping problems <img alt="alt text" src="../image-57.png" /></li>
+</ul>
+</li>
+<li>Two-Level Directory<ul>
+<li>Separate directory for each user <img alt="alt text" src="../image-58.png" /></li>
+</ul>
+</li>
+<li><strong>Tree-Structured Directories</strong><ul>
+<li>efficient in searching, can group files, convenient naming <img alt="alt text" src="../image-59.png" /></li>
+</ul>
+</li>
+<li>Acyclic Graph Directories<ul>
+<li>允许别名</li>
+<li>dangling pointers 问题：删去某个结点，可能访问不了其他结点</li>
+<li>Solution: back pointers/reference counter <img alt="alt text" src="../image-60.png" /></li>
+<li>Share files - hard link &amp; soft link <img alt="alt text" src="../image-61.png" /></li>
+</ul>
+</li>
+<li>General Graph Directory<ul>
+<li>Allowing arbitrary links may generate cycles in the directory structure</li>
+<li>Solution: garbage collection or cycle detection</li>
+</ul>
+</li>
+</ul>
+<p>File System Mounting</p>
+<blockquote>
+<p>不懂，感觉没讲啊</p>
+</blockquote>
+<p>File Sharing</p>
+<ul>
+<li>需要保护<ul>
+<li>User IDs identify users, allowing protections to be per-user</li>
+<li>Group IDs allow users to be in groups, permitting group access rights</li>
+</ul>
+</li>
+<li>分布式系统 - 通过网络 share（NFS for UNIX，CIFS for WIN</li>
+</ul>
+<hr />
+<h3 id="protection">Protection</h3>
+<p>文件作者需要规定<strong>谁</strong>能对文件<strong>做什么</strong></p>
+<ul>
+<li>ACL - Assign each file and directory with an access control list (ACL)</li>
+<li>Advantages: fine-grained control</li>
+<li>Disadvantages<ul>
+<li>How to construct the list</li>
+<li>How to store the list in directory</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="file-system-structure-layers">File system structure (layers)</h2>
+<blockquote>
+<p>历史 - 又贵又小</p>
+</blockquote>
+<ul>
+<li>File is a logical storage unit for a collection of related information</li>
+<li>There are many file systems; OS may support several simultaneously<ul>
+<li>Linux has ext2/3/4, reiser FS/4, btrfs…</li>
+<li>Windows has FAT, FAT32, NTFS…</li>
+<li>New ones still arriving – ZFS, googlefs, oracle ASM, FUSE</li>
+</ul>
+</li>
+<li><strong>FS provides user/program interface to storage, mapping logical to physical</strong></li>
+<li>File system is usually implemented and organized into layers </li>
+</ul>
+<p><img alt="alt text" src="../image-62.png" /></p>
+<blockquote>
+<p>Input from above, Output to below</p>
+</blockquote>
+<ul>
+<li>Logical file system<ul>
+<li>meta-data</li>
+<li>stores the directory structure</li>
+<li>stores File Control Block - FCB</li>
+</ul>
+</li>
+<li>File-organization module<ul>
+<li>manages free space</li>
+<li>translation logical to physical file blocks </li>
+</ul>
+</li>
+<li>Basic file system<ul>
+<li>buffers (caches)</li>
+</ul>
+</li>
+<li>I/O Control</li>
+</ul>
+<blockquote>
+<p>layer reducing complexity but decrease performance</p>
+</blockquote>
+<h2 id="file-system-implementation">File system implementation</h2>
+<h3 id="on-disk-structure-in-memory-structure">On-disk structure, in-memory structure</h3>
 <p>on-disk structures - 断电不易失</p>
 <ul>
-<li>boot</li>
-<li>volume</li>
-<li>directory</li>
-<li>FCB</li>
+<li>An optional boot control block</li>
+<li>A volume control block</li>
+<li>A directory</li>
+<li>per-file FCB</li>
 </ul>
 <p>in-memory structures - 断电易失</p>
 <ul>
-<li>mount table</li>
-<li>directory cache</li>
+<li>mount table - one entry per mounted volume</li>
+<li>directory cache for fast path translation</li>
 <li>global open-file table - inode</li>
-<li>per-process open-filr table - index</li>
-<li>buffer </li>
+<li>per-process open-file table - index</li>
+<li>buffers</li>
 </ul>
+<p>File control block – storage structure consisting of information about a file</p>
+<p><img alt="alt text" src="../image-63.png" /></p>
+<hr />
+<h3 id="inode-unix-fcb">inode (Unix FCB)</h3>
 <p><img alt="alt text" src="../image-8.png" /></p>
-<h2 id="file-system-implementation">File system implementation</h2>
-<h3 id="file-control-block">file control block</h3>
-<p>On-disk structure, in-memory structure</p>
-<p><strong>inode</strong></p>
+<hr />
 <h2 id="file-system-operations">File system operations</h2>
-<p>File creation(), </p>
-<div class="highlight"><span class="filename">create file</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>
-</code></pre></div>
+<h3 id="file-creation">File creation()</h3>
 <ul>
-<li>File Discriptor - (定义)<ul>
-<li>0 - stdin</li>
-<li>1 - stdout</li>
-<li>2 - stderr</li>
+<li>Logical file system allocates a new FCB, i.e., inode structure</li>
+<li>Appropriate directory is updated with the new file name and FCB</li>
 </ul>
-</li>
-<li>其他文件只能拿到 &gt;=3 的标号</li>
+<h3 id="file-open">File open()</h3>
+<p>Search <strong>system-wide open-file table</strong> to see if file is currently in use</p>
+<ul>
+<li>If it is, create a per-process open-file table entry pointing to the existing system-wide open-file table</li>
+<li>If it is not, search the directory for the file name; once found, load the <strong>FCB</strong> from disk to memory and place it in the system-wide open-file table</li>
+<li>在 per-process open-file 里加入 entry，指向 system-wide open-file table 的 entry（and other fields，disk location、访问模式</li>
+<li>Increment the open count in the system-wide open-file table</li>
+<li>Returns a pointer to the entry in the per-process open-file tabl</li>
+<li>All subsequent operations are performed with this pointer</li>
+<li>Process closes file -&gt; per-process open-file table entry is removed; <strong>open count decremented</strong></li>
+<li>All processes close file -&gt; copy in-memory directory information to disk and system-wide open-file table is removed from memory</li>
 </ul>
-<p>File open()</p>
 <p><img alt="alt text" src="../image-6.png" /></p>
 <h2 id="virtual-file-systemvfs">Virtual File System(VFS)</h2>
 <blockquote>
 <p>统一接口被实例化成具体的操作</p>
 </blockquote>
+<p>Mounting File Systems</p>
 <ul>
-<li>superblock</li>
-<li>\</li>
+<li>Boot Block – series of sequential blocks containing a memory image of the boot loader, that locates and mounts the root partition; the partition contains the kernel; the boot loader locates, loads, and starts the kernel executing</li>
+<li>In-memory mount table – external file systems must be mounted on devices, the mount table records the mount points, types of file systems mounted, and an access path to the desired file system </li>
+<li>Unix –the in-memory mount table contains a pointer to the <strong>superblock</strong> of the file system on that device</li>
+</ul>
+<p><img alt="alt text" src="../image-64.png" /></p>
+<ul>
+<li>VFS 提供了一个面向对象的方式实现文件系统<ul>
+<li>OS defines a common interface for FS, all fses implement them</li>
+<li>System call is implemented based on this common interface (same syscall API to be used for different types of FS)</li>
+</ul>
+</li>
+<li>把 FS operation 与实际操作分开<ul>
+<li>Implementation can be one of many FS types, or network file system</li>
+<li>OS can dispatches syscalls to appropriate FS implementation routines</li>
+</ul>
+</li>
+</ul>
+<p>Linux defines four VFS object types:</p>
+<ul>
+<li>superblock: defines the file system type, size, status, and other metadata</li>
+<li>inode: contains metadata about a file (location, access mode, owners…)</li>
+<li>dentry: associates names to inodes, and the directory layout</li>
+<li>file: actual data of the file</li>
 </ul>
 <p>Write syscall -&gt; vfs_write -&gt; indirect call -&gt; ext4_file_write_iter</p>
 <h2 id="directory-implementation">Directory Implementation</h2>
@@ -2696,53 +3226,216 @@ Protection</p>
 <li>结构体大小 12 B - reuse</li>
 </ul>
 </blockquote>
-<h2 id="allocation-methods">Allocation Methods</h2>
-<p>Contiguous</p>
+<p>目录中怎样存放</p>
 <ul>
-<li>优点 - 找到下一个很快</li>
-<li>缺点 - hard to extend</li>
+<li><strong>Linear list</strong> of file names with pointer to the file metadata<ul>
+<li>Simple to program, but time-consuming to search (e.g., Linear search)</li>
+<li>Could keep files ordered alphabetically via linked list or use B+ tree</li>
 </ul>
-<p>linked</p>
+</li>
+<li><strong>Hash table</strong>: linear list with hash data structure to reduce search time<ul>
+<li>Collisions are possible: two or more file names hash to the same location</li>
+</ul>
+</li>
+</ul>
+<h2 id="allocation-methods">Allocation Methods</h2>
+<blockquote>
+<p>Files need to be allocated with disk blocks to store data, Different allocation strategies have different complexity and performance</p>
+</blockquote>
+<h3 id="contiguous">Contiguous</h3>
+<ul>
+<li>优点 - 找到下一个很快（sequential access causes little disk head movement</li>
+<li>目录记载第一个块的位置和块的长度</li>
+<li>缺点<ul>
+<li><strong>hard to extend</strong></li>
+<li>Can be difficult to find free space（Best Fit, First Fit, etc.</li>
+<li>External fragmentation</li>
+</ul>
+</li>
+</ul>
+<p><img alt="alt text" src="../image-65.png" /></p>
+<h3 id="linked">linked</h3>
 <ul>
 <li>优点 - easy to extension</li>
 <li>缺点 <ul>
 <li>一旦断了后面都会丢</li>
-<li>访问 sequensial</li>
+<li>Locating a file block can take many I/Os and disk seeks</li>
+<li>Pointer size: 4 of 512 bytes are used for pointer - 0.78% space is wasted</li>
+</ul>
+</li>
+<li>改进 - 四个为一组</li>
+</ul>
+<p><img alt="alt text" src="../image-66.png" /></p>
+<h3 id="indexed">indexed</h3>
+<p>each file has its own index blocks of pointers to its data blocks</p>
+<ul>
+<li>Index table provides random/direct access to file data blocks</li>
+<li>No external fragmentation, but overhead of index blocks</li>
+<li>Allows holes in the file</li>
+<li>Index block needs space - waste for small files</li>
+</ul>
+<p><img alt="alt text" src="../image-67.png" /></p>
+<ul>
+<li>Need a method to allocate index blocks - cannot too big or too small<ul>
+<li>Linked index blocks: link index blocks to support huge file</li>
+<li>Multiple-level index blocks (e.G., 2-level)</li>
 </ul>
 </li>
 </ul>
-<p>indexed</p>
-<ul>
-<li>Multiplex</li>
-</ul>
-<p><img alt="alt text" src="../image-8.png" /></p>
 <blockquote>
-<p>会算大小</p>
+<p>会算大小<img alt="alt text" src="../image-68.png" /></p>
 </blockquote>
-<h2 id="free-space-management">Free-Space Management</h2>
+<hr />
+<p>Summary</p>
 <ul>
+<li>Best allocation method depends on file access type<ul>
+<li>Contiguous is great for sequential and random</li>
+<li>Linked is good for sequential, not random</li>
+<li>Indexed (combined) is more complex <ul>
+<li>Single block access may require 2 index block reads then data block read</li>
+<li>Clustering can help improve throughput, reduce CPU overhead</li>
+<li>Cluster is a set of contiguous blocks</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Disk I/O slow, 需要尽可能减少</li>
+</ul>
+<hr />
+<h2 id="free-space-management">Free-Space Management</h2>
+<p>Bitmap Free-Space Management</p>
+<ul>
+<li>Use one bit for each block, track its allocation status</li>
+<li>相对容易找到连续空间</li>
+<li>requires extra space <img alt="alt text" src="../image-69.png" /></li>
+</ul>
+<p>Linked Free Space</p>
+<ul>
+<li>Keep free blocks in linked list </li>
 <li>优点 - 找到下一个很快</li>
-<li>缺点 - 很难找到连续空间</li>
+<li>缺点 - 很难找到连续空间（require traverse the list），一个丢了后面全没</li>
 </ul>
 <p>Grouping &amp; Counting</p>
-<p>Page Cache</p>
-<p>log</p>
-<h2 id="tow-key-abstration">Tow Key Abstration</h2>
-<h2 id="link">link</h2>
-<p>hard link</p>
 <ul>
+<li>Grouping: use indexes to group free blocks<ul>
+<li>Store address of n-1 free blocks in the first free block, plus a pointer to the next index block</li>
+<li>Allocating multiple free blocks does not need to traverse the list</li>
+</ul>
+</li>
+<li>Counting: a link of clusters (starting block + # of contiguous blocks)<ul>
+<li>Space is frequently contiguously used and freed</li>
+<li>In link node, keep address of first free block and # of following free blocks</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="file-system-performance">File System Performance</h3>
+<p>File system efficiency and performance dependent on:</p>
+<ul>
+<li>Disk allocation and directory algorithms</li>
+<li>Types of data kept in file’s directory entry</li>
+<li>Pre-allocation or as-needed allocation of metadata structures</li>
+<li>Fixed-size or varying-size data structures</li>
+</ul>
+<p>To improve file system performance:</p>
+<ul>
+<li>Keeping data and metadata close together</li>
+<li>Use cache: separate section of main memory for frequently used blocks</li>
+<li>Use asynchronous writes, it can be buffered/cached, thus faster<ul>
+<li>Cannot cache synchronous write, writes must hit disk before return</li>
+<li>Synchronous writes sometimes requested by apps or needed by OS</li>
+</ul>
+</li>
+<li>Free-behind and read-ahead: techniques to optimize sequential access - remove the previous page from the buffer, read multiple pages ahead</li>
+<li>Reads frequently slower than write: really?</li>
+</ul>
+<hr />
+<p>Page Cache</p>
+<ul>
+<li>A page cache caches pages for MMIO, such as memory mapped files</li>
+<li>File systems uses buffer (disk) cache for disk I/O</li>
+</ul>
+<p><img alt="alt text" src="../image-70.png" /></p>
+<p>Recovery &amp; log</p>
+<hr />
+<h2 id="file-interfaces">File interfaces</h2>
+<p>Tow Key Abstration</p>
+<ul>
+<li>File Has a low-level name (user does not know) - inode number</li>
+<li>Directory - contains a list of user-readable name to low level name (translation from external to internal name)</li>
+</ul>
+<div class="highlight"><span class="filename">create file</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">O_CREAT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">O_WRONLY</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">O_TRUNC</span><span class="p">);</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">// O_CREAT: create the file if not exists (not O_CREATE)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">// O_WRONLY: can only write to the file</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">// O_TRUNC: if the file exists, truncate it to zero bytes</span>
+</code></pre></div>
+<p>返回值 - File Descriptor</p>
+<ul>
+<li>File Discriptor - index per-process open file table<ul>
+<li>0 - stdin</li>
+<li>1 - stdout</li>
+<li>2 - stderr</li>
+</ul>
+</li>
+<li>其他文件只能拿到 &gt;=3 的标号</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_CREAT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">O_WRONLY</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">O_TRUNC</span><span class="p">);</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">assert</span><span class="w"> </span><span class="p">(</span><span class="n">fd</span><span class="w"> </span><span class="o">&gt;</span><span class="mi">-1</span><span class="p">);</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kt">int</span><span class="w"> </span><span class="n">rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">write</span><span class="w"> </span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">assert</span><span class="w"> </span><span class="p">(</span><span class="n">rc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fsync</span><span class="w"> </span><span class="p">(</span><span class="n">fd</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">// forces all dirty (not yet written) data to disk</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">assert</span><span class="w"> </span><span class="p">(</span><span class="n">rc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
+</code></pre></div>
+<hr />
+<h2 id="directory">Directory</h2>
+<h2 id="hard-link-vs-soft-link">Hard link vs soft link</h2>
+<p>A file may be known by more than one name in one or more directories. Such multiple names are known as links.</p>
+<ul>
+<li>hard link <img alt="alt text" src="../image-71.png" /><ul>
 <li>目录项</li>
 <li>inode 一样</li>
 <li>rm、ls 的对象是 hard link 而不是文件</li>
+<li>. &amp; .. 都是 hardlink</li>
+<li>link() system call: system call takes two arguments, an old pathname and a new one</li>
+<li>removing a file calls unlink</li>
 </ul>
-<p>soft link</p>
-<ul>
+</li>
+<li>soft link <img alt="alt text" src="../image-72.png" /><ul>
 <li>文件</li>
 <li>inode 不一样</li>
 <li>创建一个新文件，存放指向源文件的 path</li>
+<li>rm the target file, the link will be invalided</li>
 <li>可以跨文件系统</li>
 </ul>
+</li>
+</ul>
 <p>read /foo/bar</p>
+<p><img alt="alt text" src="../image-73.png" /></p>
+<p>Write to Disk: /foo/bar</p>
+<p><img alt="alt text" src="../image-74.png" /></p>
+<h2 id="on-disk-layout-of-fs">On-disk layout of FS</h2>
+<ul>
+<li>VFS data structure - inode</li>
+<li>In-memory data structure - ext2_inode_info<ul>
+<li>Contain both ext2_inode and inode</li>
+</ul>
+</li>
+<li>On-disk data structure - ext2_inode</li>
+</ul>
+<p>Superblock
+* Contains information about this file system: how many inodes/data blocks, where the inode table begins, where the data region begins, and a magic number
+<img alt="alt text" src="../image-75.png" /></p>
+<p>Caching and Buffering</p>
+<ul>
+<li>Without caching, each file open would require two reads for each level of the directory<ul>
+<li>One for the inode, and one for data</li>
+</ul>
+</li>
+<li>Early system allocate a fixed-size cache to hold popular blocks</li>
+<li>Modern systems use a unified page cache for both virtual memory pages and file system pages</li>
+<li>Write buffering: does not write to disk immediately, instead sync to disk for like 5 - 30 seconds</li>
+<li>Database: direct IO with raw data </li>
+</ul>
 
 
 
