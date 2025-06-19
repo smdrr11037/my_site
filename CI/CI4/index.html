@@ -117,7 +117,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#chapter-6-activation-records" class="md-skip">
           Skip to content
         </a>
       
@@ -2275,11 +2275,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#recursive-declarations" class="md-nav__link">
+  <a href="#61-stack-frames" class="md-nav__link">
     <span class="md-ellipsis">
-      Recursive Declarations
+      6.1 Stack Frames
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="6.1 Stack Frames">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#block-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2603,11 +2618,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#recursive-declarations" class="md-nav__link">
+  <a href="#61-stack-frames" class="md-nav__link">
     <span class="md-ellipsis">
-      Recursive Declarations
+      6.1 Stack Frames
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="6.1 Stack Frames">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#block-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2629,19 +2659,35 @@
   
 
 
-<h1 id="_1"></h1>
-<h3 id="recursive-declarations">Recursive Declarations</h3>
-<p>相互调用的情况：f call g，g call f</p>
+<h1 id="chapter-6-activation-records">Chapter 6: Activation Records</h1>
+<h2 id="61-stack-frames">6.1 Stack Frames</h2>
 <ul>
-<li>First pass - gathers information about the header</li>
-<li>Second pass - processes the bodies</li>
+<li>程序运行时过程调用在 stack 中产生 activation records（又叫做 frame）</li>
+<li>函数 f 的一次调用叫做 f 的 activation</li>
+<li>局部变量每次调用被生成，每次退出被销毁，用栈保存</li>
+<li>用 stack pointer 访问局部变量</li>
+<li>关键问题：排布栈使得调用者和被调用者可以正常通信<img alt="alt text" src="../image-53.png" /><ul>
+<li>进入被调用者时，在 frame 存 fp，fp = sp，sp = sp - frame size</li>
+<li>离开被调用者时，sp = fp，从内存中取 fp，<img alt="alt text" src="../image-54.png" /></li>
 </ul>
-<h1 id="chapter-6">Chapter 6</h1>
-<h3 id="static-link">static link</h3>
-<p>传递栈帧和偏移量</p>
-<h3 id="lambda-lifting">Lambda lifting</h3>
-<p>把内部函数需要用到的参数，作为函数参数传递下去</p>
-<p><img alt=" " src="../image-26.png" /></p>
+</li>
+</ul>
+<blockquote>
+<p>为了防止非必要 memory traffic，前几个参数用寄存器传递，多的参数用栈传递</p>
+</blockquote>
+<p>A variable escapes if - 用栈传递
+ • it is passed by reference,
+ • its address is taken (e.g., using C’s &amp; operator),
+ • or it is accessed from a nested function</p>
+<h3 id="block-structure">Block Structure</h3>
+<blockquote>
+<p>嵌套函数访问外部函数的局部变量 - through the Frame Pointer</p>
+</blockquote>
+<ul>
+<li>static link - 传递外层函数的栈帧和偏移量<img alt="alt text" src="../image-65.png" /></li>
+<li>Display - 维护一个指向各个 frame 的全局数组，记录嵌套层数，position i 指向最近的嵌套深度为 i 的过程</li>
+<li>Lambda lifting - 把内部函数需要用到的参数，作为函数参数传递下去<img alt=" " src="../image-26.png" /></li>
+</ul>
 
 
 

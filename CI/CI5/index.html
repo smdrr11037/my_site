@@ -2732,7 +2732,7 @@
 <h3 id="kinds-of-expression">Kinds of Expression</h3>
 <ul>
 <li>Backpatching</li>
-<li>true patch list 和 false patch list 存储对应条件下的目的地址（？</li>
+<li>true patch list 和 false patch list 存储对应条件下的目的地址</li>
 </ul>
 <h3 id="array-variables">Array Variables</h3>
 <p>计算数组的地址</p>
@@ -2743,11 +2743,61 @@
 <ul>
 <li><img alt="alt text" src="../image-29.png" /></li>
 <li>ESEQ nodes 不方便优化</li>
-<li>CALL nodes</li>
+<li>CALL nodes 也有相同问题</li>
 </ul>
 </blockquote>
-<h2 id="_1"></h2>
-<h3 id="transformations-on-eseq">Transformations on ESEQ</h3>
+<p>优化思路</p>
+<ul>
+<li>原来的树变成一系列 Canonical Tree 的列表 <ul>
+<li>Canonical Tree 没有 SEQ/ESEQ</li>
+</ul>
+</li>
+<li>把这个列表分成多个 basic block(内部没有 jump 和 lable)</li>
+<li>把 basic block 排列成 trace 使得 CJUMP 后面直接跟 false lable</li>
+</ul>
+<h2 id="canonical-trees">Canonical Trees</h2>
+<h3 id="properties">properties</h3>
+<p>Canonical Trees are defined as having these properties：</p>
+<ol>
+<li>没有 SEQ 和 ESEQ - 每棵 Canonical Tree 至多有一个 statement node(根节点)，其他是 exp node</li>
+<li>CALL 的父母是 EXP 或 MOVE(temp t,) - 不能是 CALL</li>
+</ol>
+<p>也就是说，CALL 的父母必须是根节点，一棵树最多只有一个 CALL</p>
+<h3 id="eliminate-eseqs">eliminate ESEQs</h3>
+<ul>
+<li>idea：把 ESEQ nodes 抬高使得可以变成 SEQ</li>
+<li>
+<p>Given ESEQ(s, e)，把 s 提出来，把父母变成有 s 的 ESEQ/SEQ
+<img alt="alt text" src="../image-55.png" />
+<img alt="alt text" src="../image-56.png" /></p>
+</li>
+<li>
+<p>对于下面这种情况，把 s 提到前面可能会改变 e1，使结果不正确（如果 s 和 e1 commute，不冲突，还是可以这样重写）<img alt="alt text" src="../image-57.png" /></p>
+</li>
+<li>正确做法：用中间变量存储 e1<img alt="alt text" src="../image-58.png" /></li>
+</ul>
+<p>判断 statement 和 expression 是否 commute </p>
+<ul>
+<li>常数一定 commute</li>
+<li>空 statement 一定 commute</li>
+<li>其他认为不 commute</li>
+</ul>
+<p>总结来说</p>
+<p><img alt="alt text" src="../image-59.png" /></p>
+<h3 id="movecalls-to-top-level">moveCALLs to top level</h3>
+<blockquote>
+<p>多个 call 指令会覆盖寄存器</p>
+</blockquote>
+<ul>
+<li>idea：把返回值存入临时寄存器</li>
+<li>CALL(f, args)-&gt; ESEQ(MOVE(TEMP t, CALL(f, args)), TEMP t)</li>
+</ul>
+<h3 id="eliminate-seqs">eliminate SEQs</h3>
+<ul>
+<li>对于多个 SEQ SEQ(SEQ(SEQ(..., sx), sy), sz)</li>
+<li>重复规则 SEQ(SEQ(a, b), c) = SEQ(a, seq(b, c))</li>
+<li>这样就变成了一个 statement 的简单序列 s1, s2, ...</li>
+</ul>
 <h2 id="basic-block">Basic block</h2>
 <p>划分规则</p>
 <ul>
@@ -2755,6 +2805,40 @@
 <li>有 jump，分块（这一行是结尾）</li>
 <li>有 lable，分块（这一行是开头）</li>
 </ul>
+<p><img alt="alt text" src="../image-60.png" /></p>
+<h2 id="trace">Trace</h2>
+<blockquote>
+<p>把 basic block 排成 trace 使得 CJUMP 后面跟 false label，这样可以直接翻译成机器语言</p>
+</blockquote>
+<ul>
+<li>把 CJUMP 和 false label 放一起</li>
+<li>把 JUMP 和 target label 放一起，删去 JUMP</li>
+</ul>
+<p>Trace Definition：在包含分支的程序中可以连续执行的 statement</p>
+<ul>
+<li>
+<p>目的 trace 完全覆盖整个程序</p>
+<ul>
+<li>每个 block 只属于一个 trace</li>
+<li>每个 trace 里没有 loop</li>
+<li>trace 越少越好（减少 jump）</li>
+</ul>
+</li>
+<li>
+<p>idea</p>
+<ul>
+<li>先选取 trace 的起始位置 b1</li>
+<li>b1 末尾 JUPM b4，把 b4 放在 b4 后面</li>
+<li>b6 末尾 CJUMP(t:b7,f:b3)，false label 在 b3，b3 放在![alt text] b6 后面，b7 放在另一个 trace <img alt="" src="../image-61.png" /></li>
+</ul>
+</li>
+</ul>
+<p><img alt="alt text" src="../image-62.png" /></p>
+<h3 id="optimal-traces">Optimal Traces</h3>
+<blockquote>
+<p>经常执行的序列应该有自己的 trace，减少无条件跳转
+</p>
+</blockquote>
 
 
 

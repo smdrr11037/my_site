@@ -2273,18 +2273,42 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#finite-automata" class="md-nav__link">
+  <a href="#23-finite-automata" class="md-nav__link">
     <span class="md-ellipsis">
-      Finite Automata
+      2.3 Finite Automata
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#24-nfa" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 NFA
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nfa" class="md-nav__link">
+  <a href="#25-lex" class="md-nav__link">
     <span class="md-ellipsis">
-      NFA
+      2.5 Lex
     </span>
   </a>
   
@@ -2739,18 +2763,42 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#finite-automata" class="md-nav__link">
+  <a href="#23-finite-automata" class="md-nav__link">
     <span class="md-ellipsis">
-      Finite Automata
+      2.3 Finite Automata
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#24-nfa" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 NFA
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nfa" class="md-nav__link">
+  <a href="#25-lex" class="md-nav__link">
     <span class="md-ellipsis">
-      NFA
+      2.5 Lex
     </span>
   </a>
   
@@ -2861,16 +2909,16 @@
 </blockquote>
 <h3 id="21-lexical-token">2.1 Lexical Token</h3>
 <blockquote>
-<p>Lexical Analysis 将源程序的字符流转换为 token 流</p>
+<p>Lexical Analysis 将源程序的字符流转换为 token 流，忽略空格和注释</p>
 </blockquote>
 <p>A lexical <strong>token</strong> - A sequence of characters &amp; A unit in the grammar</p>
 <ul>
 <li>类型有限，数量无限<img alt="alt text" src="../image-1.png" /></li>
 <li>类型 - A finite set of token types<ul>
 <li>保留字（不能作为标识符） e.g., IF, VOID, RETURN</li>
-<li>non-tokens: 注释/预处理指令/宏/空格，制表符，换行符等</li>
 </ul>
 </li>
+<li>non-tokens: 注释/预处理指令/宏/空格，制表符，换行符等</li>
 <li>preprocessor - 把 non-token 替换掉，再把新的字符流给词法分析器</li>
 </ul>
 <div class="highlight"><span class="filename">example</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">float</span><span class="w"> </span><span class="nf">match0</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="cm">/* find a zero */</span>
@@ -2882,7 +2930,8 @@
 <p>产生下面的 token：</p>
 <p><img alt="alt text" src="../image-2.png" /></p>
 <blockquote>
-<p>括号中 - attached semantic values，辅助信息</p>
+<p>括号中 - attached semantic values，辅助信息
+</p>
 </blockquote>
 <p>需求</p>
 <ul>
@@ -2890,6 +2939,9 @@
 <li>产生 token</li>
 <li>忽略空格和注释</li>
 </ul>
+<blockquote>
+<p>词法分析器的接口 - 一个函数 <code>getToken</code>, 被调用时返回下一个 token</p>
+</blockquote>
 <p>实现</p>
 <ul>
 <li>法一 - 根据需求手写</li>
@@ -2897,38 +2949,79 @@
 </ul>
 <hr />
 <h3 id="22-regular-expression">2.2 Regular Expression</h3>
+<h4 id="_1">基本语法</h4>
+<ul>
+<li>语言 - 一个字符串的集合</li>
+<li>字符串 - 一个 symbol 的有限序列</li>
+<li>symbol - 从一个 字母表中取得</li>
+</ul>
+<p>每个正则表达式表示一个正则语言</p>
+<ul>
+<li>正则表达式 a - 表示只含一个 a 的正则语言</li>
+<li><span class="arithmatex">\(\epsilon\)</span> - 空字符，L(<span class="arithmatex">\(\epsilon\)</span>) = {""} </li>
+<li>M|N - L(M|N) = { s | s∊L(M) or s∊L(N) }</li>
+<li>M*N - L(M · N) ={st | s∊L(M) and t∊L(N) }</li>
+<li>M* - 0 个或多个 M 的串联</li>
+</ul>
 <blockquote>
-<p>基本语法在计算理论中学过，略</p>
+<p>Example</p>
+<ul>
+<li>(0|1)*0 - 能被 2 整除的所有二进制数</li>
+<li>b<em>(abb</em>)*(a|ε) - 由 a 和 b 组成的没有连续的 a 的字符串</li>
+<li>(a|b)<em>aa(a|b)</em> - 由 a 和 b 组成的有连续的 a 的字符串</li>
+</ul>
 </blockquote>
-<p>扩展</p>
+<p>扩展语法（不影响表达能力）</p>
 <ul>
 <li>M? - M 出现 0 或 1 次</li>
+<li>M+ - (M·M*)</li>
 <li>[abcd] - (a|b|c|d)</li>
 <li>[b-g] - [bcdefg]</li>
 <li>[b-gM-Qkr] - [bcdefgMNOPQkr]</li>
 <li>. - 除换行符外的所有字符</li>
 <li>"a.+*" - 匹配本身，如小数点</li>
 </ul>
-<p><img alt="alt text" src="../image-3.png" /></p>
+<hr />
+<p>用正则表达式表示 token：
+<img alt="alt text" src="../image-3.png" /></p>
 <p>防止歧义</p>
 <ul>
-<li>最长前缀匹配</li>
-<li>优先级（比如 IF 比 ID 高，匹配 IF 后直接返回）</li>
+<li>最长前缀匹配 - if8 返回 ID</li>
+<li>优先级（比如 IF 比 ID 高，匹配 IF 后直接返回）- if 返回 IF </li>
 </ul>
 <hr />
-<h3 id="finite-automata">Finite Automata</h3>
+<h3 id="23-finite-automata">2.3 Finite Automata</h3>
+<blockquote>
+<p>正则表达式确定语法规范很方便，但需要用有限状态机变成电脑程序</p>
+</blockquote>
+<p>有限状态机包括</p>
+<ul>
+<li>有限个状态</li>
+<li>上面有 label 的边（一个来自字母表的 symbol）<ul>
+<li>多个 label 是多条平行边的聚合</li>
+</ul>
+</li>
+<li>一个初始状态</li>
+<li>一个或多个终止状态</li>
+</ul>
 <p><img alt="alt text" src="../image-4.png" /></p>
-<p>合并后：</p>
+<p>合并</p>
+<ul>
+<li>把每个终止状态用返回类型打上标签</li>
+<li>合并状态中有一个是终止状态，合并后也是终止状态</li>
+</ul>
 <p><img alt="alt text" src="../image-5.png" /></p>
+<hr />
 <p>表驱动的 DFA 实现</p>
 <ul>
 <li>状态转移数组<img alt="alt text" src="../image-6.png" /></li>
-<li>记录两个变量 - Last-Final（上一个终止状态的 state）和 Input-Position-at-Last-Final</li>
+<li>找到最长匹配需要记录两个变量 - Last-Final（上一个终止状态的 state）和 Input-Position-at-Last-Final</li>
 <li>进入 error 时回退到 Input-Position-at-Last-Final，返回 token 类型</li>
 </ul>
 <p><img alt="alt text" src="../image-7.png" /></p>
-<hr />
-<h3 id="nfa">NFA</h3>
+<h2 id="_2"><img alt="alt text" src="../image-36.png" /></h2>
+<h3 id="24-nfa">2.4 NFA</h3>
+<p><img alt="alt text" src="../image-37.png" /></p>
 <blockquote>
 <p>正则表达式不好转换，先转换为 NFA</p>
 <p>Recall: NFA 与 DFA 的区别（同一个输入可以有多条边，可以空字符转换）</p>
@@ -2957,7 +3050,7 @@
 <p><img alt="" src="../image-12.png" /></p>
 <hr />
 <ul>
-<li>状态等价：能接收的字符串的集合一样</li>
+<li>状态等价：以其为起始状态的 DFA 能接收的字符串的集合一样</li>
 <li>充分条件：<ul>
 <li>两个状态都是终止状态或非终止状态，且</li>
 <li>对任意输入 c，trans[s1,c]=trans[s2,c]</li>
@@ -2967,12 +3060,46 @@
 </ul>
 <p>DFA -&gt; Minimal DFA</p>
 <ul>
-<li>先分成终止状态和非终止状态两种</li>
+<li>先分成终止状态和非终止状态两种（一个接受空串一个不接收）</li>
 <li>遍历 symbol 作为一个组的输入，如果到达不同组的状态，划分成两个组</li>
 <li>重复直到划分后的和划分前的分组一致</li>
 </ul>
+<blockquote>
+<p>s1 和 s2 等价，化简方法：将所有指向 s2 的箭头指向 s1，删去 s2</p>
+<p>区分接受 token 的类型时，把不同的 token 终止状态初始就划分开来</p>
+</blockquote>
 <hr />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>
+<h3 id="25-lex">2.5 Lex</h3>
+<blockquote>
+<p>lexical-analyzer generator：自动把正则表达式翻译成 DFA</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span><span class="w"> </span><span class="n">definitions</span><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="o">%%</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">{</span><span class="w"> </span><span class="n">rules</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="o">%%</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">{</span><span class="w"> </span><span class="n">auxiliary</span><span class="w"> </span><span class="n">routines</span><span class="p">}</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="o">%</span><span class="p">{</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="cm">/* a Lex program that changes all numbers from decimal to hexadecimal </span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="cm">notation, printing a summary statistic to stdeer</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="cm">*/</span><span class="w"> </span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="o">%</span><span class="p">}</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">digit</span><span class="w"> </span><span class="p">[</span><span class="mi">0-9</span><span class="p">]</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="n">number</span><span class="w"> </span><span class="p">{</span><span class="n">digit</span><span class="p">}</span><span class="o">+</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="o">%%</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atoi</span><span class="w"> </span><span class="p">(</span><span class="n">yytext</span><span class="p">);</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">x</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="o">%%</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="n">main</span><span class="p">(</span><span class="w"> </span><span class="p">)</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span><span class="n">yylex</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">);</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stdeer</span><span class="p">,</span><span class="w"> </span><span class="err">“</span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">replacements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">%</span><span class="n">d</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="p">}</span>
 </code></pre></div>
 
 

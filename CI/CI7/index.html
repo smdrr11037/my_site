@@ -2403,6 +2403,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#interference-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interference Graphs
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2725,6 +2734,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#interference-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interference Graphs
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2769,7 +2787,7 @@
 <p>live-in 和 live-out</p>
 <ul>
 <li>live - 变量 x 在 边上活跃，意味着有直接路径到 use(x)，且不经过任何 def(x)</li>
-<li>live-in - <strong>每条</strong>入边上都活跃</li>
+<li>live-in - 某个变量在一个结点的<strong>每条</strong>入边上都活跃，则称该变量在该节点上 live-in</li>
 <li>live-out - 每条出边上都活跃</li>
 <li>in[n] - 结点 n 入口活跃的变量集合</li>
 <li>out[n] - 结点 n 出口活跃的变量集合</li>
@@ -2806,10 +2824,32 @@
 <li>实际上 O(N) - O(N^2)</li>
 </ul>
 <h3 id="conservative-approximation">Conservative Approximation</h3>
+<blockquote>
+<p>停机问题的引理 - 我们不知道执行时一个标签是否能到达</p>
+</blockquote>
 <ul>
-<li>Dynamic liveness</li>
-<li>Static liveness</li>
+<li>Dynamic liveness - a 在 node n Dynamic live 意味着有可能的执行路径经过 n 使用 a，且不经过 a 的定义</li>
+<li>Static liveness - a 在 node n Static live 意味着有控制流图的路径经过 n 使用 a，且不经过 a 的定义</li>
 </ul>
+<p>Dynamic live 一定 static live</p>
+<hr />
+<h2 id="interference-graphs">Interference Graphs</h2>
+<ul>
+<li>interference：阻止临时变量 a，b 分配到同一寄存器的条件<ul>
+<li>生存范围重合</li>
+<li>a 的产生不能用寄存器 r1</li>
+<li>MOVE 不一定冲突</li>
+</ul>
+</li>
+</ul>
+<p>添加冲突边的规则</p>
+<ul>
+<li>对于不是 MOVE 的结点 n，定义了 a，out[n] = {b1, ..., bj}，添加冲突边  (a, b1), ..., (a, bj)</li>
+<li>对于 MOVE 结点 n，a:=c，out[n] = {b1, ..., bk}，如果 bi 不等于 c，添加冲突边 (a, b1), ..., (a, bk)</li>
+</ul>
+<blockquote>
+<p>如果变量定义后从未使用，不需要放入寄存器，但是定义的语句会执行，副作用可能会产生冲突边</p>
+</blockquote>
 
 
 

@@ -117,7 +117,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#41-semantic-action" class="md-skip">
+        <a href="#chapter-4-abstract-syntax" class="md-skip">
           Skip to content
         </a>
       
@@ -2214,6 +2214,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -2242,6 +2244,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2255,6 +2259,21 @@
       4.1 Semantic Action
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="4.1 Semantic Action">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#semantic-action-in-recursive-descent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic Action in Recursive Descent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2272,72 +2291,6 @@
   <a href="#parse-tree" class="md-nav__link">
     <span class="md-ellipsis">
       Parse Tree
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#error-recovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      Error Recovery
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#semantic-analysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      Semantic Analysis
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Semantic Analysis">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#symbol-tables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Symbol Tables
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Symbol Tables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#implement" class="md-nav__link">
-    <span class="md-ellipsis">
-      Implement
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#symbols-in-the-tiger-compiler" class="md-nav__link">
-    <span class="md-ellipsis">
-      Symbols in the Tiger Compiler
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-checking" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type Checking
     </span>
   </a>
   
@@ -2679,6 +2632,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2692,6 +2647,21 @@
       4.1 Semantic Action
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="4.1 Semantic Action">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#semantic-action-in-recursive-descent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic Action in Recursive Descent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2709,72 +2679,6 @@
   <a href="#parse-tree" class="md-nav__link">
     <span class="md-ellipsis">
       Parse Tree
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#error-recovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      Error Recovery
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#semantic-analysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      Semantic Analysis
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Semantic Analysis">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#symbol-tables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Symbol Tables
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Symbol Tables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#implement" class="md-nav__link">
-    <span class="md-ellipsis">
-      Implement
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#symbols-in-the-tiger-compiler" class="md-nav__link">
-    <span class="md-ellipsis">
-      Symbols in the Tiger Compiler
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-checking" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type Checking
     </span>
   </a>
   
@@ -2803,9 +2707,22 @@
   
 
 
+<h1 id="chapter-4-abstract-syntax">Chapter 4: Abstract Syntax</h1>
+<blockquote>
+<p>Parser 只判断句子是否属于某个语言，而编译器需要建立 abstract syntax tree，进行语义分析，生成 IR</p>
+</blockquote>
 <h2 id="41-semantic-action">4.1 Semantic Action</h2>
+<h3 id="semantic-action-in-recursive-descent">Semantic Action in Recursive Descent</h3>
+<ul>
+<li>在递归下降的 parser 里，语义分析是 parser 函数的返回值或副作用（或者兼有）</li>
+<li>语义值的类型可以定义（union）<img alt="alt text" src="../image-50.png" /></li>
+<li>消除左递归后，只有右边的操作数，把左操作数传给右边<img alt="alt text" src="../image-51.png" /></li>
+<li>具体实现：保持一个 semantics values 的栈，reduce 时 pop 出相应的值</li>
+</ul>
 <h2 id="42-abstract-parse-trees">4.2 Abstract Parse Trees</h2>
 <blockquote>
+<p>上一节中，直接在 Yacc parser 里写语义分析难 read &amp; maintain，只能按 parse 的顺序分析</p>
+<p>最好先生成 parser tree，语义分析时遍历，将二者分开</p>
 <p>解耦，可以先使用再声明</p>
 </blockquote>
 <h3 id="parse-tree">Parse Tree</h3>
@@ -2819,35 +2736,12 @@
 <ul>
 <li>包含短语结构 <img alt="alt text" src="../image-17.png" /></li>
 </ul>
-<h3 id="error-recovery">Error Recovery</h3>
-<p>Local Error Recovery</p>
-<p>Global Error Repair</p>
+<h4 id="position">Position</h4>
 <ul>
-<li>找到最小的插入和删除集合，使得语法正确</li>
-<li>插入和删除可以不在错误发现的地方</li>
-<li>怎么选择插入和删除的方式？<ul>
-<li>修复后可以修复当前报错</li>
-<li>并且还能往后 parse 足够远（如 4 个 token）</li>
-<li>则认为这个修复足够好</li>
+<li>有的编译器词法、语法、语义分析同时进行，记录 current pos</li>
+<li>有的编译器（Yacc）分三轮进行，需要记录中间符号的位置</li>
 </ul>
-</li>
-</ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">old</span><span class="w"> </span><span class="n">stack</span><span class="p">;</span><span class="w"> </span><span class="c1">// </span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">current</span><span class="w"> </span><span class="n">stack</span><span class="p">;</span><span class="w"> </span><span class="c1">//</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">queue</span><span class="p">[</span><span class="n">k</span><span class="p">];</span><span class="w"> </span><span class="c1">// 放 k 个 token</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">when</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">shifted</span><span class="o">:</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">{</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">queue</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="n">token</span><span class="p">);</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">old_stack</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">queue</span><span class="p">.</span><span class="n">deque</span><span class="p">());</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">syntax</span><span class="w"> </span><span class="n">error</span><span class="p">){</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="n">copy_queue</span><span class="o">=</span><span class="n">queue</span><span class="p">;</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="n">copy_queue</span><span class="p">.</span><span class="n">change</span><span class="p">();</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="n">attempts</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">reparse</span><span class="p">(</span><span class="n">old_stack</span><span class="p">,</span><span class="w"> </span><span class="n">copy_queue</span><span class="p">);</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">}</span>
-</code></pre></div>
-<hr />
-<h1 id="semantic-analysis">Semantic Analysis</h1>
+<h1 id="chapter-5-semantic-analysis">Chapter 5: Semantic Analysis</h1>
 <blockquote>
 <p>语法分析的局限性：无法检测下面的错误
 <img alt="alt text" src="../image-20.png" /></p>
@@ -2855,7 +2749,8 @@
 <p>Semantic Analysis（语法分析）的作用</p>
 <ul>
 <li>变量使用需要先声明</li>
-<li>变量的类型是否正确</li>
+<li>变量的类型是否正确（表达式、函数调用）</li>
+<li>生成 IR</li>
 </ul>
 <h2 id="symbol-tables">Symbol Tables</h2>
 <blockquote>
@@ -2870,7 +2765,15 @@
 <li>进入新的作用域，新的同名变量会覆盖之前的</li>
 <li>离开作用域后，binding 会结束</li>
 </ul>
-<p>不同语言的多个符号表</p>
+<p>符号表需要的操作接口</p>
+<ul>
+<li>insert</li>
+<li>lookup</li>
+<li>beginScope</li>
+<li>endScope</li>
+</ul>
+<p>不同语言的多个符号表（如多个类）</p>
+<p><img alt="alt text" src="../image-52.png" /></p>
 <h3 id="implement">Implement</h3>
 <p>命令式</p>
 <ul>
@@ -2885,10 +2788,19 @@
 <ul>
 <li>开个新的 environment</li>
 <li>全部复制太耗时耗空间</li>
-<li><img alt="alt text" src="../image-23.png" /></li>
+<li>用二分搜索树实现（字符串比较）</li>
+<li>进入新环境只需要复制根节点<img alt="alt text" src="../image-23.png" /></li>
 </ul>
-<h2 id="symbols-in-the-tiger-compiler">Symbols in the Tiger Compiler</h2>
+<blockquote>
+<p>字符串比较耗时，转换成 symbol(int 值比较)</p>
+</blockquote>
 <h2 id="type-checking">Type Checking</h2>
+<h3 id="recursive-declarations">Recursive Declarations</h3>
+<p>相互调用的情况：f call g，g call f</p>
+<ul>
+<li>First pass - gathers information about the header</li>
+<li>Second pass - processes the bodies</li>
+</ul>
 
 
 
